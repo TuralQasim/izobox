@@ -22,7 +22,10 @@ const Header = () => {
         <header>
           <div className="logo_city">
             <Link to="">
-              <img src="../../../public/logo.svg" alt="" />
+              <img
+                src="https://turalqasim.github.io/izobox/public/logo.svg"
+                alt=""
+              />
             </Link>
             <div className="city" onClick={() => setCity((city) => !city)}>
               <IoLocationOutline />

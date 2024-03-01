@@ -8,6 +8,23 @@ import AdditionalItem from "../../components/additionalItem/AdditionalItem";
 import { connect } from "react-redux";
 import { FaXmark } from "react-icons/fa6";
 import Basic from "../../components/basic/Basic";
+import hero from "../../../public/hero.svg";
+import what1 from "../../../public/what1.svg";
+import what2 from "../../../public/what2.svg";
+import what3 from "../../../public/what3.svg";
+import quote from "../../../public/quote.svg";
+import eldjei from "../../../public/eldjei.svg";
+import quoteBg from "../../../public/quoteBg.svg";
+import additional1 from "../../../public/additional1.png";
+import additional2 from "../../../public/additional2.png";
+import additional3 from "../../../public/additional3.png";
+import additional4 from "../../../public/additional4.png";
+import additional5 from "../../../public/additional5.png";
+import additional6 from "../../../public/additional6.png";
+import additionalStatic1 from "../../../public/additionalStatic1.png";
+import additionalStatic2 from "../../../public/additionalStatic2.png";
+import additionalStatic3 from "../../../public/additionalStatic3.png";
+
 const Home = ({ infoImage, dispatch, boxType, colorModal }) => {
   const [additional, setAdditional] = useState(false);
   const scrollToInfo = () => {
@@ -129,7 +146,7 @@ const Home = ({ infoImage, dispatch, boxType, colorModal }) => {
       <div className="container">
         <div className="hero">
           <div className="hero_img">
-            <img src="../../../public/hero.svg" alt="" />
+            <img src={hero} alt="" />
           </div>
           <div className="hero_text">
             <h2>Акустические кабины IzoBox</h2>
@@ -148,9 +165,9 @@ const Home = ({ infoImage, dispatch, boxType, colorModal }) => {
             </p>
           </div>
           <div className="what_img">
-            <img src="../../../public/what1.svg" alt="" />
-            <img src="../../../public/what2.svg" alt="" />
-            <img src="../../../public/what3.svg" alt="" />
+            <img src={what1} alt="" />
+            <img src={what2} alt="" />
+            <img src={what3} alt="" />
             <Link
               to=""
               onClick={() => {
@@ -171,59 +188,39 @@ const Home = ({ infoImage, dispatch, boxType, colorModal }) => {
         <div className="container">
           <div className="quote">
             <div className="quote_item">
-              <img
-                src="../../../public/quote.svg"
-                className="quote_first"
-                alt=""
-              />
+              <img src={quote} className="quote_first" alt="" />
               <div className="quote_text">
                 <p>
                   Можно брать с собой на гастроли, собирается как конструктор.
                   Можно снимать контент, выбрав освещение.
                 </p>
                 <div className="quote_person">
-                  <img src="../../../public/eldjei.svg" alt="" />
+                  <img src={eldjei} alt="" />
                   <div className="quote_name">
                     <h2>Элджей</h2>
                     <h3>Певец</h3>
                   </div>
                 </div>
               </div>
-              <img
-                src="../../../public/quote.svg"
-                className="quote_second"
-                alt=""
-              />
+              <img src={quote} className="quote_second" alt="" />
             </div>
-            <img
-              src="../../../public/quoteBg.svg"
-              className="quote_bg_img"
-              alt=""
-            />
+            <img src={quoteBg} className="quote_bg_img" alt="" />
             <div className="quote_item">
-              <img
-                src="../../../public/quote.svg"
-                className="quote_first"
-                alt=""
-              />
+              <img src={quote} className="quote_first" alt="" />
               <div className="quote_text">
                 <p>
                   Можно брать с собой на гастроли, собирается как конструктор.
                   Можно снимать контент, выбрав освещение.
                 </p>
                 <div className="quote_person">
-                  <img src="../../../public/eldjei.svg" alt="" />
+                  <img src={eldjei} alt="" />
                   <div className="quote_name">
                     <h2>Элджей</h2>
                     <h3>Певец</h3>
                   </div>
                 </div>
               </div>
-              <img
-                src="../../../public/quote.svg"
-                className="quote_second"
-                alt=""
-              />
+              <img src={quote} className="quote_second" alt="" />
             </div>
           </div>
         </div>
@@ -247,60 +244,60 @@ const Home = ({ infoImage, dispatch, boxType, colorModal }) => {
           {additional && (
             <div className="additional_hero">
               <AdditionalItem
-                img1="../../../public/additional1.png"
-                img2="../../../public/additionalStatic1.png"
-                img3="../../../public/additionalStatic2.png"
-                img4="../../../public/additionalStatic3.png"
+                img1={additional1}
+                img2={additionalStatic1}
+                img3={additionalStatic2}
+                img4={additionalStatic3}
                 title="Полка"
                 text="Corem ipsum dolor sit amet, consectetur adipiscing elit. Nunc vulputate libero et velit interdum, ac aliquet odio mattis. Class aptent taciti sociosqu ad litora torquent per conubia nostra, per inceptos himenaeos. Curabitur tempus urna at turpis condimentum lobortis. Curabitur tempus urna at turpis condimentum lobortis."
                 price="18.500"
                 id={1}
               />
               <AdditionalItem
-                img1="../../../public/additional2.png"
-                img2="../../../public/additionalStatic1.png"
-                img3="../../../public/additionalStatic2.png"
-                img4="../../../public/additionalStatic3.png"
+                img1={additional2}
+                img2={additionalStatic1}
+                img3={additionalStatic2}
+                img4={additionalStatic3}
                 title="Комплект полок"
                 text="Corem ipsum dolor sit amet, consectetur adipiscing elit. Nunc vulputate libero et velit interdum, ac aliquet odio mattis. Class aptent taciti sociosqu ad litora torquent per conubia nostra, per inceptos himenaeos. Curabitur tempus urna at turpis condimentum lobortis. Curabitur tempus urna at turpis condimentum lobortis."
                 price="18.500"
                 id={2}
               />
               <AdditionalItem
-                img1="../../../public/additional3.png"
-                img2="../../../public/additionalStatic1.png"
-                img3="../../../public/additionalStatic2.png"
-                img4="../../../public/additionalStatic3.png"
+                img1={additional3}
+                img2={additionalStatic1}
+                img3={additionalStatic2}
+                img4={additionalStatic3}
                 title="Колёса опорные"
                 text="Corem ipsum dolor sit amet, consectetur adipiscing elit. Nunc vulputate libero et velit interdum, ac aliquet odio mattis. Class aptent taciti sociosqu ad litora torquent per conubia nostra, per inceptos himenaeos. Curabitur tempus urna at turpis condimentum lobortis. Curabitur tempus urna at turpis condimentum lobortis."
                 price="18.500"
                 id={3}
               />
               <AdditionalItem
-                img1="../../../public/additional4.png"
-                img2="../../../public/additionalStatic1.png"
-                img3="../../../public/additionalStatic2.png"
-                img4="../../../public/additionalStatic3.png"
+                img1={additional4}
+                img2={additionalStatic1}
+                img3={additionalStatic2}
+                img4={additionalStatic3}
                 title="Светильник"
                 text="Corem ipsum dolor sit amet, consectetur adipiscing elit. Nunc vulputate libero et velit interdum, ac aliquet odio mattis. Class aptent taciti sociosqu ad litora torquent per conubia nostra, per inceptos himenaeos. Curabitur tempus urna at turpis condimentum lobortis. Curabitur tempus urna at turpis condimentum lobortis."
                 price="18.500"
                 id={4}
               />
               <AdditionalItem
-                img1="../../../public/additional5.png"
-                img2="../../../public/additionalStatic1.png"
-                img3="../../../public/additionalStatic2.png"
-                img4="../../../public/additionalStatic3.png"
+                img1={additional5}
+                img2={additionalStatic1}
+                img3={additionalStatic2}
+                img4={additionalStatic3}
                 title="Светильник"
                 text="Corem ipsum dolor sit amet, consectetur adipiscing elit. Nunc vulputate libero et velit interdum, ac aliquet odio mattis. Class aptent taciti sociosqu ad litora torquent per conubia nostra, per inceptos himenaeos. Curabitur tempus urna at turpis condimentum lobortis. Curabitur tempus urna at turpis condimentum lobortis."
                 price="18.500"
                 id={5}
               />
               <AdditionalItem
-                img1="../../../public/additional6.png"
-                img2="../../../public/additionalStatic1.png"
-                img3="../../../public/additionalStatic2.png"
-                img4="../../../public/additionalStatic3.png"
+                img1={additional6}
+                img2={additionalStatic1}
+                img3={additionalStatic2}
+                img4={additionalStatic3}
                 title="Колёса опорные"
                 text="Corem ipsum dolor sit amet, consectetur adipiscing elit. Nunc vulputate libero et velit interdum, ac aliquet odio mattis. Class aptent taciti sociosqu ad litora torquent per conubia nostra, per inceptos himenaeos. Curabitur tempus urna at turpis condimentum lobortis. Curabitur tempus urna at turpis condimentum lobortis."
                 price="18.500"

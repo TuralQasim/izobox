@@ -7,12 +7,13 @@ import { RiInstagramFill } from "react-icons/ri";
 import { FaYoutube } from "react-icons/fa";
 import { FaTelegram } from "react-icons/fa6";
 import { IoLogoWhatsapp } from "react-icons/io";
+import logo from "../../../public/logo.svg";
 const Footer = () => {
   return (
     <div className="container">
       <footer>
         <Link to="">
-          <img src="../../../public/logo.svg" alt="" />
+          <img src={logo} alt="" />
         </Link>
         <div className="footer">
           <nav className="foot_nav">

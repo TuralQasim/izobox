@@ -1,6 +1,10 @@
 import React, { useState } from "react";
 import "./infoVideo.css";
 import { FaPlay } from "react-icons/fa";
+import infoVideo1 from "../../../public/infoVideo1.png";
+import infoVideo2 from "../../../public/infoVideo2.png";
+import infoVideo3 from "../../../public/infoVideo3.png";
+import infoVideo4 from "../../../public/infoVideo4.png";
 
 const InfoVideo = () => {
   const [activeVideo, setActiveVideo] = useState(
@@ -34,7 +38,7 @@ const InfoVideo = () => {
             <FaPlay />
           </button>
           <div className="video_overlay"></div>
-          <img src="../../../public/infoVideo1.png" alt="" />
+          <img src={infoVideo1} alt="" />
         </div>
         <div
           className={`videos_item ${
@@ -50,7 +54,7 @@ const InfoVideo = () => {
           <button>
             <FaPlay />
           </button>
-          <img src="../../../public/infoVideo2.png" alt="" />
+          <img src={infoVideo2} alt="" />
           <div className="video_overlay"></div>
         </div>
         <div
@@ -68,7 +72,7 @@ const InfoVideo = () => {
             <FaPlay />
           </button>
           <div className="video_overlay"></div>
-          <img src="../../../public/infoVideo3.png" alt="" />
+          <img src={infoVideo3} alt="" />
         </div>
         <div
           className={`videos_item ${
@@ -86,7 +90,7 @@ const InfoVideo = () => {
           </button>
 
           <div className="video_overlay"></div>
-          <img src="../../../public/infoVideo4.png" alt="" />
+          <img src={infoVideo4} alt="" />
         </div>
       </div>
     </div>

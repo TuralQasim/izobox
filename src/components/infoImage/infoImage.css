@@ -1,0 +1,27 @@
+.info_image {
+  width: 100%;
+  display: grid;
+  grid-template-columns: repeat(5, 1fr);
+  gap: 10px;
+}
+.info_image img {
+  width: 100%;
+  aspect-ratio: 1/1;
+  cursor: pointer;
+}
+@media screen and (max-width: 1024px) {
+  .info_image {
+    width: 100%;
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 10px;
+  }
+}
+@media screen and (max-width: 480px) {
+  .info_image {
+    width: 100%;
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 10px;
+  }
+}

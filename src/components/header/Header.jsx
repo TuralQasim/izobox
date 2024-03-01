@@ -23,7 +23,7 @@ const Header = () => {
         <header>
           <div className="logo_city">
             <Link to="">
-              <img src={logo} alt="" />
+              <img src="../../../../public/logo.svg" alt="" />
             </Link>
             <div className="city" onClick={() => setCity((city) => !city)}>
               <IoLocationOutline />

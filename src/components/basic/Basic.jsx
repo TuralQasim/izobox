@@ -25,7 +25,7 @@ const Basic = ({ dispatch, front, back, window }) => {
         >
           <SwiperSlide>
             <img
-              src={`./${
+              src={`../${
                 front == 1
                   ? "beige"
                   : front == 2
@@ -38,7 +38,7 @@ const Basic = ({ dispatch, front, back, window }) => {
           </SwiperSlide>
           <SwiperSlide>
             <img
-              src={`./${
+              src={`../${
                 front == 1
                   ? "beige"
                   : front == 2
@@ -51,7 +51,7 @@ const Basic = ({ dispatch, front, back, window }) => {
           </SwiperSlide>
           <SwiperSlide>
             <img
-              src={`./${
+              src={`../${
                 front == 1
                   ? "beige"
                   : front == 2
@@ -64,7 +64,7 @@ const Basic = ({ dispatch, front, back, window }) => {
           </SwiperSlide>
           <SwiperSlide>
             <img
-              src={`./${
+              src={`../${
                 front == 1
                   ? "beige"
                   : front == 2
@@ -77,7 +77,7 @@ const Basic = ({ dispatch, front, back, window }) => {
           </SwiperSlide>
           <SwiperSlide>
             <img
-              src={`./${
+              src={`../${
                 front == 1
                   ? "beige"
                   : front == 2
@@ -90,7 +90,7 @@ const Basic = ({ dispatch, front, back, window }) => {
           </SwiperSlide>
           <SwiperSlide>
             <img
-              src={`./${
+              src={`../${
                 front == 1
                   ? "beige"
                   : front == 2
@@ -103,7 +103,7 @@ const Basic = ({ dispatch, front, back, window }) => {
           </SwiperSlide>
           <SwiperSlide>
             <img
-              src={`./${
+              src={`../${
                 front == 1
                   ? "beige"
                   : front == 2
@@ -116,7 +116,7 @@ const Basic = ({ dispatch, front, back, window }) => {
           </SwiperSlide>
           <SwiperSlide>
             <img
-              src={`./${
+              src={`../${
                 front == 1
                   ? "beige"
                   : front == 2
@@ -141,7 +141,7 @@ const Basic = ({ dispatch, front, back, window }) => {
         >
           <SwiperSlide>
             <img
-              src={`./${
+              src={`../${
                 front == 1
                   ? "beige"
                   : front == 2
@@ -154,7 +154,7 @@ const Basic = ({ dispatch, front, back, window }) => {
           </SwiperSlide>
           <SwiperSlide>
             <img
-              src={`./${
+              src={`../${
                 front == 1
                   ? "beige"
                   : front == 2
@@ -167,7 +167,7 @@ const Basic = ({ dispatch, front, back, window }) => {
           </SwiperSlide>
           <SwiperSlide>
             <img
-              src={`./${
+              src={`../${
                 front == 1
                   ? "beige"
                   : front == 2
@@ -180,7 +180,7 @@ const Basic = ({ dispatch, front, back, window }) => {
           </SwiperSlide>
           <SwiperSlide>
             <img
-              src={`./${
+              src={`../${
                 front == 1
                   ? "beige"
                   : front == 2
@@ -193,7 +193,7 @@ const Basic = ({ dispatch, front, back, window }) => {
           </SwiperSlide>
           <SwiperSlide>
             <img
-              src={`./${
+              src={`../${
                 front == 1
                   ? "beige"
                   : front == 2
@@ -206,7 +206,7 @@ const Basic = ({ dispatch, front, back, window }) => {
           </SwiperSlide>
           <SwiperSlide>
             <img
-              src={`./${
+              src={`../${
                 front == 1
                   ? "beige"
                   : front == 2
@@ -219,7 +219,7 @@ const Basic = ({ dispatch, front, back, window }) => {
           </SwiperSlide>
           <SwiperSlide>
             <img
-              src={`./${
+              src={`../${
                 front == 1
                   ? "beige"
                   : front == 2
@@ -232,7 +232,7 @@ const Basic = ({ dispatch, front, back, window }) => {
           </SwiperSlide>
           <SwiperSlide>
             <img
-              src={`./${
+              src={`../${
                 front == 1
                   ? "beige"
                   : front == 2

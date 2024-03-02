@@ -17,7 +17,7 @@ const InfoImage = ({ dispatch }) => {
         onClick={() => {
           dispatch({
             type: "INFOIMAGE",
-            payload: "./public/infoImage1.png",
+            payload: "../public/infoImage1.png",
           });
         }}
         src={infoImage1}
@@ -27,7 +27,7 @@ const InfoImage = ({ dispatch }) => {
         onClick={() => {
           dispatch({
             type: "INFOIMAGE",
-            payload: "./public/infoImage2.png",
+            payload: "../public/infoImage2.png",
           });
         }}
         src={infoImage2}
@@ -37,7 +37,7 @@ const InfoImage = ({ dispatch }) => {
         onClick={() => {
           dispatch({
             type: "INFOIMAGE",
-            payload: "./public/infoImage3.png",
+            payload: "../public/infoImage3.png",
           });
         }}
         src={infoImage3}
@@ -47,7 +47,7 @@ const InfoImage = ({ dispatch }) => {
         onClick={() => {
           dispatch({
             type: "INFOIMAGE",
-            payload: "./public/infoImage4.png",
+            payload: "../public/infoImage4.png",
           });
         }}
         src={infoImage4}
@@ -57,7 +57,7 @@ const InfoImage = ({ dispatch }) => {
         onClick={() => {
           dispatch({
             type: "INFOIMAGE",
-            payload: "./public/infoImage5.png",
+            payload: "../public/infoImage5.png",
           });
         }}
         src={infoImage5}
@@ -67,7 +67,7 @@ const InfoImage = ({ dispatch }) => {
         onClick={() => {
           dispatch({
             type: "INFOIMAGE",
-            payload: "./public/infoImage6.png",
+            payload: "../public/infoImage6.png",
           });
         }}
         src={infoImage6}
@@ -77,7 +77,7 @@ const InfoImage = ({ dispatch }) => {
         onClick={() => {
           dispatch({
             type: "INFOIMAGE",
-            payload: "./public/infoImage7.png",
+            payload: "../public/infoImage7.png",
           });
         }}
         src={infoImage7}
@@ -87,7 +87,7 @@ const InfoImage = ({ dispatch }) => {
         onClick={() => {
           dispatch({
             type: "INFOIMAGE",
-            payload: "./public/infoImage8.png",
+            payload: "../public/infoImage8.png",
           });
         }}
         src={infoImage8}

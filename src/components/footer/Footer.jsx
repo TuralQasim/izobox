@@ -1,19 +1,17 @@
 import React from "react";
 import "./footer.css";
 import { Link, NavLink } from "react-router-dom";
-import { FaPhoneAlt } from "react-icons/fa";
 import { IoMdMail } from "react-icons/io";
 import { RiInstagramFill } from "react-icons/ri";
 import { FaYoutube } from "react-icons/fa";
 import { FaTelegram } from "react-icons/fa6";
 import { IoLogoWhatsapp } from "react-icons/io";
-import logo from "../../../public/logo.svg";
 const Footer = () => {
   return (
     <div className="container">
       <footer>
         <Link to="">
-          <img src={logo} alt="" />
+          <img src="./logo.svg" alt="" />
         </Link>
         <div className="footer">
           <nav className="foot_nav">

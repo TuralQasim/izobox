@@ -10,7 +10,7 @@ const SwiperImage = ({ front, back }) => {
       ? "steel"
       : "white"
   }/${window == true ? "withWindow" : "withoutWindow"}/${back}.png`;
-  return <img src={source} />;
+  return <img loading={front == 1 && back == 1 ? "" : "lazy"} src={source} />;
 };
 
 export default SwiperImage;

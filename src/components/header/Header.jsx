@@ -13,7 +13,6 @@ import { AnimatePresence, motion } from "framer-motion";
 import { IoMenu } from "react-icons/io5";
 import { FaXmark } from "react-icons/fa6";
 import { enableScroll, disableScroll } from "../../hooks/scrool";
-import logo from "../../../public/logo.svg";
 const Header = () => {
   const [city, setCity] = useState(false);
   const [burger, setBurger] = useState(false);
@@ -23,7 +22,7 @@ const Header = () => {
         <header>
           <div className="logo_city">
             <Link to="">
-              <img src={logo} alt="" />
+              <img src="./logo.svg" alt="" />
             </Link>
             <div className="city" onClick={() => setCity((city) => !city)}>
               <IoLocationOutline />

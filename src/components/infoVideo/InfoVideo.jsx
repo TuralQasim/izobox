@@ -1,10 +1,6 @@
 import React, { useState } from "react";
 import "./infoVideo.css";
 import { FaPlay } from "react-icons/fa";
-import infoVideo1 from "../../../public/infoVideo1.png";
-import infoVideo2 from "../../../public/infoVideo2.png";
-import infoVideo3 from "../../../public/infoVideo3.png";
-import infoVideo4 from "../../../public/infoVideo4.png";
 
 const InfoVideo = () => {
   const [activeVideo, setActiveVideo] = useState(
@@ -18,6 +14,7 @@ const InfoVideo = () => {
           src={activeVideo}
           title="YouTube video player"
           frameborder="0"
+          loading="lazy"
           allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
           allowFullScreen={true}
         ></iframe>
@@ -38,7 +35,7 @@ const InfoVideo = () => {
             <FaPlay />
           </button>
           <div className="video_overlay"></div>
-          <img src={infoVideo1} alt="" />
+          <img src="./infoVideo1.png" loading="lazy" alt="" />
         </div>
         <div
           className={`videos_item ${
@@ -54,7 +51,7 @@ const InfoVideo = () => {
           <button>
             <FaPlay />
           </button>
-          <img src={infoVideo2} alt="" />
+          <img src="./infoVideo2.png" loading="lazy" alt="" />
           <div className="video_overlay"></div>
         </div>
         <div
@@ -72,7 +69,7 @@ const InfoVideo = () => {
             <FaPlay />
           </button>
           <div className="video_overlay"></div>
-          <img src={infoVideo3} alt="" />
+          <img src="./infoVideo3.png" loading="lazy" alt="" />
         </div>
         <div
           className={`videos_item ${
@@ -88,9 +85,8 @@ const InfoVideo = () => {
           <button>
             <FaPlay />
           </button>
-
           <div className="video_overlay"></div>
-          <img src={infoVideo4} alt="" />
+          <img src="./infoVideo4.png" loading="lazy" alt="" />
         </div>
       </div>
     </div>

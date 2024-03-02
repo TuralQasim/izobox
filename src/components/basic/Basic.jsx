@@ -7,6 +7,7 @@ import "swiper/css/thumbs";
 import { FreeMode, Navigation, Thumbs } from "swiper/modules";
 import { connect } from "react-redux";
 import "./basic.css";
+import SwiperImage from "../swiperImage/SwiperImage";
 const Basic = ({ dispatch, front, back, window }) => {
   const [thumbsSwiper, setThumbsSwiper] = useState(null);
   return (
@@ -24,108 +25,28 @@ const Basic = ({ dispatch, front, back, window }) => {
           className="mySwiper2"
         >
           <SwiperSlide>
-            <img
-              src={`../${
-                front == 1
-                  ? "beige"
-                  : front == 2
-                  ? "graphite"
-                  : front == 3
-                  ? "steel"
-                  : "white"
-              }/${window == true ? "withWindow" : "withoutWindow"}/${back}.png`}
-            />
+            <SwiperImage front={front} back={back} />
           </SwiperSlide>
           <SwiperSlide>
-            <img
-              src={`../${
-                front == 1
-                  ? "beige"
-                  : front == 2
-                  ? "graphite"
-                  : front == 3
-                  ? "steel"
-                  : "white"
-              }/${window == true ? "withWindow" : "withoutWindow"}/${back}.png`}
-            />
+            <SwiperImage front={front} back={back} />
           </SwiperSlide>
           <SwiperSlide>
-            <img
-              src={`../${
-                front == 1
-                  ? "beige"
-                  : front == 2
-                  ? "graphite"
-                  : front == 3
-                  ? "steel"
-                  : "white"
-              }/${window == true ? "withWindow" : "withoutWindow"}/${back}.png`}
-            />
+            <SwiperImage front={front} back={back} />
           </SwiperSlide>
           <SwiperSlide>
-            <img
-              src={`../${
-                front == 1
-                  ? "beige"
-                  : front == 2
-                  ? "graphite"
-                  : front == 3
-                  ? "steel"
-                  : "white"
-              }/${window == true ? "withWindow" : "withoutWindow"}/${back}.png`}
-            />
+            <SwiperImage front={front} back={back} />
           </SwiperSlide>
           <SwiperSlide>
-            <img
-              src={`../${
-                front == 1
-                  ? "beige"
-                  : front == 2
-                  ? "graphite"
-                  : front == 3
-                  ? "steel"
-                  : "white"
-              }/${window == true ? "withWindow" : "withoutWindow"}/${back}.png`}
-            />
+            <SwiperImage front={front} back={back} />
           </SwiperSlide>
           <SwiperSlide>
-            <img
-              src={`../${
-                front == 1
-                  ? "beige"
-                  : front == 2
-                  ? "graphite"
-                  : front == 3
-                  ? "steel"
-                  : "white"
-              }/${window == true ? "withWindow" : "withoutWindow"}/${back}.png`}
-            />
+            <SwiperImage front={front} back={back} />
           </SwiperSlide>
           <SwiperSlide>
-            <img
-              src={`../${
-                front == 1
-                  ? "beige"
-                  : front == 2
-                  ? "graphite"
-                  : front == 3
-                  ? "steel"
-                  : "white"
-              }/${window == true ? "withWindow" : "withoutWindow"}/${back}.png`}
-            />
+            <SwiperImage front={front} back={back} />
           </SwiperSlide>
           <SwiperSlide>
-            <img
-              src={`../${
-                front == 1
-                  ? "beige"
-                  : front == 2
-                  ? "graphite"
-                  : front == 3
-                  ? "steel"
-                  : "white"
-              }/${window == true ? "withWindow" : "withoutWindow"}/${back}.png`}
-            />
+            <SwiperImage front={front} back={back} />
           </SwiperSlide>
         </Swiper>
         <Swiper
@@ -140,108 +61,28 @@ const Basic = ({ dispatch, front, back, window }) => {
           direction="vertical"
         >
           <SwiperSlide>
-            <img
-              src={`../${
-                front == 1
-                  ? "beige"
-                  : front == 2
-                  ? "graphite"
-                  : front == 3
-                  ? "steel"
-                  : "white"
-              }/${window == true ? "withWindow" : "withoutWindow"}/${back}.png`}
-            />
+            <SwiperImage front={front} back={back} />
           </SwiperSlide>
           <SwiperSlide>
-            <img
-              src={`../${
-                front == 1
-                  ? "beige"
-                  : front == 2
-                  ? "graphite"
-                  : front == 3
-                  ? "steel"
-                  : "white"
-              }/${window == true ? "withWindow" : "withoutWindow"}/${back}.png`}
-            />
+            <SwiperImage front={front} back={back} />
           </SwiperSlide>
           <SwiperSlide>
-            <img
-              src={`../${
-                front == 1
-                  ? "beige"
-                  : front == 2
-                  ? "graphite"
-                  : front == 3
-                  ? "steel"
-                  : "white"
-              }/${window == true ? "withWindow" : "withoutWindow"}/${back}.png`}
-            />
+            <SwiperImage front={front} back={back} />
           </SwiperSlide>
           <SwiperSlide>
-            <img
-              src={`../${
-                front == 1
-                  ? "beige"
-                  : front == 2
-                  ? "graphite"
-                  : front == 3
-                  ? "steel"
-                  : "white"
-              }/${window == true ? "withWindow" : "withoutWindow"}/${back}.png`}
-            />
+            <SwiperImage front={front} back={back} />
           </SwiperSlide>
           <SwiperSlide>
-            <img
-              src={`../${
-                front == 1
-                  ? "beige"
-                  : front == 2
-                  ? "graphite"
-                  : front == 3
-                  ? "steel"
-                  : "white"
-              }/${window == true ? "withWindow" : "withoutWindow"}/${back}.png`}
-            />
+            <SwiperImage front={front} back={back} />
           </SwiperSlide>
           <SwiperSlide>
-            <img
-              src={`../${
-                front == 1
-                  ? "beige"
-                  : front == 2
-                  ? "graphite"
-                  : front == 3
-                  ? "steel"
-                  : "white"
-              }/${window == true ? "withWindow" : "withoutWindow"}/${back}.png`}
-            />
+            <SwiperImage front={front} back={back} />
           </SwiperSlide>
           <SwiperSlide>
-            <img
-              src={`../${
-                front == 1
-                  ? "beige"
-                  : front == 2
-                  ? "graphite"
-                  : front == 3
-                  ? "steel"
-                  : "white"
-              }/${window == true ? "withWindow" : "withoutWindow"}/${back}.png`}
-            />
+            <SwiperImage front={front} back={back} />
           </SwiperSlide>
           <SwiperSlide>
-            <img
-              src={`../${
-                front == 1
-                  ? "beige"
-                  : front == 2
-                  ? "graphite"
-                  : front == 3
-                  ? "steel"
-                  : "white"
-              }/${window == true ? "withWindow" : "withoutWindow"}/${back}.png`}
-            />
+            <SwiperImage front={front} back={back} />
           </SwiperSlide>
         </Swiper>
       </div>

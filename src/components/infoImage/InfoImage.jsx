@@ -9,80 +9,80 @@ const InfoImage = ({ dispatch }) => {
         onClick={() => {
           dispatch({
             type: "INFOIMAGE",
-            payload: "./public/infoImage1.png",
+            payload: "./infoImage1.png",
           });
         }}
-        src="./public/infoImage1.png"
+        src="./infoImage1.png"
         alt=""
       />
       <img
         onClick={() => {
           dispatch({
             type: "INFOIMAGE",
-            payload: "./public/infoImage2.png",
+            payload: "./infoImage2.png",
           });
         }}
-        src="./public/infoImage2.png"
+        src="./infoImage2.png"
         alt=""
       />
       <img
         onClick={() => {
           dispatch({
             type: "INFOIMAGE",
-            payload: "./public/infoImage3.png",
+            payload: "./infoImage3.png",
           });
         }}
-        src="./public/infoImage3.png"
+        src="./infoImage3.png"
         alt=""
       />
       <img
         onClick={() => {
           dispatch({
             type: "INFOIMAGE",
-            payload: "./public/infoImage4.png",
+            payload: "./infoImage4.png",
           });
         }}
-        src="./public/infoImage4.png"
+        src="./infoImage4.png"
         alt=""
       />
       <img
         onClick={() => {
           dispatch({
             type: "INFOIMAGE",
-            payload: "./public/infoImage5.png",
+            payload: "./infoImage5.png",
           });
         }}
-        src="./public/infoImage5.png"
+        src="./infoImage5.png"
         alt=""
       />
       <img
         onClick={() => {
           dispatch({
             type: "INFOIMAGE",
-            payload: "./public/infoImage6.png",
+            payload: "./infoImage6.png",
           });
         }}
-        src="./public/infoImage6.png"
+        src="./infoImage6.png"
         alt=""
       />
       <img
         onClick={() => {
           dispatch({
             type: "INFOIMAGE",
-            payload: "./public/infoImage7.png",
+            payload: "./infoImage7.png",
           });
         }}
-        src="./public/infoImage7.png"
+        src="./infoImage7.png"
         alt=""
       />
       <img
         onClick={() => {
           dispatch({
             type: "INFOIMAGE",
-            payload: "./public/infoImage8.png",
+            payload: "./infoImage8.png",
           });
         }}
-        src="./public/infoImage8.png"
+        src="./infoImage8.png"
         alt=""
       />
     </div>

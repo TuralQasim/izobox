@@ -11,7 +11,12 @@ const Footer = () => {
     <div className="container">
       <footer>
         <Link to="">
-          <img src="./logo.svg" alt="" />
+          <img
+            src={
+              import.meta.env.DEV ? "../../../public/logo.svg" : "./logo.svg"
+            }
+            alt=""
+          />
         </Link>
         <div className="footer">
           <nav className="foot_nav">

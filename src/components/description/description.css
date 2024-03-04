@@ -4,6 +4,7 @@
   flex-direction: column;
   justify-content: flex-start;
   align-items: flex-start;
+  transition: 0.4s;
 }
 .description p {
   font-family: Poppins;

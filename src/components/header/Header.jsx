@@ -13,27 +13,21 @@ import { AnimatePresence, motion } from "framer-motion";
 import { IoMenu } from "react-icons/io5";
 import { FaXmark } from "react-icons/fa6";
 import { enableScroll, disableScroll } from "../../hooks/scrool";
-const Header = () => {
+const Header = ({ countries }) => {
   const [city, setCity] = useState(false);
   const [burger, setBurger] = useState(false);
+  const [activeCountry, setActiveCountry] = useState("");
   return (
     <>
       <div className="container">
         <header>
           <div className="logo_city">
             <Link to="">
-              <img
-                src={
-                  import.meta.env.DEV
-                    ? "../../../public/logo.svg"
-                    : "./logo.svg"
-                }
-                alt=""
-              />
+              <img src="./logo.svg" alt="" />
             </Link>
             <div className="city" onClick={() => setCity((city) => !city)}>
               <IoLocationOutline />
-              <p>Выберите страну</p>
+              <p>{activeCountry ? activeCountry : "Выберите страну"}</p>
               <IoIosArrowDown />
               {city && (
                 <AnimatePresence>
@@ -43,7 +37,24 @@ const Header = () => {
                     exit={{ y: -100 }}
                     className="city_drop"
                     onClick={(e) => e.stopPropagation()}
-                  ></motion.div>
+                  >
+                    <ul className="city_drop_hero">
+                      {countries.map((a) => {
+                        return (
+                          <li
+                            onClick={(e) => {
+                              e.stopPropagation();
+                              setActiveCountry(a.country);
+                              setCity(false);
+                            }}
+                            key={a.country}
+                          >
+                            {a.country}
+                          </li>
+                        );
+                      })}
+                    </ul>
+                  </motion.div>
                 </AnimatePresence>
               )}
             </div>
@@ -136,7 +147,7 @@ const Header = () => {
               </div>
               <div className="city" onClick={() => setCity((city) => !city)}>
                 <IoLocationOutline />
-                <p>Выберите страну</p>
+                <p>{activeCountry ? activeCountry : "Выберите страну"}</p>
                 <IoIosArrowDown />
                 {city && (
                   <AnimatePresence>
@@ -146,7 +157,24 @@ const Header = () => {
                       exit={{ y: -100 }}
                       className="city_drop"
                       onClick={(e) => e.stopPropagation()}
-                    ></motion.div>
+                    >
+                      <ul className="city_drop_hero">
+                        {countries.map((a) => {
+                          return (
+                            <li
+                              onClick={(e) => {
+                                e.stopPropagation();
+                                setActiveCountry(a.country);
+                                setCity(false);
+                              }}
+                              key={a.country}
+                            >
+                              {a.country}
+                            </li>
+                          );
+                        })}
+                      </ul>
+                    </motion.div>
                   </AnimatePresence>
                 )}
               </div>

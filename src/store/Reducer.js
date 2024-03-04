@@ -1,7 +1,9 @@
 const initalState = {
+  loading: false,
   mainPrice: 150.0,
   additionalArr: [],
-  infoImage: "",
+  infoImage: false,
+  infoImageActive: 0,
   infoTitle: 1,
   boxType: "Basic",
   colorModal: false,
@@ -17,12 +19,16 @@ export default function Reducer(state = initalState, action) {
       return { ...state, mainPrice: state.mainPrice - action.payload };
     case "WINDOW":
       return { ...state, window: action.payload };
+    case "BOXTYPE":
+      return { ...state, boxType: action.payload };
     case "FRONT":
       return { ...state, front: action.payload };
     case "BACK":
       return { ...state, back: action.payload };
     case "INFOIMAGE":
       return { ...state, infoImage: action.payload };
+    case "INFOIMAGEACTIVE":
+      return { ...state, infoImageActive: action.payload };
     case "INFOTITLE":
       return { ...state, infoTitle: action.payload };
     case "COLORMODAL":

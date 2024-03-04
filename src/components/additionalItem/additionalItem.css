@@ -149,6 +149,11 @@
   .additional_item_text {
     width: 100%;
   }
+  .additional_item_text h3 {
+    margin: 0 auto;
+    font-size: 44px;
+    line-height: 55px;
+  }
   .additional_item_btns {
     width: 100%;
   }
@@ -157,7 +162,7 @@
     padding: 12px 0;
   }
 }
-@media screen and (max-width: 480px){
+@media screen and (max-width: 480px) {
   .additional_item {
     display: flex;
     flex-direction: column;

@@ -56,7 +56,7 @@
   height: 100% !important;
   position: relative;
 }
-.mySwiper2 {
+.basic_left .mySwiper2 {
   height: 100% !important;
   width: 80% !important;
   display: flex !important;
@@ -64,15 +64,15 @@
   justify-content: flex-start !important;
   align-items: flex-start !important;
 }
-.mySwiper2 .swiper-wrapper,
-.mySwiper2 .swiper-slide,
-.mySwiper2 img {
+.basic_left .mySwiper2 .swiper-wrapper,
+.basic_left .mySwiper2 .swiper-slide,
+.basic_left .mySwiper2 img {
   width: 100% !important;
   height: 100% !important;
 }
-.mySwiper .swiper-wrapper,
-.mySwiper .swiper-slide,
-.mySwiper img {
+.basic_left .mySwiper .swiper-wrapper,
+.basic_left .mySwiper .swiper-slide,
+.basic_left .mySwiper img {
   width: 100% !important;
 }
 .mySwiper {
@@ -84,7 +84,7 @@
   align-items: flex-start !important;
   position: relative !important;
 }
-.mySwiper .swiper-wrapper {
+.basic_left .mySwiper .swiper-wrapper {
   display: flex !important;
   flex-direction: column !important; /* измените направление flex-элементов на column */
   justify-content: flex-start !important;
@@ -92,11 +92,11 @@
   height: 450px;
   gap: 5px !important;
 }
-.mySwiper .swiper-wrapper .swiper-slide {
+.basic_left .mySwiper .swiper-wrapper .swiper-slide {
   width: 100% !important;
   height: calc((100% - 15px) / 5) !important;
 }
-.mySwiper .swiper-wrapper .swiper-slide img {
+.basic_left .mySwiper .swiper-wrapper .swiper-slide img {
   width: 100% !important;
   height: 100% !important;
   padding: 5px !important;
@@ -150,26 +150,42 @@
   align-items: center;
   gap: 30px;
 }
-.box_window label {
+.box_window {
   display: flex;
   flex-direction: row;
   justify-content: flex-start;
   align-items: center;
-  gap: 10px;
+  gap: 30px;
   cursor: pointer;
 }
-.box_window label p {
+.box_window p {
   font-family: Montserrat;
-  font-size: 16px;
-  font-weight: 400;
+  font-size: 18px;
+  font-weight: 500;
   line-height: 26px;
   letter-spacing: 0em;
   text-align: left;
   color: #252525;
-  pointer-events: none;
+  position: relative;
+  padding-left: 20px;
 }
-.box_window label input {
-  pointer-events: none;
+.box_window p::after {
+  position: absolute;
+  top: 50%;
+  left: 0;
+  content: "";
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+  transform: translateY(-50%);
+  border: 1px solid blue;
+  padding: 2px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.active_window::after {
+  background-color: blue;
 }
 .outside_color,
 .inside_color {
@@ -289,11 +305,16 @@
   border-radius: 30px;
   border: none;
   outline: none;
-  border: 2px solid #252525;
+  border: 1px solid #252525;
   cursor: pointer;
 }
 .izobox_actions button:first-of-type {
   background-color: #252525;
+  color: #fff;
+}
+.izobox_actions button:nth-of-type(2) {
+  background-color: #3ca5e9;
+  border: 1px solid transparent;
   color: #fff;
 }
 @media screen and (max-width: 1024px) {
@@ -312,7 +333,6 @@
     height: calc(100% + 6px);
     top: -4px;
     left: -4px;
-    border: 1px solid #3ca5e9;
     position: absolute;
     content: "";
     border-radius: 10px;
@@ -325,7 +345,7 @@
     height: 400px !important;
     margin-bottom: 100px;
   }
-  .mySwiper .swiper-wrapper {
+  .basic_left .mySwiper .swiper-wrapper {
     display: flex !important;
     flex-direction: column !important; /* измените направление flex-элементов на column */
     justify-content: flex-start !important;
@@ -333,15 +353,15 @@
     height: 400px !important;
     gap: 5px !important;
   }
-  .mySwiper2 .swiper-wrapper .swiper-slide,
-  .mySwiper2 .swiper-wrapper img {
+  .basic_left .mySwiper2 .swiper-wrapper .swiper-slide,
+  .basic_left .mySwiper2 .swiper-wrapper img {
     height: 400px !important;
   }
-  .mySwiper {
+  .basic_left .mySwiper {
     height: 400px !important;
     overflow-y: hidden !important;
   }
-  .mySwiper .swiper-wrapper {
+  .basic_left .mySwiper .swiper-wrapper {
     display: flex !important;
     flex-direction: column !important; /* измените направление flex-элементов на column */
     justify-content: flex-start !important;
@@ -359,7 +379,7 @@
     height: 100% !important;
     position: relative;
   }
-  .mySwiper {
+  .basic_left .mySwiper {
     height: 100% !important;
     width: calc(20% - 10px) !important;
     display: flex !important;
@@ -404,7 +424,26 @@
   }
 }
 @media screen and (max-width: 480px) {
-  .mySwiper .swiper-wrapper {
+  .prices {
+    gap: 40px;
+    margin: 30px 0;
+  }
+  .prices h2 {
+    font-size: 36px;
+    line-height: 40px;
+  }
+  .prices h2::after {
+    top: -10px;
+    right: -35px;
+    content: "- 25%";
+    font-size: 18px;
+    line-height: 20px;
+  }
+  .prices h5 {
+    font-size: 16px;
+    line-height: 20px;
+  }
+  .basic_left .mySwiper .swiper-wrapper {
     display: flex !important;
     flex-direction: column !important; /* измените направление flex-элементов на column */
     justify-content: flex-start !important;
@@ -412,15 +451,15 @@
     height: 320px !important;
     gap: 5px !important;
   }
-  .mySwiper2 .swiper-wrapper .swiper-slide,
-  .mySwiper2 .swiper-wrapper img {
+  .basic_left .mySwiper2 .swiper-wrapper .swiper-slide,
+  .basic_left .mySwiper2 .swiper-wrapper img {
     height: 320px !important;
   }
-  .mySwiper {
+  .basic_left .mySwiper {
     height: 320px !important;
     overflow-y: hidden !important;
   }
-  .mySwiper .swiper-wrapper {
+  .basic_left .mySwiper .swiper-wrapper {
     display: flex !important;
     flex-direction: column !important; /* измените направление flex-элементов на column */
     justify-content: flex-start !important;
@@ -428,17 +467,12 @@
     height: 320px !important;
     gap: 5px !important;
   }
-  .mySwiper2 .swiper-wrapper img,
-  .mySwiper .swiper-wrapper img {
+  .basic_left .mySwiper2 .swiper-wrapper img,
+  .basic_left .mySwiper .swiper-wrapper img {
     object-fit: cover !important;
   }
   .outside_colors {
     flex-wrap: wrap;
-  }
-  .izobox_actions button {
-    padding: 7px 20px;
-    font-size: 14px;
-    line-height: 18px;
   }
   .izobox_actions {
     gap: 10px;

@@ -8,8 +8,19 @@ import AdditionalItem from "../../components/additionalItem/AdditionalItem";
 import { connect } from "react-redux";
 import { FaXmark } from "react-icons/fa6";
 import Basic from "../../components/basic/Basic";
+import { Swiper, SwiperSlide } from "swiper/react";
+import "swiper/css";
+import "swiper/css/navigation";
+import { Navigation } from "swiper/modules";
+import Custom from "../../components/custom/Custom";
 
-const Home = ({ infoImage, dispatch, boxType, colorModal }) => {
+const Home = ({
+  infoImage,
+  dispatch,
+  boxType,
+  colorModal,
+  infoImageActive,
+}) => {
   const [additional, setAdditional] = useState(false);
   const scrollToInfo = () => {
     const infoElement = document.getElementById("info");
@@ -19,29 +30,55 @@ const Home = ({ infoImage, dispatch, boxType, colorModal }) => {
   };
   return (
     <>
-      {infoImage.length && (
+      {infoImage && (
         <div className="info_image_modal">
           <div
-            onClick={() => {
-              dispatch({
-                type: "INFOIMAGE",
-                payload: "",
-              });
-            }}
+            // onClick={() => {
+            //   dispatch({
+            //     type: "INFOIMAGE",
+            //     payload: "",
+            //   });
+            // }}
             className="info_image_overlay"
           ></div>
-          <img
-            onClick={(e) => {
-              e.stopPropagation();
-            }}
-            src={infoImage}
-            alt=""
-          />
+          <Swiper
+            navigation={true}
+            direction="horizontal"
+            modules={[Navigation]}
+            className="mySwiper"
+            slidesPerView={1}
+            initialSlide={infoImageActive}
+          >
+            <SwiperSlide>
+              <img src="./infoImage1.png" alt="" />
+            </SwiperSlide>
+            <SwiperSlide>
+              <img src="./infoImage2.png" alt="" />
+            </SwiperSlide>
+            <SwiperSlide>
+              <img src="./infoImage3.png" alt="" />
+            </SwiperSlide>
+            <SwiperSlide>
+              <img src="./infoImage4.png" alt="" />
+            </SwiperSlide>
+            <SwiperSlide>
+              <img src="./infoImage5.png" alt="" />
+            </SwiperSlide>
+            <SwiperSlide>
+              <img src="./infoImage6.png" alt="" />
+            </SwiperSlide>
+            <SwiperSlide>
+              <img src="./infoImage7.png" alt="" />
+            </SwiperSlide>
+            <SwiperSlide>
+              <img src="./infoImage8.png" alt="" />
+            </SwiperSlide>
+          </Swiper>
           <FaXmark
             onClick={() => {
               dispatch({
                 type: "INFOIMAGE",
-                payload: "",
+                payload: false,
               });
             }}
           />
@@ -130,6 +167,8 @@ const Home = ({ infoImage, dispatch, boxType, colorModal }) => {
       <div className="container">
         <div className="hero">
           <div className="hero_img">
+            <h2>Акустические кабины IzoBox</h2>
+
             <img src="./hero.svg" alt="" />
           </div>
           <div className="hero_text">
@@ -214,7 +253,7 @@ const Home = ({ infoImage, dispatch, boxType, colorModal }) => {
           <h2>
             IzoBox <span>{boxType}</span>
           </h2>
-          {boxType == "Basic" ? <Basic /> : <div className="izobox_hero"></div>}
+          {boxType == "Basic" ? <Basic /> : <Custom />}
         </div>
         <Info />
         <div className="additional">

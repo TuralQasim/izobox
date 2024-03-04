@@ -25,28 +25,28 @@ const Basic = ({ dispatch, front, back, window }) => {
           className="mySwiper2"
         >
           <SwiperSlide>
-            <SwiperImage front={front} back={back} />
+            <SwiperImage />
           </SwiperSlide>
           <SwiperSlide>
-            <SwiperImage front={front} back={back} />
+            <SwiperImage />
           </SwiperSlide>
           <SwiperSlide>
-            <SwiperImage front={front} back={back} />
+            <SwiperImage />
           </SwiperSlide>
           <SwiperSlide>
-            <SwiperImage front={front} back={back} />
+            <SwiperImage />
           </SwiperSlide>
           <SwiperSlide>
-            <SwiperImage front={front} back={back} />
+            <SwiperImage />
           </SwiperSlide>
           <SwiperSlide>
-            <SwiperImage front={front} back={back} />
+            <SwiperImage />
           </SwiperSlide>
           <SwiperSlide>
-            <SwiperImage front={front} back={back} />
+            <SwiperImage />
           </SwiperSlide>
           <SwiperSlide>
-            <SwiperImage front={front} back={back} />
+            <SwiperImage />
           </SwiperSlide>
         </Swiper>
         <Swiper
@@ -61,39 +61,57 @@ const Basic = ({ dispatch, front, back, window }) => {
           direction="vertical"
         >
           <SwiperSlide>
-            <SwiperImage front={front} back={back} />
+            <SwiperImage />
           </SwiperSlide>
           <SwiperSlide>
-            <SwiperImage front={front} back={back} />
+            <SwiperImage />
           </SwiperSlide>
           <SwiperSlide>
-            <SwiperImage front={front} back={back} />
+            <SwiperImage />
           </SwiperSlide>
           <SwiperSlide>
-            <SwiperImage front={front} back={back} />
+            <SwiperImage />
           </SwiperSlide>
           <SwiperSlide>
-            <SwiperImage front={front} back={back} />
+            <SwiperImage />
           </SwiperSlide>
           <SwiperSlide>
-            <SwiperImage front={front} back={back} />
+            <SwiperImage />
           </SwiperSlide>
           <SwiperSlide>
-            <SwiperImage front={front} back={back} />
+            <SwiperImage />
           </SwiperSlide>
           <SwiperSlide>
-            <SwiperImage front={front} back={back} />
+            <SwiperImage />
           </SwiperSlide>
         </Swiper>
       </div>
       <div className="basic_right">
         <div className="change_box">
-          <button>Basic</button>
-          <button>Pro</button>
+          <button
+            onClick={() => {
+              dispatch({
+                type: "BOXTYPE",
+                payload: "Basic",
+              });
+            }}
+          >
+            Basic
+          </button>
+          <button
+            onClick={() => {
+              dispatch({
+                type: "BOXTYPE",
+                payload: "Custom",
+              });
+            }}
+          >
+            Custom
+          </button>
         </div>
         <div className="box_window">
-          <label
-            htmlFor="withWindow"
+          <p
+            className={!window ? "active_window" : ""}
             onClick={() => {
               dispatch({
                 type: "WINDOW",
@@ -101,11 +119,10 @@ const Basic = ({ dispatch, front, back, window }) => {
               });
             }}
           >
-            <input name="window" checked={true} type="radio" id="withWindow" />
-            <p>С окном</p>
-          </label>
-          <label
-            htmlFor="withoutWindow"
+            С окном
+          </p>
+          <p
+            className={window ? "active_window" : ""}
             onClick={() => {
               dispatch({
                 type: "WINDOW",
@@ -113,9 +130,8 @@ const Basic = ({ dispatch, front, back, window }) => {
               });
             }}
           >
-            <input name="window" type="radio" id="withoutWindow" />
-            <p>Без окна</p>
-          </label>
+            Без окна
+          </p>
         </div>
         <div className="outside_color">
           <h4>Цвет внутри</h4>
@@ -125,6 +141,10 @@ const Basic = ({ dispatch, front, back, window }) => {
                 dispatch({
                   type: "BACK",
                   payload: 1,
+                });
+                dispatch({
+                  type: "WINDOW",
+                  payload: true,
                 });
               }}
               className={`outside_color_item color1 ${
@@ -137,6 +157,10 @@ const Basic = ({ dispatch, front, back, window }) => {
                   type: "BACK",
                   payload: 2,
                 });
+                dispatch({
+                  type: "WINDOW",
+                  payload: true,
+                });
               }}
               className={`outside_color_item color2 ${
                 back == 2 ? "active_color" : ""
@@ -147,6 +171,10 @@ const Basic = ({ dispatch, front, back, window }) => {
                 dispatch({
                   type: "BACK",
                   payload: 3,
+                });
+                dispatch({
+                  type: "WINDOW",
+                  payload: true,
                 });
               }}
               className={`outside_color_item color3 ${
@@ -159,6 +187,10 @@ const Basic = ({ dispatch, front, back, window }) => {
                   type: "BACK",
                   payload: 4,
                 });
+                dispatch({
+                  type: "WINDOW",
+                  payload: true,
+                });
               }}
               className={`outside_color_item color4 ${
                 back == 4 ? "active_color" : ""
@@ -169,6 +201,10 @@ const Basic = ({ dispatch, front, back, window }) => {
                 dispatch({
                   type: "BACK",
                   payload: 5,
+                });
+                dispatch({
+                  type: "WINDOW",
+                  payload: true,
                 });
               }}
               className={`outside_color_item color5 ${
@@ -181,6 +217,10 @@ const Basic = ({ dispatch, front, back, window }) => {
                   type: "BACK",
                   payload: 6,
                 });
+                dispatch({
+                  type: "WINDOW",
+                  payload: true,
+                });
               }}
               className={`outside_color_item color6 ${
                 back == 6 ? "active_color" : ""
@@ -191,6 +231,10 @@ const Basic = ({ dispatch, front, back, window }) => {
                 dispatch({
                   type: "BACK",
                   payload: 7,
+                });
+                dispatch({
+                  type: "WINDOW",
+                  payload: true,
                 });
               }}
               className={`outside_color_item color7 ${
@@ -203,6 +247,10 @@ const Basic = ({ dispatch, front, back, window }) => {
                   type: "BACK",
                   payload: 8,
                 });
+                dispatch({
+                  type: "WINDOW",
+                  payload: true,
+                });
               }}
               className={`outside_color_item color8 ${
                 back == 8 ? "active_color" : ""
@@ -213,6 +261,10 @@ const Basic = ({ dispatch, front, back, window }) => {
                 dispatch({
                   type: "BACK",
                   payload: 9,
+                });
+                dispatch({
+                  type: "WINDOW",
+                  payload: true,
                 });
               }}
               className={`outside_color_item color9 ${
@@ -230,6 +282,10 @@ const Basic = ({ dispatch, front, back, window }) => {
                   type: "FRONT",
                   payload: 1,
                 });
+                dispatch({
+                  type: "WINDOW",
+                  payload: true,
+                });
               }}
               className={`inside_color_item beige ${
                 front == 1 ? "active_color" : ""
@@ -240,6 +296,10 @@ const Basic = ({ dispatch, front, back, window }) => {
                 dispatch({
                   type: "FRONT",
                   payload: 2,
+                });
+                dispatch({
+                  type: "WINDOW",
+                  payload: true,
                 });
               }}
               className={`inside_color_item graphite ${
@@ -252,6 +312,10 @@ const Basic = ({ dispatch, front, back, window }) => {
                   type: "FRONT",
                   payload: 3,
                 });
+                dispatch({
+                  type: "WINDOW",
+                  payload: true,
+                });
               }}
               className={`inside_color_item steel ${
                 front == 3 ? "active_color" : ""
@@ -262,6 +326,10 @@ const Basic = ({ dispatch, front, back, window }) => {
                 dispatch({
                   type: "FRONT",
                   payload: 4,
+                });
+                dispatch({
+                  type: "WINDOW",
+                  payload: true,
                 });
               }}
               className={`inside_color_item white ${

@@ -35,15 +35,7 @@ const InfoVideo = () => {
             <FaPlay />
           </button>
           <div className="video_overlay"></div>
-          <img
-            src={
-              import.meta.env.DEV
-                ? "../../../public/infoVideo1.png"
-                : "./infoVideo1.png"
-            }
-            loading="lazy"
-            alt=""
-          />
+          <img src="./infoVideo1.png" loading="lazy" alt="" />
         </div>
         <div
           className={`videos_item ${
@@ -60,11 +52,7 @@ const InfoVideo = () => {
             <FaPlay />
           </button>
           <img
-            src={
-              import.meta.env.DEV
-                ? "../../../public/infoVideo2.png"
-                : "./infoVideo2.png"
-            }
+            src="./infoVideo2.png"
             loading="lazy"
             alt=""
           />
@@ -86,11 +74,7 @@ const InfoVideo = () => {
           </button>
           <div className="video_overlay"></div>
           <img
-            src={
-              import.meta.env.DEV
-                ? "../../../public/infoVideo3.png"
-                : "./infoVideo3.png"
-            }
+            src="./infoVideo3.png"
             loading="lazy"
             alt=""
           />
@@ -111,11 +95,7 @@ const InfoVideo = () => {
           </button>
           <div className="video_overlay"></div>
           <img
-            src={
-              import.meta.env.DEV
-                ? "../../../public/infoVideo4.png"
-                : "./infoVideo4.png"
-            }
+            src="./infoVideo4.png"
             loading="lazy"
             alt=""
           />

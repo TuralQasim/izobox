@@ -1,0 +1,134 @@
+.third_step {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  align-items: flex-start;
+  gap: 50px;
+}
+.third_step_form {
+  width: 100%;
+  max-width: 743px;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  align-items: flex-start;
+  gap: 20px;
+}
+.third_step_form textarea {
+  width: 100%;
+  height: 270px;
+  border: 2px solid #bfc3cf;
+  border-radius: 20px;
+  padding: 20px;
+}
+.third_step_form textarea::placeholder {
+  font-family: Montserrat;
+  font-size: 18px;
+  font-weight: 400;
+  line-height: 24px;
+  letter-spacing: 0em;
+  text-align: left;
+  color: #bfc3cf;
+}
+.third_step_form p {
+  font-family: Montserrat;
+  font-size: 20px;
+  font-weight: 400;
+  line-height: 24px;
+  letter-spacing: 0em;
+  text-align: left;
+  color: #252525;
+}
+.third_step_form label {
+  width: 100%;
+  height: 360px;
+  border-radius: 30px;
+  overflow: hidden;
+  position: relative;
+  z-index: 1;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  cursor: pointer;
+  border: 3px dashed #3ca5e9;
+}
+.third_step_form label input {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  opacity: 0;
+  z-index: 5;
+  cursor: pointer;
+  background-color: transparent;
+}
+.preview {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  gap: 5px;
+}
+.preview h4 {
+  font-family: Montserrat;
+  font-size: 20px;
+  font-weight: 600;
+  line-height: 24px;
+  letter-spacing: 0em;
+  text-align: left;
+  color: #3ca5e9;
+  border-bottom: 1px solid #3ca5e9;
+}
+.preview h5 {
+  font-family: Montserrat;
+  font-size: 20px;
+  font-weight: 400;
+  line-height: 24px;
+  letter-spacing: 0em;
+  text-align: left;
+  color: #252525;
+}
+.preview img {
+  width: 50px;
+  height: 50px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  border-radius: 50%;
+  background-color: #3ca5e9;
+  padding: 8px;
+}
+.third_step_form button {
+  font-family: Montserrat;
+  font-size: 16px;
+  font-weight: 600;
+  line-height: 20px;
+  letter-spacing: 0em;
+  text-align: left;
+  padding: 13px 54px;
+  background-color: #252525;
+  color: #fff;
+  border-radius: 30px;
+  border: none;
+  outline: none;
+  cursor: pointer;
+}
+@media screen and (max-width: 480px) {
+  .third_step_form textarea::placeholder {
+    font-size: 16px;
+    line-height: 20px;
+  }
+  .third_step_form textarea {
+    padding: 10px;
+  }
+  .preview h4 {
+    font-size: 18px;
+    line-height: 24px;
+  }
+  .preview h5 {
+    font-size: 18px;
+    line-height: 24px;
+  }
+}

@@ -10,6 +10,7 @@ const initalState = {
   window: true,
   front: 1,
   back: 1,
+  steps: 2,
 };
 export default function Reducer(state = initalState, action) {
   switch (action.type) {
@@ -21,6 +22,8 @@ export default function Reducer(state = initalState, action) {
       return { ...state, window: action.payload };
     case "BOXTYPE":
       return { ...state, boxType: action.payload };
+    case "STEPS":
+      return { ...state, steps: action.payload };
     case "FRONT":
       return { ...state, front: action.payload };
     case "BACK":

@@ -13,6 +13,10 @@ import "swiper/css";
 import "swiper/css/navigation";
 import { Navigation } from "swiper/modules";
 import Custom from "../../components/custom/Custom";
+import Steps from "../../components/steps/Steps";
+import ThirdStep from "../../components/thirdStep/ThirdStep";
+import FourdStep from "../../components/fourdStep/FourdStep";
+import Constructor from "../../components/constructor/Constructor";
 
 const Home = ({
   infoImage,
@@ -20,8 +24,9 @@ const Home = ({
   boxType,
   colorModal,
   infoImageActive,
+  steps,
 }) => {
-  const [additional, setAdditional] = useState(false);
+  const [additional, setAdditional] = useState(true);
   const scrollToInfo = () => {
     const infoElement = document.getElementById("info");
     if (infoElement) {
@@ -256,6 +261,118 @@ const Home = ({
           {boxType == "Basic" ? <Basic /> : <Custom />}
         </div>
         <Info />
+        <Steps />
+      </div>
+      <div className="steps_container_bg">
+        {steps == 1 ? (
+          <Constructor />
+        ) : steps == 2 ? (
+          <div className="container">
+            <div className="second_step">
+              <div className="second_step_hero">
+                <div className="second_step_left">
+                  <h2>Цвет снаружи</h2>
+                  <div className="second_step_items">
+                    <div className="second_step_item"></div>
+                    <div className="second_step_item"></div>
+                    <div className="second_step_item"></div>
+                    <div className="second_step_item"></div>
+                    <div className="second_step_item"></div>
+                    <div className="second_step_item"></div>
+                    <div className="second_step_item"></div>
+                    <div className="second_step_item"></div>
+                    <div className="second_step_item"></div>
+                  </div>
+                </div>
+                <div className="second_step_right">
+                  <h2>Цвет внутри</h2>
+                  <div className="second_step_container">
+                    <div className="second_step_big_item"></div>
+                    <div className="second_step_items">
+                      <div className="second_step_item"></div>
+                      <div className="second_step_item"></div>
+                      <div className="second_step_item"></div>
+                      <div className="second_step_item"></div>
+                      <div className="second_step_item"></div>
+                      <div className="second_step_item"></div>
+                      <div className="second_step_item"></div>
+                      <div className="second_step_item"></div>
+                      <div className="second_step_item"></div>
+                      <div className="second_step_item"></div>
+                      <div className="second_step_item"></div>
+                      <div className="second_step_item"></div>
+                      <div className="second_step_item"></div>
+                      <div className="second_step_item"></div>
+                      <div className="second_step_item"></div>
+                      <div className="second_step_item"></div>
+                      <div className="second_step_item"></div>
+                      <div className="second_step_item"></div>
+                      <div className="second_step_item"></div>
+                      <div className="second_step_item"></div>
+                      <div className="second_step_item"></div>
+                      <div className="second_step_item"></div>
+                      <div className="second_step_item"></div>
+                      <div className="second_step_item"></div>
+                      <div className="second_step_item"></div>
+                      <div className="second_step_item"></div>
+                      <div className="second_step_item"></div>
+                      <div className="second_step_item"></div>
+                      <div className="second_step_item"></div>
+                      <div className="second_step_item"></div>
+                      <div className="second_step_item"></div>
+                      <div className="second_step_item"></div>
+                      <div className="second_step_item"></div>
+                      <div className="second_step_item"></div>
+                      <div className="second_step_item"></div>
+                      <div className="second_step_item"></div>
+                      <div className="second_step_item"></div>
+                      <div className="second_step_item"></div>
+                      <div className="second_step_item"></div>
+                      <div className="second_step_item"></div>
+                      <div className="second_step_item"></div>
+                      <div className="second_step_item"></div>
+                      <div className="second_step_item"></div>
+                      <div className="second_step_item"></div>
+                      <div className="second_step_item"></div>
+                      <div className="second_step_item"></div>
+                      <div className="second_step_item"></div>
+                      <div className="second_step_item"></div>
+                      <div className="second_step_item"></div>
+                      <div className="second_step_item"></div>
+                      <div className="second_step_item"></div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+              <div className="second_step_actions">
+                <button>Назад</button>
+                <button
+                  onClick={(e) => {
+                    e.preventDefault();
+                    dispatch({
+                      type: "STEPS",
+                      payload: 3,
+                    });
+                  }}
+                >
+                  Дальше
+                </button>
+              </div>
+            </div>
+          </div>
+        ) : steps == 3 ? (
+          <div className="container">
+            <ThirdStep />
+          </div>
+        ) : steps == 4 ? (
+          <div className="container">
+            <FourdStep />
+          </div>
+        ) : (
+          ""
+        )}
+      </div>
+      <div className="container">
         <div className="additional">
           <div className="additional_title">
             <h2 onClick={() => setAdditional((additional) => !additional)}>

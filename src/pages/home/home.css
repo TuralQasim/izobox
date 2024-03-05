@@ -428,7 +428,14 @@
   width: 100%;
   aspect-ratio: 1/0.6;
   border-radius: 20px;
-  background-color: #e3e3e3;
+  object-fit: cover;
+  cursor: pointer;
+  padding: 5px;
+  cursor: pointer;
+}
+.color_modal_item_active {
+  border: 2px solid #3ca5e9;
+  padding: 1px;
 }
 .steps_container_bg {
   width: 100%;

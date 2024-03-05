@@ -20,7 +20,7 @@ const AdditionalItem = ({
         <div className="additional_item_images">
           <img loading="lazy" src={img2} alt="" />
           <img loading="lazy" src={img3} alt="" />
-          <img loading="lazy" src={img4} alt="" />
+          {img4 && <img loading="lazy" src={img4} alt="" />}
         </div>
       </div>
       <div className="additional_item_text">

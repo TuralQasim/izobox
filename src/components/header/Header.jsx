@@ -5,10 +5,10 @@ import { IoLocationOutline } from "react-icons/io5";
 import { IoIosArrowDown } from "react-icons/io";
 import { FaPhoneAlt } from "react-icons/fa";
 import { IoMdMail } from "react-icons/io";
-import { RiInstagramFill } from "react-icons/ri";
-import { FaYoutube } from "react-icons/fa";
-import { FaTelegram } from "react-icons/fa6";
-import { IoLogoWhatsapp } from "react-icons/io";
+import { FaInstagram } from "react-icons/fa6";
+import { AiOutlineYoutube } from "react-icons/ai";
+import { PiTelegramLogo } from "react-icons/pi";
+import { FaWhatsapp } from "react-icons/fa";
 import { AnimatePresence, motion } from "framer-motion";
 import { IoMenu } from "react-icons/io5";
 import { FaXmark } from "react-icons/fa6";
@@ -72,16 +72,16 @@ const Header = ({ countries }) => {
             <div className="contacts_right">
               <div className="contacts_icons">
                 <Link to="">
-                  <RiInstagramFill />
+                  <FaInstagram />
                 </Link>
                 <Link to="">
-                  <FaYoutube />
+                  <AiOutlineYoutube />
                 </Link>
                 <Link to="">
-                  <FaTelegram />
+                  <PiTelegramLogo />
                 </Link>
                 <Link to="">
-                  <IoLogoWhatsapp />
+                  <FaWhatsapp />
                 </Link>
               </div>
               <div className="contacts_mail">
@@ -125,16 +125,16 @@ const Header = ({ countries }) => {
                 <div className="contacts_right">
                   <div className="contacts_icons">
                     <Link to="">
-                      <RiInstagramFill />
+                      <FaInstagram />
                     </Link>
                     <Link to="">
-                      <FaYoutube />
+                      <AiOutlineYoutube />
                     </Link>
                     <Link to="">
-                      <FaTelegram />
+                      <PiTelegramLogo />
                     </Link>
                     <Link to="">
-                      <IoLogoWhatsapp />
+                      <FaWhatsapp />
                     </Link>
                   </div>
                   <div className="contacts_mail">

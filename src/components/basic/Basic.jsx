@@ -13,7 +13,8 @@ const Basic = ({ dispatch, front, back, window }) => {
   return (
     <div className="basic">
       <div className="basic_left">
-        <Swiper
+        <SwiperImage />
+        {/* <Swiper
           style={{
             "--swiper-navigation-color": "#fff",
             "--swiper-pagination-color": "#fff",
@@ -84,7 +85,7 @@ const Basic = ({ dispatch, front, back, window }) => {
           <SwiperSlide>
             <SwiperImage />
           </SwiperSlide>
-        </Swiper>
+        </Swiper> */}
       </div>
       <div className="basic_right">
         <div className="change_box">

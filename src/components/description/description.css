@@ -63,6 +63,19 @@
   letter-spacing: 0em;
   text-align: left;
   color: #bfc3cf;
+  position: relative;
+  padding-left: 17px;
+}
+.sizes h4::after {
+  content: "";
+  position: absolute;
+  top: 50%;
+  left: 0;
+  width: 10px;
+  height: 10px;
+  border-radius: 50%;
+  background-color: #3ca5e9;
+  transform: translateY(-50%);
 }
 .sizes h5 {
   font-family: Montserrat;
@@ -89,7 +102,7 @@
   text-align: left;
   color: #252525;
   position: relative;
-  padding-left: 20px;
+  padding-left: 17px;
 }
 .description ul li::after {
   position: absolute;
@@ -101,7 +114,9 @@
   height: 10px;
   border-radius: 50%;
   background-color: #3ca5e9;
+
 }
+
 @media screen and (max-width: 1024px) {
   .description_hero {
     width: 100%;
@@ -117,6 +132,17 @@
   .description ul li::after {
     width: 5px;
     height: 5px;
+  }
+  .sizes h4::after {
+    content: "";
+    position: absolute;
+    top: 50%;
+    left: 0;
+    width: 5px;
+    height: 5px;
+    border-radius: 50%;
+    background-color: #3ca5e9;
+    transform: translateY(-50%);
   }
   .sizes {
     gap: 10px;

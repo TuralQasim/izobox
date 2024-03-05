@@ -2,10 +2,10 @@ import React from "react";
 import "./footer.css";
 import { Link, NavLink } from "react-router-dom";
 import { IoMdMail } from "react-icons/io";
-import { RiInstagramFill } from "react-icons/ri";
-import { FaYoutube } from "react-icons/fa";
-import { FaTelegram } from "react-icons/fa6";
-import { IoLogoWhatsapp } from "react-icons/io";
+import { FaInstagram } from "react-icons/fa6";
+import { AiOutlineYoutube } from "react-icons/ai";
+import { PiTelegramLogo } from "react-icons/pi";
+import { FaWhatsapp } from "react-icons/fa";
 const Footer = () => {
   return (
     <div className="container">
@@ -33,16 +33,16 @@ const Footer = () => {
             <div className="foot_contact_left">
               <div className="foot_icons">
                 <Link to="">
-                  <RiInstagramFill />
+                  <FaInstagram />
                 </Link>
                 <Link to="">
-                  <FaYoutube />
+                  <AiOutlineYoutube />
                 </Link>
                 <Link to="">
-                  <FaTelegram />
+                  <PiTelegramLogo />
                 </Link>
                 <Link to="">
-                  <IoLogoWhatsapp />
+                  <FaWhatsapp />
                 </Link>
               </div>
               <div className="foot_mail">

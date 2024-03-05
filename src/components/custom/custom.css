@@ -6,19 +6,6 @@
   height: 450px;
   margin-bottom: 100px;
 }
-.beige {
-  background-color: #f7e5d6;
-}
-.steel {
-  background-color: #143f86;
-}
-.white {
-  background-color: #fff;
-  border: 1px solid #c8d5dd;
-}
-.graphite {
-  background-color: #41424c;
-}
 .basic_left {
   width: 100%;
   display: flex;

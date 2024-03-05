@@ -10,7 +10,7 @@
   background-color: #f7e5d6;
 }
 .steel {
-  background-color: #143f86;
+  background-color: #8b8a8a;
 }
 .white {
   background-color: #fff;
@@ -50,60 +50,16 @@
   width: 100%;
   display: flex;
   flex-direction: row-reverse;
-  justify-content: space-between;
+  justify-content: flex-start;
   align-items: flex-start;
   gap: 30px;
   height: 100% !important;
   position: relative;
 }
-.basic_left .mySwiper2 {
-  height: 100% !important;
-  width: 80% !important;
-  display: flex !important;
-  flex-direction: column !important;
-  justify-content: flex-start !important;
-  align-items: flex-start !important;
-}
-.basic_left .mySwiper2 .swiper-wrapper,
-.basic_left .mySwiper2 .swiper-slide,
-.basic_left .mySwiper2 img {
-  width: 100% !important;
-  height: 100% !important;
-}
-.basic_left .mySwiper .swiper-wrapper,
-.basic_left .mySwiper .swiper-slide,
-.basic_left .mySwiper img {
-  width: 100% !important;
-}
-.mySwiper {
-  height: 100% !important;
-  width: calc(20% - 30px) !important;
-  display: flex !important;
-  flex-direction: row !important; /* измените направление flex-контейнера на row */
-  justify-content: flex-start !important;
-  align-items: flex-start !important;
-  position: relative !important;
-}
-.basic_left .mySwiper .swiper-wrapper {
-  display: flex !important;
-  flex-direction: column !important; /* измените направление flex-элементов на column */
-  justify-content: flex-start !important;
-  align-items: flex-start !important;
-  height: 450px;
-  gap: 5px !important;
-}
-.basic_left .mySwiper .swiper-wrapper .swiper-slide {
-  width: 100% !important;
-  height: calc((100% - 15px) / 5) !important;
-}
-.basic_left .mySwiper .swiper-wrapper .swiper-slide img {
-  width: 100% !important;
-  height: 100% !important;
-  padding: 5px !important;
-  cursor: pointer;
-}
-.swiper-slide-thumb-active img {
-  border: 1px solid #3ca5e9;
+.basic_left img {
+  width: 90%;
+  height: 100%;
+  margin-right: auto;
 }
 .basic_right {
   width: 100%;
@@ -223,10 +179,10 @@
   cursor: pointer;
 }
 .active_color::after {
-  width: calc(100% + 6px);
-  height: calc(100% + 6px);
-  top: -4px;
-  left: -4px;
+  width: calc(100% + 8px) !important;
+  height: calc(100% + 8px) !important;
+  top: -3px;
+  left: -3px;
   border: 1px solid #3ca5e9;
   position: absolute;
   content: "";
@@ -345,30 +301,6 @@
     height: 400px !important;
     margin-bottom: 100px;
   }
-  .basic_left .mySwiper .swiper-wrapper {
-    display: flex !important;
-    flex-direction: column !important; /* измените направление flex-элементов на column */
-    justify-content: flex-start !important;
-    align-items: flex-start !important;
-    height: 400px !important;
-    gap: 5px !important;
-  }
-  .basic_left .mySwiper2 .swiper-wrapper .swiper-slide,
-  .basic_left .mySwiper2 .swiper-wrapper img {
-    height: 400px !important;
-  }
-  .basic_left .mySwiper {
-    height: 400px !important;
-    overflow-y: hidden !important;
-  }
-  .basic_left .mySwiper .swiper-wrapper {
-    display: flex !important;
-    flex-direction: column !important; /* измените направление flex-элементов на column */
-    justify-content: flex-start !important;
-    align-items: flex-start !important;
-    height: 400px !important;
-    gap: 5px !important;
-  }
   .basic_left {
     width: 100%;
     display: flex;
@@ -378,15 +310,6 @@
     gap: 10px;
     height: 100% !important;
     position: relative;
-  }
-  .basic_left .mySwiper {
-    height: 100% !important;
-    width: calc(20% - 10px) !important;
-    display: flex !important;
-    flex-direction: row !important; /* измените направление flex-контейнера на row */
-    justify-content: flex-start !important;
-    align-items: flex-start !important;
-    position: relative !important;
   }
   .izobox_actions button {
     padding: 13px 34px;
@@ -422,8 +345,18 @@
     height: max-content !important;
     margin-bottom: 100px;
   }
+  .basic_left img {
+    width: 90%;
+    aspect-ratio: 1/0.8;
+    margin-right: auto;
+  }
 }
 @media screen and (max-width: 480px) {
+  .basic_left img {
+    width: 100%;
+    aspect-ratio: 1/0.8;
+    margin-right: auto;
+  }
   .prices {
     gap: 40px;
     margin: 30px 0;
@@ -442,34 +375,6 @@
   .prices h5 {
     font-size: 16px;
     line-height: 20px;
-  }
-  .basic_left .mySwiper .swiper-wrapper {
-    display: flex !important;
-    flex-direction: column !important; /* измените направление flex-элементов на column */
-    justify-content: flex-start !important;
-    align-items: flex-start !important;
-    height: 320px !important;
-    gap: 5px !important;
-  }
-  .basic_left .mySwiper2 .swiper-wrapper .swiper-slide,
-  .basic_left .mySwiper2 .swiper-wrapper img {
-    height: 320px !important;
-  }
-  .basic_left .mySwiper {
-    height: 320px !important;
-    overflow-y: hidden !important;
-  }
-  .basic_left .mySwiper .swiper-wrapper {
-    display: flex !important;
-    flex-direction: column !important; /* измените направление flex-элементов на column */
-    justify-content: flex-start !important;
-    align-items: flex-start !important;
-    height: 320px !important;
-    gap: 5px !important;
-  }
-  .basic_left .mySwiper2 .swiper-wrapper img,
-  .basic_left .mySwiper .swiper-wrapper img {
-    object-fit: cover !important;
   }
   .outside_colors {
     flex-wrap: wrap;

@@ -469,6 +469,7 @@ const Home = ({
                           }`}
                           alt=""
                           onClick={() => setColor(a)}
+                          loading="lazy"
                         />
                       );
                     })}
@@ -484,6 +485,7 @@ const Home = ({
                       }`}
                       alt=""
                       onClick={() => setColor(colorsArr[35])}
+                      loading="lazy"
                     />
                     <div className="second_step_items">
                       {colorsArr.map((a) => {
@@ -496,6 +498,7 @@ const Home = ({
                             }`}
                             alt=""
                             onClick={() => setColor(a)}
+                            loading="lazy"
                           />
                         );
                       })}

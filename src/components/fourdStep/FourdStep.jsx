@@ -12,20 +12,6 @@ const FourdStep = ({ dispatch }) => {
         <input type="text" placeholder="Город" />
         <input type="text" placeholder="Адрес" />
       </div>
-      <div className="second_step_actions fourd_step_actions">
-        <button
-          onClick={(e) => {
-            e.preventDefault();
-            dispatch({
-              type: "STEPS",
-              payload: 3,
-            });
-          }}
-        >
-          Назад
-        </button>
-        <button>Запросить стоимость и сроки</button>
-      </div>
     </form>
   );
 };

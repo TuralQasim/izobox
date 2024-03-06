@@ -27,7 +27,6 @@ const ThirdStep = () => {
         onDrop={handleDrop}
       >
         <textarea placeholder="Стол, кастомный столик, полки, крепления для оборудования и т.д."></textarea>
-        <p>Прикрепите фото примеры</p>
         <label htmlFor="third_step_input">
           <input
             type="file"
@@ -46,7 +45,6 @@ const ThirdStep = () => {
             </div>
           )}
         </label>
-        <button>Прикрепить</button>
       </form>
     </div>
   );

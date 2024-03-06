@@ -61,7 +61,7 @@ const Header = ({ countries }) => {
           </div>
           <nav>
             <NavLink to="">IzoBox Basic</NavLink>
-            <NavLink to="">IzoBox Pro</NavLink>
+            <NavLink to="">IzoBox Custom</NavLink>
             <NavLink to="">Конструктор кабин</NavLink>
           </nav>
           <div className="contacts">
@@ -114,7 +114,7 @@ const Header = ({ countries }) => {
             <div className="burger_drop_hero">
               <nav>
                 <NavLink to="">IzoBox Basic</NavLink>
-                <NavLink to="">IzoBox Pro</NavLink>
+                <NavLink to="">IzoBox Custom</NavLink>
                 <NavLink to="">Конструктор кабин</NavLink>
               </nav>
               <div className="contacts">

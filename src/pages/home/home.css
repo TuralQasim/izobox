@@ -169,7 +169,7 @@
 .quote_bg_img {
   position: absolute;
   left: 50%;
-  transform: translateX(-50%);
+  transform: translate(-50%, -25px) scale(1.2);
   bottom: -40px;
   width: 250px;
   z-index: 1;
@@ -238,7 +238,7 @@
   margin: 40px 0;
 }
 
-.additional .fourd_step{
+.additional .fourd_step {
   margin-bottom: 80px;
 }
 .additional_title {
@@ -347,7 +347,7 @@
   align-items: flex-start;
   gap: 20px;
 }
-.izobox .steps{
+.izobox .steps {
   margin-bottom: 40px;
 }
 .izobox > h2 {
@@ -451,7 +451,93 @@
 .steps_container_bg .steps {
   margin-bottom: 30px;
 }
+.order_btn {
+  font-family: Poppins;
+  font-size: 16px;
+  font-weight: 600;
+  line-height: 24px;
+  letter-spacing: 0em;
+  text-align: left;
+  color: #fff;
+  background-color: #3ca5e9;
+  padding: 13px 54px;
+  border-radius: 10px;
+  outline: none;
+  border: none;
+  display: inline-block;
+  margin-bottom: 80px;
+}
+
+.cabin_size {
+  width: 100%;
+  max-width: 50%;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  align-items: flex-start;
+  gap: 20px;
+  margin: 10px 0 50px;
+}
+.cabin_size label {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  align-items: flex-start;
+}
+.cabin_size label p {
+  font-family: Poppins;
+  font-size: 16px;
+  font-weight: 500;
+  line-height: 24px;
+  letter-spacing: 0em;
+  text-align: left;
+  color: #252525;
+}
+.cabin_size label input {
+  width: 100%;
+  border: 1px solid #bfc3cf;
+  outline: none;
+  height: 45px;
+  padding: 0 15px;
+  font-size: 18px;
+}
+.cabin_size label input::placeholder {
+  font-family: Poppins;
+  font-size: 16px;
+  font-weight: 400;
+  line-height: 24px;
+  letter-spacing: 0em;
+  text-align: left;
+  color: #bfc3cf;
+}
+.sound {
+  width: 100%;
+  height: 45px;
+  margin: 30px 0 50px;
+}
+.sound select {
+  width: 150px;
+  height: 100%;
+  padding: 0 10px;
+  border: 1px solid #bfc3cf;
+  border-radius: 10px;
+  color: #252525;
+}
+.sound select option {
+  color: #252525;
+}
 @media screen and (max-width: 1024px) {
+  .cabin_size {
+    width: 100%;
+    max-width: 70%;
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    align-items: flex-start;
+    gap: 20px;
+    margin: 10px 0 50px;
+  }
   .color_modal {
     position: relative;
     z-index: 9999;
@@ -518,6 +604,16 @@
   }
 }
 @media screen and (max-width: 768px) {
+  .cabin_size {
+    width: 100%;
+    max-width: 80%;
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    align-items: flex-start;
+    gap: 20px;
+    margin: 10px 0 50px;
+  }
   .color_modal {
     position: relative;
     z-index: 9999;
@@ -631,6 +727,16 @@
   }
 }
 @media screen and (max-width: 480px) {
+  .cabin_size {
+    width: 100%;
+    max-width: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    align-items: flex-start;
+    gap: 20px;
+    margin: 10px 0 50px;
+  }
   .color_modal {
     position: relative;
     z-index: 9999;

@@ -332,7 +332,7 @@ const Basic = ({ dispatch, front, back, window, mainPrice }) => {
             ></div>
           </div>
         </div>
-        <button
+        {/* <button
           className="all_colors"
           onClick={() => {
             dispatch({
@@ -342,11 +342,16 @@ const Basic = ({ dispatch, front, back, window, mainPrice }) => {
           }}
         >
           Все цвета
-        </button>
+        </button> */}
         <div className="prices">
           <h2>
             {mainPrice}
-            {mainPrice % 1 == 0 ? "000" : "00"}р
+            {mainPrice === "150.000"
+              ? ""
+              : mainPrice !== 150000 && mainPrice % 1 == 0
+              ? "000"
+              : "00"}
+            р
           </h2>
           <h5>200.000р</h5>
         </div>

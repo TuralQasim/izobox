@@ -55,18 +55,18 @@
   align-items: flex-start;
   gap: 20px;
 }
-.sizes h4 {
+.sizes h5 {
   font-family: Montserrat;
   font-size: 16px;
   font-weight: 400;
   line-height: 26px;
   letter-spacing: 0em;
   text-align: left;
-  color: #bfc3cf;
+  color: #252525;
   position: relative;
   padding-left: 17px;
 }
-.sizes h4::after {
+.sizes h5::after {
   content: "";
   position: absolute;
   top: 50%;
@@ -76,15 +76,6 @@
   border-radius: 50%;
   background-color: #3ca5e9;
   transform: translateY(-50%);
-}
-.sizes h5 {
-  font-family: Montserrat;
-  font-size: 16px;
-  font-weight: 400;
-  line-height: 26px;
-  letter-spacing: 0em;
-  text-align: left;
-  color: #252525;
 }
 .description ul {
   display: flex;
@@ -114,7 +105,6 @@
   height: 10px;
   border-radius: 50%;
   background-color: #3ca5e9;
-
 }
 
 @media screen and (max-width: 1024px) {

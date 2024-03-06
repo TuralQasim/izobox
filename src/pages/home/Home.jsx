@@ -16,6 +16,9 @@ import Custom from "../../components/custom/Custom";
 import Steps from "../../components/steps/Steps";
 import ThirdStep from "../../components/thirdStep/ThirdStep";
 import FourdStep from "../../components/fourdStep/FourdStep";
+import Socials from "../../components/socials/Socials";
+import Order from "../../components/order/Order";
+import RadioChecks from "../../components/radioChecks/RadioChecks";
 
 const Home = ({
   infoImage,
@@ -25,9 +28,9 @@ const Home = ({
   infoImageActive,
   steps,
 }) => {
-  const [additional, setAdditional] = useState(true);
   const [outsideColor, setOutsideColor] = useState("");
   const [color, setColor] = useState(null);
+  const [colorDrop, setColorDrop] = useState(false);
 
   const colorsArr = [
     "F121",
@@ -360,16 +363,15 @@ const Home = ({
         <div className="hero">
           <div className="hero_img">
             <h2>Акустические кабины IzoBox</h2>
-
             <img src="./hero.svg" alt="" />
           </div>
           <div className="hero_text">
             <h2>Акустические кабины IzoBox</h2>
             <p>Пой, репетируй, делай продакшн, никому не мешая!</p>
-            <Link to="">Собрать кастомный IzoBox</Link>
+            <Link to="">Выбрать модель</Link>
           </div>
         </div>
-        {/* <div className="what">
+        <div className="what">
           <div className="what_text">
             <h2>Что такое IzoBox?</h2>
             <p>
@@ -383,21 +385,8 @@ const Home = ({
             <img src="./what1.svg" alt="" />
             <img src="./what2.svg" alt="" />
             <img src="./what3.svg" alt="" />
-            <Link
-              to=""
-              onClick={() => {
-                scrollToInfo();
-                dispatch({
-                  type: "INFOTITLE",
-                  payload: 2,
-                });
-              }}
-            >
-              Больше фото
-              <FaArrowRight />
-            </Link>
           </div>
-        </div> */}
+        </div>
       </div>
       <div className="quote_bg">
         <div className="container">
@@ -442,19 +431,76 @@ const Home = ({
       </div>
       <div className="container">
         <div className="izobox">
-          <Steps steps={1} />
-          <h2>
-            IzoBox <span>{boxType}</span>
-          </h2>
+          {boxType == "Basic" && (
+            <Steps
+              steps={1}
+              title="Выберите размер, цвет, степень звукоизоляции"
+            />
+          )}
           {boxType == "Basic" ? <Basic /> : <Custom />}
         </div>
         <Info />
       </div>
-      <div className="steps_container_bg">
+      {boxType == "Custom" && (
         <div className="container">
-          <Steps steps={2} />
+          <Steps steps={1} title="Выбери размер кабинки" />
+          <form className="cabin_size">
+            <label>
+              <p>Укажите размер кабины внутренний или внешний</p>
+              <input
+                type="text"
+                placeholder="Пример 2,5м ширина, 2,2м длина, 2,6м высота"
+              />
+            </label>
+            <label>
+              <p>Вы также можете указать ссылку на чертёж/макет</p>
+              <input type="text" />
+            </label>
+          </form>
+          <Steps steps={2} title="Выбери степень звукоизоляции" />
+          <form className="sound">
+            <select>
+              <option>Стандартная</option>
+              <option>Усиленная</option>
+            </select>
+          </form>
+          <Steps steps={3} title="Выбери декор внутри и снаружи" />
           <div className="second_step">
             <div className="second_step_hero">
+              <div className="second_step_right">
+                <h2>Цвет снаружи</h2>
+                <div className="second_step_container">
+                  <img
+                    src={`./decors/${color ? color : colorsArr[0]}.png`}
+                    className={`second_step_big_item`}
+                    alt=""
+                    loading="lazy"
+                  />
+                  <div
+                    className={`second_step_items ${
+                      colorDrop ? "second_step_items_active" : ""
+                    }`}
+                  >
+                    {colorsArr.map((a) => {
+                      return (
+                        <img
+                          key={a}
+                          src={`./decors/${a}.png`}
+                          className={`second_step_item ${
+                            color === a ? "second_step_item_active" : ""
+                          }`}
+                          alt=""
+                          onClick={() => setColor(a)}
+                          loading="lazy"
+                        />
+                      );
+                    })}
+                    {!colorDrop && (
+                      <button onClick={() => setColorDrop(true)}>Ещё...</button>
+                    )}
+                  </div>
+                </div>
+              </div>
               <div className="second_step_left">
                 <h2>Цвет внутри</h2>
                 <div className="second_step_items">
@@ -532,137 +578,127 @@ const Home = ({
                   ></div>
                 </div>
               </div>
-              <div className="second_step_right">
-                <h2>Цвет снаружи</h2>
-                <div className="second_step_container">
-                  <img
-                    src={`./decors/${colorsArr[35]}.png`}
-                    className={`second_step_big_item ${
-                      color === colorsArr[35] ? "second_step_item_active" : ""
-                    }`}
-                    alt=""
-                    onClick={() => setColor(colorsArr[35])}
-                    loading="lazy"
-                  />
-                  <div className="second_step_items">
-                    {colorsArr.map((a) => {
-                      return (
-                        <img
-                          key={a}
-                          src={`./decors/${a}.png`}
-                          className={`second_step_item ${
-                            color === a ? "second_step_item_active" : ""
-                          }`}
-                          alt=""
-                          onClick={() => setColor(a)}
-                          loading="lazy"
-                        />
-                      );
-                    })}
-                    <div></div>
-                  </div>
-                </div>
-              </div>
             </div>
           </div>
-        </div>
-      </div>
-      <div className="container">
-        <Steps steps={3} />
-        {boxType == "Basic" ? (
-          <div className="additional">
-            <div className="additional_title">
-              <h2 onClick={() => setAdditional((additional) => !additional)}>
-                Прокачай свой IzoBox{" "}
-                <IoIosArrowDown className={additional ? "rotate" : ""} />
-              </h2>
-              <p>Добавить дополнительные опции</p>
-            </div>
-            {additional && (
-              <div className="additional_hero">
-                <AdditionalItem
-                  img1="./cabins/leggedTable/4.png"
-                  img2="./cabins/leggedTable/2.png"
-                  img3="./cabins/leggedTable/3.png"
-                  title="Стол на ножке"
-                  text="Corem ipsum dolor sit amet, consectetur adipiscing elit. Nunc vulputate libero et velit interdum, ac aliquet odio mattis. Class aptent taciti sociosqu ad litora torquent per conubia nostra, per inceptos himenaeos. Curabitur tempus urna at turpis condimentum lobortis. Curabitur tempus urna at turpis condimentum lobortis."
-                  price="18,500"
-                  id={1}
-                />
-                <AdditionalItem
-                  img1="./cabins/table/1.png"
-                  img2="./cabins/table/2.png"
-                  img3="./cabins/table/3.png"
-                  title="Стол"
-                  text="Corem ipsum dolor sit amet, consectetur adipiscing elit. Nunc vulputate libero et velit interdum, ac aliquet odio mattis. Class aptent taciti sociosqu ad litora torquent per conubia nostra, per inceptos himenaeos. Curabitur tempus urna at turpis condimentum lobortis. Curabitur tempus urna at turpis condimentum lobortis."
-                  price="18,500"
-                  id={2}
-                />
-                <AdditionalItem
-                  img1="./cabins/shelves/1.png"
-                  img2="./cabins/shelves/2.png"
-                  img3="./cabins/shelves/3.png"
-                  title="Полки"
-                  text="Corem ipsum dolor sit amet, consectetur adipiscing elit. Nunc vulputate libero et velit interdum, ac aliquet odio mattis. Class aptent taciti sociosqu ad litora torquent per conubia nostra, per inceptos himenaeos. Curabitur tempus urna at turpis condimentum lobortis. Curabitur tempus urna at turpis condimentum lobortis."
-                  price="18,500"
-                  id={3}
-                />
-                <AdditionalItem
-                  img1="./cabins/backlight/1.png"
-                  img2="./cabins/backlight/2.png"
-                  img3="./cabins/backlight/3.png"
-                  img4="./cabins/backlight/4.png"
-                  title="Подвеска"
-                  text="Corem ipsum dolor sit amet, consectetur adipiscing elit. Nunc vulputate libero et velit interdum, ac aliquet odio mattis. Class aptent taciti sociosqu ad litora torquent per conubia nostra, per inceptos himenaeos. Curabitur tempus urna at turpis condimentum lobortis. Curabitur tempus urna at turpis condimentum lobortis."
-                  price="18,500"
-                  id={4}
-                />
-
-                <AdditionalItem
-                  img1="./cabins/tiles/1.png"
-                  img2="./cabins/tiles/2.png"
-                  img3="./cabins/tiles/3.png"
-                  title="Плитки"
-                  text="Corem ipsum dolor sit amet, consectetur adipiscing elit. Nunc vulputate libero et velit interdum, ac aliquet odio mattis. Class aptent taciti sociosqu ad litora torquent per conubia nostra, per inceptos himenaeos. Curabitur tempus urna at turpis condimentum lobortis. Curabitur tempus urna at turpis condimentum lobortis."
-                  price="18,500"
-                  id={5}
-                />
-                <AdditionalItem
-                  img1="./cabins/wheels2/1.png"
-                  img2="./cabins/wheels2/2.png"
-                  img3="./cabins/wheels2/3.png"
-                  title="Колёса"
-                  text="Corem ipsum dolor sit amet, consectetur adipiscing elit. Nunc vulputate libero et velit interdum, ac aliquet odio mattis. Class aptent taciti sociosqu ad litora torquent per conubia nostra, per inceptos himenaeos. Curabitur tempus urna at turpis condimentum lobortis. Curabitur tempus urna at turpis condimentum lobortis."
-                  price="18,500"
-                  id={6}
-                />
-                <AdditionalItem
-                  img1="./cabins/wheels/1.png"
-                  img2="./cabins/wheels/2.png"
-                  img3="./cabins/wheels/3.png"
-                  title="Колёса опорные"
-                  text="Corem ipsum dolor sit amet, consectetur adipiscing elit. Nunc vulputate libero et velit interdum, ac aliquet odio mattis. Class aptent taciti sociosqu ad litora torquent per conubia nostra, per inceptos himenaeos. Curabitur tempus urna at turpis condimentum lobortis. Curabitur tempus urna at turpis condimentum lobortis."
-                  price="18,500"
-                  id={6}
-                />
-                <AdditionalItem
-                  img1="./cabins/backlight/1.png"
-                  img2="./cabins/backlight/2.png"
-                  img3="./cabins/backlight/3.png"
-                  img4="./cabins/backlight/4.png"
-                  title="Светильник"
-                  text="Corem ipsum dolor sit amet, consectetur adipiscing elit. Nunc vulputate libero et velit interdum, ac aliquet odio mattis. Class aptent taciti sociosqu ad litora torquent per conubia nostra, per inceptos himenaeos. Curabitur tempus urna at turpis condimentum lobortis. Curabitur tempus urna at turpis condimentum lobortis."
-                  price="18,500"
-                  id={7}
-                />
-              </div>
-            )}
-          </div>
-        ) : (
+          <Steps steps={4} title="Опишите необходимые вам аксесуары" />
           <ThirdStep />
+        </div>
+      )}
+      <div className="container">
+        {boxType == "Basic" && (
+          <Steps steps={2} title="Добавь дополнительные опции" />
         )}
-        <Steps steps={4} />
+        {boxType == "Basic" && (
+          <div className="additional">
+            <div className="additional_hero">
+              <AdditionalItem
+                img1="./cabins/leggedTable/4.png"
+                img2="./cabins/leggedTable/2.png"
+                img3="./cabins/leggedTable/3.png"
+                title="Стол на ножке"
+                text="Corem ipsum dolor sit amet, consectetur adipiscing elit. Nunc vulputate libero et velit interdum, ac aliquet odio mattis. Class aptent taciti sociosqu ad litora torquent per conubia nostra, per inceptos himenaeos. Curabitur tempus urna at turpis condimentum lobortis. Curabitur tempus urna at turpis condimentum lobortis."
+                price="18,500"
+                id={1}
+              />
+              <AdditionalItem
+                img1="./cabins/table/1.png"
+                img2="./cabins/table/2.png"
+                img3="./cabins/table/3.png"
+                title="Стол"
+                text="Corem ipsum dolor sit amet, consectetur adipiscing elit. Nunc vulputate libero et velit interdum, ac aliquet odio mattis. Class aptent taciti sociosqu ad litora torquent per conubia nostra, per inceptos himenaeos. Curabitur tempus urna at turpis condimentum lobortis. Curabitur tempus urna at turpis condimentum lobortis."
+                price="18,500"
+                id={2}
+              />
+              <AdditionalItem
+                img1="./cabins/shelves/1.png"
+                img2="./cabins/shelves/2.png"
+                img3="./cabins/shelves/3.png"
+                title="Полки"
+                text="Corem ipsum dolor sit amet, consectetur adipiscing elit. Nunc vulputate libero et velit interdum, ac aliquet odio mattis. Class aptent taciti sociosqu ad litora torquent per conubia nostra, per inceptos himenaeos. Curabitur tempus urna at turpis condimentum lobortis. Curabitur tempus urna at turpis condimentum lobortis."
+                price="18,500"
+                id={3}
+              />
+              <AdditionalItem
+                img1="./cabins/backlight/1.png"
+                img2="./cabins/backlight/2.png"
+                img3="./cabins/backlight/3.png"
+                img4="./cabins/backlight/4.png"
+                title="Подвеска"
+                text="Corem ipsum dolor sit amet, consectetur adipiscing elit. Nunc vulputate libero et velit interdum, ac aliquet odio mattis. Class aptent taciti sociosqu ad litora torquent per conubia nostra, per inceptos himenaeos. Curabitur tempus urna at turpis condimentum lobortis. Curabitur tempus urna at turpis condimentum lobortis."
+                price="18,500"
+                id={4}
+              />
+
+              <AdditionalItem
+                img1="./cabins/tiles/1.png"
+                img2="./cabins/tiles/2.png"
+                img3="./cabins/tiles/3.png"
+                title="Плитки"
+                text="Corem ipsum dolor sit amet, consectetur adipiscing elit. Nunc vulputate libero et velit interdum, ac aliquet odio mattis. Class aptent taciti sociosqu ad litora torquent per conubia nostra, per inceptos himenaeos. Curabitur tempus urna at turpis condimentum lobortis. Curabitur tempus urna at turpis condimentum lobortis."
+                price="18,500"
+                id={5}
+              />
+              <AdditionalItem
+                img1="./cabins/wheels2/1.png"
+                img2="./cabins/wheels2/2.png"
+                img3="./cabins/wheels2/3.png"
+                title="Колёса"
+                text="Corem ipsum dolor sit amet, consectetur adipiscing elit. Nunc vulputate libero et velit interdum, ac aliquet odio mattis. Class aptent taciti sociosqu ad litora torquent per conubia nostra, per inceptos himenaeos. Curabitur tempus urna at turpis condimentum lobortis. Curabitur tempus urna at turpis condimentum lobortis."
+                price="18,500"
+                id={6}
+              />
+              <AdditionalItem
+                img1="./cabins/wheels/1.png"
+                img2="./cabins/wheels/2.png"
+                img3="./cabins/wheels/3.png"
+                title="Колёса опорные"
+                text="Corem ipsum dolor sit amet, consectetur adipiscing elit. Nunc vulputate libero et velit interdum, ac aliquet odio mattis. Class aptent taciti sociosqu ad litora torquent per conubia nostra, per inceptos himenaeos. Curabitur tempus urna at turpis condimentum lobortis. Curabitur tempus urna at turpis condimentum lobortis."
+                price="18,500"
+                id={6}
+              />
+              <AdditionalItem
+                img1="./cabins/backlight/1.png"
+                img2="./cabins/backlight/2.png"
+                img3="./cabins/backlight/3.png"
+                img4="./cabins/backlight/4.png"
+                title="Светильник"
+                text="Corem ipsum dolor sit amet, consectetur adipiscing elit. Nunc vulputate libero et velit interdum, ac aliquet odio mattis. Class aptent taciti sociosqu ad litora torquent per conubia nostra, per inceptos himenaeos. Curabitur tempus urna at turpis condimentum lobortis. Curabitur tempus urna at turpis condimentum lobortis."
+                price="18,500"
+                id={7}
+              />
+            </div>
+          </div>
+        )}
+        {boxType == "Basic" && (
+          <Steps steps={3} title="Заполни информацию для оплаты" />
+        )}
+        {boxType == "Custom" && (
+          <Steps steps={5} title="Заполни информацию для оплаты" />
+        )}
+        <Order />
         <FourdStep />
+        <Socials />
+        {boxType == "Basic" && (
+          <Steps steps={5} title="Выберите способ оплаты и доставки" />
+        )}
+        {boxType == "Custom" && (
+          <Steps steps={6} title="Выберите способ оплаты и доставки" />
+        )}
+        <RadioChecks
+          title="Служба доставки"
+          text1="Доставка транспортной компанией"
+          text2="Самовывоз из Москвы"
+          name="delivery"
+        />
+        <RadioChecks
+          title="Способ оплаты"
+          text1="Оплата по реквизитам"
+          text2="Банковская карта"
+          name="pay"
+        />
+        <Link to="/" className="order_btn">
+          Оформить заказ
+        </Link>
       </div>
     </>
   );

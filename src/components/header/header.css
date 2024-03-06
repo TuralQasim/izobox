@@ -169,7 +169,10 @@ nav a {
 
 @media screen and (max-width: 1024px) {
   .logo_city {
-    width: 18%;
+    width: 20%;
+  }
+  .logo_city p {
+    font-size: 12px;
   }
   .city {
     gap: 2px;
@@ -179,10 +182,10 @@ nav a {
     line-height: 20px;
   }
   nav {
-    gap: 15px;
+    gap: 10px;
   }
   nav a {
-    font-size: 14px;
+    font-size: 12px;
     line-height: 18px;
   }
   .contacts_icons svg {
@@ -191,11 +194,11 @@ nav a {
   }
   .contacts_mail a {
     gap: 2px;
-    font-size: 14px;
+    font-size: 12px;
     line-height: 20px;
   }
   .contacts_tel a {
-    font-size: 14px;
+    font-size: 12px;
     line-height: 20px;
   }
   .contacts {

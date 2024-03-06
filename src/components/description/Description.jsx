@@ -15,11 +15,6 @@ const Description = ({ boxType }) => {
             <div className="description_item">
               <h2 className="description_title">Габариты</h2>
               <div className="sizes">
-                <div className="sizes_left">
-                  <h4>снаружи:</h4>
-                  <h4>внутри:</h4>
-                  <h4>вес:</h4>
-                </div>
                 <div className="sizes_right">
                   <h5>115x115x220 см (г, ш, в)</h5>
                   <h5>100x100x220 см (г, ш, в)</h5>

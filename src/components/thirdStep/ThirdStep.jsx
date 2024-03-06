@@ -1,7 +1,6 @@
 import React, { useState } from "react";
 import "./thirdStep.css";
-import { connect } from "react-redux";
-const ThirdStep = ({ dispatch }) => {
+const ThirdStep = () => {
   const [thirdFile, setThirdFile] = useState(null);
 
   const handleDragOver = (e) => {
@@ -49,32 +48,7 @@ const ThirdStep = ({ dispatch }) => {
         </label>
         <button>Прикрепить</button>
       </form>
-      <div className="second_step_actions">
-        <button
-          onClick={(e) => {
-            e.preventDefault();
-            dispatch({
-              type: "STEPS",
-              payload: 2,
-            });
-          }}
-        >
-          Назад
-        </button>
-        <button
-          onClick={(e) => {
-            e.preventDefault();
-            dispatch({
-              type: "STEPS",
-              payload: 4,
-            });
-          }}
-        >
-          Дальше
-        </button>
-      </div>
     </div>
   );
 };
-const t = (a) => a;
-export default connect(t)(ThirdStep);
+export default ThirdStep;

@@ -35,7 +35,7 @@ const AdditionalItem = ({
             onClick={() => {
               dispatch({
                 type: "DECPRICE",
-                payload: 18.5,
+                payload: "18.500",
               });
               dispatch({
                 type: "DECADDITIONAL",
@@ -51,7 +51,7 @@ const AdditionalItem = ({
             onClick={() => {
               dispatch({
                 type: "INCPRICE",
-                payload: 18.5,
+                payload: "18.500",
               });
               dispatch({
                 type: "INCADDITIONAL",

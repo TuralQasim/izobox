@@ -5,7 +5,6 @@
   justify-content: flex-start;
   align-items: flex-start;
   gap: 10px;
-  margin-bottom: 30px;
 }
 .steps p {
   font-family: Montserrat;
@@ -156,12 +155,38 @@
   width: 100%;
   height: 50px;
   border-radius: 10px;
-  background-color: #3ca5e9;
   cursor: pointer;
 }
 .second_step_item_active {
   border: 2px solid #3ca5e9;
   padding: 1px;
+}
+.second_step_inside1 {
+  background-color: #8343a1;
+}
+.second_step_inside2 {
+  background-color: #5c2018;
+}
+.second_step_inside3 {
+  background-color: #fff50a;
+}
+.second_step_inside4 {
+  background-color: #ff7e19;
+}
+.second_step_inside5 {
+  background-color: #2be987;
+}
+.second_step_inside6 {
+  background-color: #7bcfe9;
+}
+.second_step_inside7 {
+  background-color: #3522ff;
+}
+.second_step_inside8 {
+  background-color: #e94a4e;
+}
+.second_step_inside9 {
+  background-color: #363636;
 }
 @media screen and (max-width: 1024px) {
   .second_step_items {

@@ -1,6 +1,6 @@
 const initalState = {
   loading: false,
-  mainPrice: 150.0,
+  mainPrice: "150.000",
   additionalArr: [],
   infoImage: false,
   infoImageActive: 0,
@@ -10,14 +10,16 @@ const initalState = {
   window: true,
   front: 1,
   back: 1,
-  steps: 2,
 };
 export default function Reducer(state = initalState, action) {
   switch (action.type) {
     case "INCPRICE":
-      return { ...state, mainPrice: state.mainPrice + action.payload };
+      return {
+        ...state,
+        mainPrice: Number(state.mainPrice) + Number(action.payload),
+      };
     case "DECPRICE":
-      return { ...state, mainPrice: state.mainPrice - action.payload };
+      return { ...state, mainPrice: +state.mainPrice - +action.payload };
     case "WINDOW":
       return { ...state, window: action.payload };
     case "BOXTYPE":

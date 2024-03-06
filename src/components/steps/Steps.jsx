@@ -1,6 +1,5 @@
 import React from "react";
 import "./steps.css";
-import { connect } from "react-redux";
 const Steps = ({ steps }) => {
   return (
     <div className="steps">
@@ -34,5 +33,4 @@ const Steps = ({ steps }) => {
   );
 };
 
-const t = (a) => a;
-export default connect(t)(Steps);
+export default Steps;

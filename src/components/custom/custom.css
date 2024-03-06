@@ -6,10 +6,10 @@
   height: 450px;
   margin-bottom: 100px;
 }
-.basic_left {
+.custom_left {
   width: 100%;
   display: flex;
-  flex-direction: row-reverse;
+  flex-direction: row-reverse !important;
   justify-content: space-between;
   align-items: flex-start;
   gap: 30px;

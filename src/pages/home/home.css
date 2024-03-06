@@ -235,8 +235,12 @@
   flex-direction: column;
   justify-content: flex-start;
   align-items: flex-start;
+  margin: 40px 0;
 }
 
+.additional .fourd_step{
+  margin-bottom: 80px;
+}
 .additional_title {
   display: flex;
   flex-direction: column;
@@ -343,6 +347,9 @@
   align-items: flex-start;
   gap: 20px;
 }
+.izobox .steps{
+  margin-bottom: 40px;
+}
 .izobox > h2 {
   font-family: Montserrat;
   font-size: 40px;
@@ -440,6 +447,9 @@
 .steps_container_bg {
   width: 100%;
   min-height: 400px;
+}
+.steps_container_bg .steps {
+  margin-bottom: 30px;
 }
 @media screen and (max-width: 1024px) {
   .color_modal {

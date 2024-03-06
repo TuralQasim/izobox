@@ -1,15 +1,8 @@
-import React, { useRef, useState } from "react";
-import { Swiper, SwiperSlide } from "swiper/react";
-import "swiper/css";
-import "swiper/css/free-mode";
-import "swiper/css/navigation";
-import "swiper/css/thumbs";
-import { FreeMode, Navigation, Thumbs } from "swiper/modules";
+import React, { useState } from "react";
 import { connect } from "react-redux";
 import "./basic.css";
 import SwiperImage from "../swiperImage/SwiperImage";
-const Basic = ({ dispatch, front, back, window }) => {
-  const [thumbsSwiper, setThumbsSwiper] = useState(null);
+const Basic = ({ dispatch, front, back, window, mainPrice }) => {
   return (
     <div className="basic">
       <div className="basic_left">
@@ -351,7 +344,10 @@ const Basic = ({ dispatch, front, back, window }) => {
           Все цвета
         </button>
         <div className="prices">
-          <h2>150.000р</h2>
+          <h2>
+            {mainPrice}
+            {mainPrice % 1 == 0 ? "000" : "00"}р
+          </h2>
           <h5>200.000р</h5>
         </div>
         <div className="izobox_actions">

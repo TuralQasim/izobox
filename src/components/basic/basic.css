@@ -49,7 +49,7 @@
 .basic_left {
   width: 100%;
   display: flex;
-  flex-direction: row-reverse;
+  flex-direction: column;
   justify-content: flex-start;
   align-items: flex-start;
   gap: 30px;
@@ -58,8 +58,8 @@
 }
 .basic_left img {
   width: 90%;
-  height: 100%;
   margin-right: auto;
+  aspect-ratio: 1/0.9;
 }
 .basic_right {
   width: 100%;

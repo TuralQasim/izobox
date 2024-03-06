@@ -13,7 +13,7 @@ const Custom = ({ dispatch }) => {
   const [thumbsSwiper, setThumbsSwiper] = useState(null);
   return (
     <div className="basic">
-      <div className="basic_left">
+      <div className="basic_left custom_left">
         <Swiper
           style={{
             "--swiper-navigation-color": "#fff",

@@ -679,7 +679,7 @@ const Home = ({
         <FourdStep />
         <Socials />
         {boxType == "Basic" && (
-          <Steps steps={5} title="Выберите способ оплаты и доставки" />
+          <Steps steps={4} title="Выберите способ оплаты и доставки" />
         )}
         {boxType == "Custom" && (
           <Steps steps={6} title="Выберите способ оплаты и доставки" />

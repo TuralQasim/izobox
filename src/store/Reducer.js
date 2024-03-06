@@ -8,8 +8,10 @@ const initalState = {
   boxType: "Basic",
   colorModal: false,
   window: true,
-  front: 1,
-  back: 1,
+  front: 4,
+  back: 3,
+  bigImg: false,
+  bigImgSrc: "./custom1.png",
 };
 export default function Reducer(state = initalState, action) {
   switch (action.type) {
@@ -22,6 +24,10 @@ export default function Reducer(state = initalState, action) {
       return { ...state, mainPrice: +state.mainPrice - +action.payload };
     case "WINDOW":
       return { ...state, window: action.payload };
+    case "BIGIMGSRC":
+      return { ...state, bigImgSrc: action.payload };
+    case "BIGIMG":
+      return { ...state, bigImg: action.payload };
     case "BOXTYPE":
       return { ...state, boxType: action.payload };
     case "STEPS":

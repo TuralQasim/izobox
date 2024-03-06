@@ -104,6 +104,14 @@
   color: #252525;
   background-color: #e7f6ff;
 }
+.change_custom_box button:first-of-type {
+  color: #252525 !important;
+  background-color: #e7f6ff !important;
+}
+.change_custom_box button:last-of-type {
+  color: #fff !important;
+  background-color: #3ca5e9 !important;
+}
 .box_window {
   display: flex;
   justify-content: flex-start;

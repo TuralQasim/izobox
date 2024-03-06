@@ -1,39 +1,78 @@
 import React from "react";
 import "./steps.css";
-const Steps = ({ steps, title }) => {
+import { connect } from "react-redux";
+const Steps = ({ step, title, boxType }) => {
+  const scrollToInfo = (id) => {
+    const infoElement = document.getElementById(id);
+    if (infoElement) {
+      infoElement.scrollIntoView({ behavior: "smooth" });
+    }
+  };
   return (
     <div className="steps">
       <div
-        className={`steps_top ${
-          steps == 5 || steps == 6 ? "steps_top_big" : ""
-        }`}
+        className={`steps_top ${step == 5 || step == 6 ? "steps_top_big" : ""}`}
       >
-        <h2>Шаг {steps}</h2>
+        <h2>Шаг {step}</h2>
         <div
-          className={`steps_items ${steps == 5 ? "steps_items_big5" : ""}${
-            steps == 6 ? "steps_items_big6" : ""
+          className={`steps_items ${step == 5 ? "steps_items_big5" : ""}${
+            step == 6 ? "steps_items_big6" : ""
           }`}
         >
           <div
-            className={`steps_item ${steps == 1 ? "active_step" : ""}`}
+            className={`steps_item ${step == 1 ? "active_step" : ""}`}
+            onClick={() => {
+              if (boxType == "Basic") {
+                scrollToInfo("basicBox");
+              } else {
+                scrollToInfo("cabinSize");
+              }
+            }}
           ></div>
           <div
-            className={`steps_item ${steps == 2 ? "active_step" : ""}`}
+            className={`steps_item ${step == 2 ? "active_step" : ""}`}
+            onClick={() => {
+              if (boxType == "Basic") {
+                scrollToInfo("additional");
+              } else {
+                scrollToInfo("sound");
+              }
+            }}
           ></div>
           <div
-            className={`steps_item ${steps == 3 ? "active_step" : ""}`}
+            className={`steps_item ${step == 3 ? "active_step" : ""}`}
+            onClick={() => {
+              if (boxType == "Basic") {
+                scrollToInfo("order");
+              } else {
+                scrollToInfo("colors");
+              }
+            }}
           ></div>
           <div
-            className={`steps_item ${steps == 4 ? "active_step" : ""}`}
+            className={`steps_item ${step == 4 ? "active_step" : ""}`}
+            onClick={() => {
+              if (boxType == "Basic") {
+                scrollToInfo("price");
+              } else {
+                scrollToInfo("thirdStep");
+              }
+            }}
           ></div>
-          {(steps == 5 || steps == 6) && (
+          {(step == 5 || step == 6) && (
             <div
-              className={`steps_item ${steps == 5 ? "active_step" : ""}`}
+              className={`steps_item ${step == 5 ? "active_step" : ""}`}
+              onClick={() => {
+                scrollToInfo("order");
+              }}
             ></div>
           )}
-          {steps == 6 && (
+          {step == 6 && (
             <div
-              className={`steps_item ${steps == 6 ? "active_step" : ""}`}
+              className={`steps_item ${step == 6 ? "active_step" : ""}`}
+              onClick={() => {
+                scrollToInfo("price");
+              }}
             ></div>
           )}
         </div>
@@ -42,5 +81,5 @@ const Steps = ({ steps, title }) => {
     </div>
   );
 };
-
-export default Steps;
+const t = (a) => a;
+export default connect(t)(Steps);

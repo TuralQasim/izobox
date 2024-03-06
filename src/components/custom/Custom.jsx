@@ -26,16 +26,68 @@ const Custom = ({ dispatch }) => {
           className="mySwiper2"
         >
           <SwiperSlide>
-            <img src="./custom1.png" alt="" />
+            <img
+              onClick={() => {
+                dispatch({
+                  type: "BIGIMG",
+                  payload: true,
+                });
+                dispatch({
+                  type: "BIGIMGSRC",
+                  payload: "./custom1.png",
+                });
+              }}
+              src="./custom1.png"
+              alt=""
+            />
           </SwiperSlide>
           <SwiperSlide>
-            <img src="./custom2.png" alt="" />
+            <img
+              onClick={() => {
+                dispatch({
+                  type: "BIGIMG",
+                  payload: true,
+                });
+                dispatch({
+                  type: "BIGIMGSRC",
+                  payload: "./custom2.png",
+                });
+              }}
+              src="./custom2.png"
+              alt=""
+            />
           </SwiperSlide>
           <SwiperSlide>
-            <img src="./custom3.png" alt="" />
+            <img
+              onClick={() => {
+                dispatch({
+                  type: "BIGIMG",
+                  payload: true,
+                });
+                dispatch({
+                  type: "BIGIMGSRC",
+                  payload: "./custom3.png",
+                });
+              }}
+              src="./custom3.png"
+              alt=""
+            />
           </SwiperSlide>
           <SwiperSlide>
-            <img src="./custom4.png" alt="" />
+            <img
+              onClick={() => {
+                dispatch({
+                  type: "BIGIMG",
+                  payload: true,
+                });
+                dispatch({
+                  type: "BIGIMGSRC",
+                  payload: "./custom4.png",
+                });
+              }}
+              src="./custom4.png"
+              alt=""
+            />
           </SwiperSlide>
         </Swiper>
         <Swiper
@@ -63,7 +115,7 @@ const Custom = ({ dispatch }) => {
         </Swiper>
       </div>
       <div className="basic_right custom_right">
-        <div className="change_box">
+        <div className="change_box change_custom_box">
           <button
             onClick={() => {
               dispatch({

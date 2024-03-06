@@ -4,7 +4,7 @@ import "./basic.css";
 import SwiperImage from "../swiperImage/SwiperImage";
 const Basic = ({ dispatch, front, back, window, mainPrice }) => {
   return (
-    <div className="basic">
+    <div className="basic" id="basicBox">
       <div className="basic_left">
         <SwiperImage />
         {/* <Swiper
@@ -105,22 +105,22 @@ const Basic = ({ dispatch, front, back, window, mainPrice }) => {
         </div>
         <div className="box_window">
           <p
-            className={!window ? "active_window" : ""}
+            className={window ? "active_window" : ""}
             onClick={() => {
               dispatch({
                 type: "WINDOW",
-                payload: false,
+                payload: true,
               });
             }}
           >
             С окном
           </p>
           <p
-            className={window ? "active_window" : ""}
+            className={!window ? "active_window" : ""}
             onClick={() => {
               dispatch({
                 type: "WINDOW",
-                payload: true,
+                payload: false,
               });
             }}
           >

@@ -16,11 +16,52 @@ const AdditionalItem = ({
   return (
     <div className="additional_item">
       <div className="additional_item_img">
-        <img loading="lazy" src={img1} alt="" />
+        <img
+          onClick={() => {
+            dispatch({
+              type: "BIGIMG",
+              payload: true,
+            });
+            dispatch({
+              type: "BIGIMGSRC",
+              payload: img1,
+            });
+          }}
+          loading="lazy"
+          src={img1}
+          alt=""
+        />
         <div className="additional_item_images">
-          <img loading="lazy" src={img2} alt="" />
-          <img loading="lazy" src={img3} alt="" />
-          {img4 && <img loading="lazy" src={img4} alt="" />}
+          <img
+            onClick={() => {
+              dispatch({
+                type: "BIGIMG",
+                payload: true,
+              });
+              dispatch({
+                type: "BIGIMGSRC",
+                payload: img2,
+              });
+            }}
+            loading="lazy"
+            src={img2}
+            alt=""
+          />
+          <img
+            onClick={() => {
+              dispatch({
+                type: "BIGIMG",
+                payload: true,
+              });
+              dispatch({
+                type: "BIGIMGSRC",
+                payload: img3,
+              });
+            }}
+            loading="lazy"
+            src={img3}
+            alt=""
+          />
         </div>
       </div>
       <div className="additional_item_text">

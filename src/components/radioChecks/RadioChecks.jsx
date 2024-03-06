@@ -10,6 +10,7 @@ const RadioChecks = ({ title, text1, text2, name }) => {
             type="radio"
             id={`radio_checks${name}1`}
             name={`radio_checks_${name}`}
+            checked
           />
           <p>{text1}</p>
         </label>

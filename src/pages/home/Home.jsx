@@ -19,6 +19,7 @@ import FourdStep from "../../components/fourdStep/FourdStep";
 import Socials from "../../components/socials/Socials";
 import Order from "../../components/order/Order";
 import RadioChecks from "../../components/radioChecks/RadioChecks";
+import { FaDownload } from "react-icons/fa6";
 
 const Home = ({
   infoImage,
@@ -26,7 +27,9 @@ const Home = ({
   boxType,
   colorModal,
   infoImageActive,
-  steps,
+  mainPrice,
+  bigImg,
+  bigImgSrc,
 }) => {
   const [outsideColor, setOutsideColor] = useState("");
   const [color, setColor] = useState(null);
@@ -257,12 +260,15 @@ const Home = ({
     "W9802",
     "W9803",
   ];
-  // const scrollToInfo = () => {
-  //   const infoElement = document.getElementById("info");
-  //   if (infoElement) {
-  //     infoElement.scrollIntoView({ behavior: "smooth" });
-  //   }
-  // };
+  const handleDownload = () => {
+    const link = document.createElement("a");
+    link.href = bigImgSrc;
+    link.download = "image.jpg"; // Укажите имя файла для скачивания
+    document.body.appendChild(link);
+    link.click();
+    document.body.removeChild(link);
+  };
+
   return (
     <>
       {infoImage && (
@@ -359,6 +365,27 @@ const Home = ({
           ></div>
         </div>
       )}
+      {bigImg && (
+        <div className="big_img">
+          <div className="big_img_overlay"></div>
+          <img src={bigImgSrc} alt="" />
+          <div className="big_img_actions">
+            <FaDownload onClick={handleDownload} />
+            <FaXmark
+              onClick={() => {
+                dispatch({
+                  type: "BIGIMG",
+                  payload: false,
+                });
+                dispatch({
+                  type: "BIGIMGSRC",
+                  payload: "",
+                });
+              }}
+            />
+          </div>
+        </div>
+      )}
       <div className="container">
         <div className="hero">
           <div className="hero_img">
@@ -382,9 +409,48 @@ const Home = ({
             </p>
           </div>
           <div className="what_img">
-            <img src="./what1.svg" alt="" />
-            <img src="./what2.svg" alt="" />
-            <img src="./what3.svg" alt="" />
+            <img
+              onClick={() => {
+                dispatch({
+                  type: "BIGIMG",
+                  payload: true,
+                });
+                dispatch({
+                  type: "BIGIMGSRC",
+                  payload: "./what1.svg",
+                });
+              }}
+              src="./what1.svg"
+              alt=""
+            />
+            <img
+              onClick={() => {
+                dispatch({
+                  type: "BIGIMG",
+                  payload: true,
+                });
+                dispatch({
+                  type: "BIGIMGSRC",
+                  payload: "./what2.svg",
+                });
+              }}
+              src="./what2.svg"
+              alt=""
+            />
+            <img
+              onClick={() => {
+                dispatch({
+                  type: "BIGIMG",
+                  payload: true,
+                });
+                dispatch({
+                  type: "BIGIMGSRC",
+                  payload: "./what3.svg",
+                });
+              }}
+              src="./what3.svg"
+              alt=""
+            />
           </div>
         </div>
       </div>
@@ -433,7 +499,7 @@ const Home = ({
         <div className="izobox">
           {boxType == "Basic" && (
             <Steps
-              steps={1}
+            step={1}
               title="Выберите размер, цвет, степень звукоизоляции"
             />
           )}
@@ -443,8 +509,8 @@ const Home = ({
       </div>
       {boxType == "Custom" && (
         <div className="container">
-          <Steps steps={1} title="Выбери размер кабинки" />
-          <form className="cabin_size">
+          <Steps step={1} title="Выбери размер кабинки" />
+          <form className="cabin_size" id="cabinSize">
             <label>
               <p>Укажите размер кабины внутренний или внешний</p>
               <input
@@ -457,17 +523,21 @@ const Home = ({
               <input type="text" />
             </label>
           </form>
-          <Steps steps={2} title="Выбери степень звукоизоляции" />
-          <form className="sound">
+          <Steps step={2} title="Выбери степень звукоизоляции" />
+          <form className="sound" id="sound">
             <select>
               <option>Стандартная</option>
               <option>Усиленная</option>
             </select>
           </form>
-          <Steps steps={3} title="Выбери декор внутри и снаружи" />
-          <div className="second_step">
+          <Steps step={3} title="Выбери декор внутри и снаружи" />
+          <div className="second_step" id="colors">
             <div className="second_step_hero">
-              <div className="second_step_right">
+              <div
+                className={`second_step_right ${
+                  colorDrop ? "second_step_right_open" : ""
+                }`}
+              >
                 <h2>Цвет снаружи</h2>
                 <div className="second_step_container">
                   <img
@@ -501,7 +571,7 @@ const Home = ({
                   </div>
                 </div>
               </div>
-              <div className="second_step_left">
+              <div className="second_step_left ">
                 <h2>Цвет внутри</h2>
                 <div className="second_step_items">
                   <div
@@ -580,16 +650,16 @@ const Home = ({
               </div>
             </div>
           </div>
-          <Steps steps={4} title="Опишите необходимые вам аксесуары" />
+          <Steps step={4} title="Опишите необходимые вам аксесуары" />
           <ThirdStep />
         </div>
       )}
       <div className="container">
         {boxType == "Basic" && (
-          <Steps steps={2} title="Добавь дополнительные опции" />
+          <Steps step={2} title="Добавь дополнительные опции" />
         )}
         {boxType == "Basic" && (
-          <div className="additional">
+          <div className="additional" id="additional">
             <div className="additional_hero">
               <AdditionalItem
                 img1="./cabins/leggedTable/4.png"
@@ -622,7 +692,6 @@ const Home = ({
                 img1="./cabins/backlight/1.png"
                 img2="./cabins/backlight/2.png"
                 img3="./cabins/backlight/3.png"
-                img4="./cabins/backlight/4.png"
                 title="Подвеска"
                 text="Corem ipsum dolor sit amet, consectetur adipiscing elit. Nunc vulputate libero et velit interdum, ac aliquet odio mattis. Class aptent taciti sociosqu ad litora torquent per conubia nostra, per inceptos himenaeos. Curabitur tempus urna at turpis condimentum lobortis. Curabitur tempus urna at turpis condimentum lobortis."
                 price="18,500"
@@ -660,7 +729,6 @@ const Home = ({
                 img1="./cabins/backlight/1.png"
                 img2="./cabins/backlight/2.png"
                 img3="./cabins/backlight/3.png"
-                img4="./cabins/backlight/4.png"
                 title="Светильник"
                 text="Corem ipsum dolor sit amet, consectetur adipiscing elit. Nunc vulputate libero et velit interdum, ac aliquet odio mattis. Class aptent taciti sociosqu ad litora torquent per conubia nostra, per inceptos himenaeos. Curabitur tempus urna at turpis condimentum lobortis. Curabitur tempus urna at turpis condimentum lobortis."
                 price="18,500"
@@ -670,24 +738,22 @@ const Home = ({
           </div>
         )}
         {boxType == "Basic" && (
-          <Steps steps={3} title="Заполни информацию для оплаты" />
+          <Steps step={3} title="Заполни информацию для оплаты" />
         )}
-        {boxType == "Custom" && (
-          <Steps steps={5} title="Заполни информацию для оплаты" />
-        )}
+        {boxType == "Custom" && <Steps step={5} title="Оформи заказ" />}
         <Order />
         <FourdStep />
         <Socials />
         {boxType == "Basic" && (
-          <Steps steps={4} title="Выберите способ оплаты и доставки" />
+          <Steps step={4} title="Выберите способ оплаты и доставки" />
         )}
         {boxType == "Custom" && (
-          <Steps steps={6} title="Выберите способ оплаты и доставки" />
+          <Steps step={6} title="Выберите способ оплаты и доставки" />
         )}
         <RadioChecks
           title="Служба доставки"
           text1="Доставка транспортной компанией"
-          text2="Самовывоз из Москвы"
+          text2="Самовывоз со склада"
           name="delivery"
         />
         <RadioChecks
@@ -696,9 +762,26 @@ const Home = ({
           text2="Банковская карта"
           name="pay"
         />
-        <Link to="/" className="order_btn">
-          Оформить заказ
-        </Link>
+        <div className="last_total_price" id="price">
+          <h2>Итого:</h2>
+          <h3>
+            {" "}
+            {mainPrice}
+            {mainPrice === "150.000"
+              ? ""
+              : mainPrice !== 150000 && mainPrice % 1 == 0
+              ? "000"
+              : "00"}
+          </h3>
+        </div>
+        <div className="submit_btns">
+          <Link to="/" className="order_btn">
+            Оформить заказ
+          </Link>
+          <Link to="/" className="order_btn">
+            Взять в кредит
+          </Link>
+        </div>
       </div>
     </>
   );

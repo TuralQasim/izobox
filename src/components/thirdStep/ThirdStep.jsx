@@ -18,7 +18,7 @@ const ThirdStep = () => {
     setThirdFile(file);
   };
   return (
-    <div className="third_step">
+    <div className="third_step" id="thirdStep">
       <form
         className="third_step_form"
         onDragOver={handleDragOver}

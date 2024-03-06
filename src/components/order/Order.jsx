@@ -4,9 +4,8 @@ import { connect } from "react-redux";
 import RadioChecks from "../radioChecks/RadioChecks";
 const Order = ({ boxType }) => {
   return (
-    <div className="order">
-      <h2>Оформить заказ</h2>
-      <div className="basket">
+    <div className="order" id="order">
+      {/* <div className="basket">
         <img src="./beige/withWindow/1.png" alt="" />
         <div className="basket_info">
           <h2>
@@ -48,7 +47,7 @@ const Order = ({ boxType }) => {
           <h5>Итого</h5>
           <h3>225.500</h3>
         </div>
-      </div>
+      </div> */}
       <RadioChecks
         title="Тип плательщика"
         text1="Физическое лицо"

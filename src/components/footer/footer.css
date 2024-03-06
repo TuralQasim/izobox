@@ -5,6 +5,7 @@ footer {
   justify-content: flex-start;
   gap: 20px;
   align-items: flex-start;
+  padding: 70px 0;
 }
 .footer {
   display: flex;
@@ -29,7 +30,7 @@ footer {
 .foot_item a {
   font-family: Montserrat;
   font-size: 16px;
-  font-weight: 600;
+  font-weight: 400;
   line-height: 20px;
   letter-spacing: 0em;
   text-align: left;
@@ -173,6 +174,9 @@ footer {
 }
 
 @media screen and (max-width: 480px) {
+  footer {
+    padding: 20px 0 30px;
+  }
   .foot_nav {
     display: flex;
     flex-direction: column;

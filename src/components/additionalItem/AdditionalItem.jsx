@@ -5,7 +5,6 @@ const AdditionalItem = ({
   img1,
   img2,
   img3,
-  img4,
   title,
   text,
   price,
@@ -73,7 +72,9 @@ const AdditionalItem = ({
         {additionalArr.includes(id) ? (
           <button
             className="additional_added"
-            onClick={() => {
+            onClick={(e) => {
+              e.preventDefault();
+              e.stopPropagation();
               dispatch({
                 type: "DECPRICE",
                 payload: "18.500",
@@ -89,7 +90,9 @@ const AdditionalItem = ({
         ) : (
           <button
             className="additional_add"
-            onClick={() => {
+            onClick={(e) => {
+              e.preventDefault();
+              e.stopPropagation();
               dispatch({
                 type: "INCPRICE",
                 payload: "18.500",

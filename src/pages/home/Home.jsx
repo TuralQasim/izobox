@@ -1,9 +1,7 @@
-import React, { useState } from "react";
+import React, { useRef, useState } from "react";
 import "./home.css";
 import { Link } from "react-router-dom";
-import { FaArrowRight } from "react-icons/fa";
 import Info from "../../components/info/Info";
-import { IoIosArrowDown } from "react-icons/io";
 import AdditionalItem from "../../components/additionalItem/AdditionalItem";
 import { connect } from "react-redux";
 import { FaXmark } from "react-icons/fa6";
@@ -14,12 +12,29 @@ import "swiper/css/navigation";
 import { Navigation } from "swiper/modules";
 import Custom from "../../components/custom/Custom";
 import Steps from "../../components/steps/Steps";
-import ThirdStep from "../../components/thirdStep/ThirdStep";
-import FourdStep from "../../components/fourdStep/FourdStep";
-import Socials from "../../components/socials/Socials";
-import Order from "../../components/order/Order";
-import RadioChecks from "../../components/radioChecks/RadioChecks";
 import { FaDownload } from "react-icons/fa6";
+import * as Yup from "yup";
+import { yupResolver } from "@hookform/resolvers/yup";
+import { useForm } from "react-hook-form";
+import emailjs from "@emailjs/browser";
+
+let schema = Yup.object().shape({
+  name: Yup.string().required(),
+  email: Yup.string().email().required(),
+  tel: Yup.number().required(),
+  comment: Yup.string(),
+  city: Yup.string().required(),
+  address: Yup.string().required(),
+  instagram: Yup.string(),
+  vk: Yup.string(),
+  youtube: Yup.string(),
+  tiktok: Yup.string(),
+  rekvizit: Yup.string(),
+  card: Yup.mixed(),
+  maket: Yup.string(),
+  example: Yup.mixed(),
+  sound: Yup.string(),
+});
 
 const Home = ({
   infoImage,
@@ -30,11 +45,25 @@ const Home = ({
   mainPrice,
   bigImg,
   bigImgSrc,
+  front,
+  back,
+  window,
+  additionalArr,
 }) => {
+  if (boxType === "Custom") {
+    schema = schema.shape({
+      cabinSize: Yup.string().required("Укажите размер кабинки"),
+      description: Yup.string().required(),
+    });
+  }
   const [outsideColor, setOutsideColor] = useState("");
   const [color, setColor] = useState(null);
   const [colorDrop, setColorDrop] = useState(false);
-
+  const [checks, setChecks] = useState({
+    face: 1,
+    delivery: 1,
+    pay: 1,
+  });
   const colorsArr = [
     "U350",
     "U340",
@@ -268,7 +297,82 @@ const Home = ({
     link.click();
     document.body.removeChild(link);
   };
-
+  const form = useRef();
+  const {
+    handleSubmit,
+    register,
+    formState: { errors },
+  } = useForm({
+    resolver: yupResolver(schema),
+  });
+  const sendEmail = (data) => {
+    emailjs
+      .send("service_up3y6n8", "template_2v6f868", data, {
+        publicKey: "_mVurEmpc7slvvJVD",
+      })
+      .then(
+        () => {
+          console.log("SUCCESS!");
+        },
+        (error) => {
+          console.log("FAILED...", error);
+        }
+      );
+  };
+  const submitAllForm = (data) => {
+    const newData = {
+      boxType: boxType,
+      face: checks.face,
+      delivery: checks.delivery,
+      pay: checks.pay,
+      email: data.email,
+      name: data.name,
+      phone: data.tel,
+      comment: data.comment,
+      city: data.city,
+      address: data.address,
+      instagram: data.instagram,
+      vk: data.vk,
+      tiktok: data.tiktok,
+      youtube: data.youtube,
+      rekvizit: data.rekvizit,
+      card: data.card,
+      maket: data.maket,
+      exapmple: data.example,
+      sound: data.sound,
+      cabinSize: data.cabinSize ? data.cabinSize : "",
+      description: data.description ? data.description : "",
+      color: color,
+      outsideColor: outsideColor,
+      mainPrice: mainPrice,
+      mainImg: `./${
+        front == 1
+          ? "beige"
+          : front == 2
+          ? "graphite"
+          : front == 3
+          ? "steel"
+          : "white"
+      }/${!window ? "withoutWindow" : "withWindow"}/${back}.png`,
+      additionalArr: additionalArr,
+    };
+    console.log(newData);
+    sendEmail(newData);
+  };
+  const handleDragOver = (e) => {
+    e.preventDefault();
+  };
+  const handleDragEnter = (e) => {
+    e.preventDefault();
+  };
+  const handleDragLeave = (e) => {
+    e.preventDefault();
+  };
+  const handleDrop = (e) => {
+    e.preventDefault();
+    const file = e.dataTransfer.files[0];
+    setThirdFile(file);
+  };
   return (
     <>
       {infoImage && (
@@ -507,296 +611,562 @@ const Home = ({
         </div>
         <Info />
       </div>
-      {boxType == "Custom" && (
-        <div className="container">
-          <Steps step={1} title="Укажите размер кабинки" />
-          <form className="cabin_size" id="cabinSize">
-            <label>
-              <input
-                type="text"
-                placeholder="Пример 2,5м ширина, 2,2м длина, 2,6м высота"
-              />
-            </label>
-            <label>
-              <p>Вы также можете указать ссылку на чертёж/макет</p>
-              <input type="text" />
-            </label>
-          </form>
-          <Steps step={2} title="Выбери степень звукоизоляции" />
-          <form className="sound" id="sound">
-            <select>
-              <option>Стандартная</option>
-              <option>Усиленная</option>
-            </select>
-          </form>
-          <Steps step={3} title="Выбери декор внутри и снаружи" />
-          <div className="second_step" id="colors">
-            <div className="second_step_hero">
-              <div
-                className={`second_step_right ${
-                  colorDrop ? "second_step_right_open" : ""
-                }`}
-              >
-                <h2>Цвет снаружи</h2>
-                <div className="second_step_container">
-                  <img
-                    src={`./decors/${color ? color : colorsArr[0]}.png`}
-                    className={`second_step_big_item`}
-                    alt=""
-                    loading="lazy"
+      <div className="container">
+        <form
+          ref={form}
+          action=""
+          className="big_form"
+          onSubmit={handleSubmit(submitAllForm)}
+        >
+          {boxType == "Custom" && (
+            <>
+              <Steps step={1} title="Укажите размер кабинки" />
+              <div className="cabin_size" id="cabinSize">
+                <label>
+                  <input
+                    type="text"
+                    id="cabinSize"
+                    name="cabinSize"
+                    {...register("cabinSize")}
+                    placeholder="Пример 2,5м ширина, 2,2м длина, 2,6м высота"
                   />
+                  {errors.cabinSize && <span>{errors.cabinSize.message}</span>}
+                </label>
+                <label>
+                  <p>Вы также можете указать ссылку на чертёж/макет</p>
+                  <input
+                    type="text"
+                    id="maket"
+                    name="maket"
+                    {...register("maket")}
+                  />
+                  {errors.maket && <span>{errors.maket.message}</span>}
+                </label>
+              </div>
+              <Steps step={2} title="Выбери степень звукоизоляции" />
+              <div className="sound" id="sound">
+                <select {...register("sound")}>
+                  <option value="Стандартная">Стандартная</option>
+                  <option value="Усиленная">Усиленная</option>
+                </select>
+              </div>
+              <Steps step={3} title="Выбери декор внутри и снаружи" />
+              <div className="second_step" id="colors">
+                <div className="second_step_hero">
                   <div
-                    className={`second_step_items ${
-                      colorDrop ? "second_step_items_active" : ""
+                    className={`second_step_right ${
+                      colorDrop ? "second_step_right_open" : ""
                     }`}
                   >
-                    {colorsArr.map((a) => {
-                      return (
-                        <img
-                          key={a}
-                          src={`./decors/${a}.png`}
-                          className={`second_step_item ${
-                            color === a ? "second_step_item_active" : ""
+                    <h2>Цвет снаружи</h2>
+                    <div className="second_step_container">
+                      <img
+                        src={`./decors/${color ? color : colorsArr[0]}.png`}
+                        className={`second_step_big_item`}
+                        alt=""
+                        loading="lazy"
+                      />
+                      <div
+                        className={`second_step_items ${
+                          colorDrop ? "second_step_items_active" : ""
+                        }`}
+                      >
+                        {colorsArr.map((a) => {
+                          return (
+                            <img
+                              key={a}
+                              src={`./decors/${a}.png`}
+                              className={`second_step_item ${
+                                color === a ? "second_step_item_active" : ""
+                              }`}
+                              alt=""
+                              onClick={() => setColor(a)}
+                              loading="lazy"
+                            />
+                          );
+                        })}
+                        {!colorDrop && (
+                          <button onClick={() => setColorDrop(true)}>
+                            Ещё...
+                          </button>
+                        )}
+                      </div>
+                    </div>
+                  </div>
+                  <div className="second_step_left ">
+                    <h2>Цвет внутри</h2>
+                    <div className="second_step_color_container">
+                      <div
+                        className={`second_step_color_active ${
+                          outsideColor ? outsideColor : "second_step_inside1"
+                        }`}
+                      ></div>
+                      <div className="second_step_items">
+                        <div
+                          onClick={() => setOutsideColor("second_step_inside1")}
+                          className={`second_step_item second_step_inside1 ${
+                            outsideColor === "second_step_inside1"
+                              ? "second_step_item_active"
+                              : ""
                           }`}
-                          alt=""
-                          onClick={() => setColor(a)}
-                          loading="lazy"
-                        />
-                      );
-                    })}
-                    {!colorDrop && (
-                      <button onClick={() => setColorDrop(true)}>Ещё...</button>
-                    )}
+                        ></div>
+                        <div
+                          onClick={() => setOutsideColor("second_step_inside2")}
+                          className={`second_step_item second_step_inside2 ${
+                            outsideColor === "second_step_inside2"
+                              ? "second_step_item_active"
+                              : ""
+                          }`}
+                        ></div>
+                        <div
+                          onClick={() => setOutsideColor("second_step_inside3")}
+                          className={`second_step_item second_step_inside3 ${
+                            outsideColor === "second_step_inside3"
+                              ? "second_step_item_active"
+                              : ""
+                          }`}
+                        ></div>
+                        <div
+                          onClick={() => setOutsideColor("second_step_inside4")}
+                          className={`second_step_item second_step_inside4 ${
+                            outsideColor === "second_step_inside4"
+                              ? "second_step_item_active"
+                              : ""
+                          }`}
+                        ></div>
+                        <div
+                          onClick={() => setOutsideColor("second_step_inside5")}
+                          className={`second_step_item second_step_inside5 ${
+                            outsideColor === "second_step_inside5"
+                              ? "second_step_item_active"
+                              : ""
+                          }`}
+                        ></div>
+                        <div
+                          onClick={() => setOutsideColor("second_step_inside6")}
+                          className={`second_step_item second_step_inside6 ${
+                            outsideColor === "second_step_inside6"
+                              ? "second_step_item_active"
+                              : ""
+                          }`}
+                        ></div>
+                        <div
+                          onClick={() => setOutsideColor("second_step_inside7")}
+                          className={`second_step_item second_step_inside7 ${
+                            outsideColor === "second_step_inside7"
+                              ? "second_step_item_active"
+                              : ""
+                          }`}
+                        ></div>
+                        <div
+                          onClick={() => setOutsideColor("second_step_inside8")}
+                          className={`second_step_item second_step_inside8 ${
+                            outsideColor === "second_step_inside8"
+                              ? "second_step_item_active"
+                              : ""
+                          }`}
+                        ></div>
+                        <div
+                          onClick={() => setOutsideColor("second_step_inside9")}
+                          className={`second_step_item second_step_inside9 ${
+                            outsideColor === "second_step_inside9"
+                              ? "second_step_item_active"
+                              : ""
+                          }`}
+                        ></div>
+                      </div>
+                    </div>
                   </div>
                 </div>
               </div>
-              <div className="second_step_left ">
-                <h2>Цвет внутри</h2>
-                <div className="second_step_color_container">
-                  <div
-                    className={`second_step_color_active ${
-                      outsideColor ? outsideColor : "second_step_inside1"
-                    }`}
-                  ></div>
-                  <div className="second_step_items">
-                    <div
-                      onClick={() => setOutsideColor("second_step_inside1")}
-                      className={`second_step_item second_step_inside1 ${
-                        outsideColor === "second_step_inside1"
-                          ? "second_step_item_active"
-                          : ""
-                      }`}
-                    ></div>
-                    <div
-                      onClick={() => setOutsideColor("second_step_inside2")}
-                      className={`second_step_item second_step_inside2 ${
-                        outsideColor === "second_step_inside2"
-                          ? "second_step_item_active"
-                          : ""
-                      }`}
-                    ></div>
-                    <div
-                      onClick={() => setOutsideColor("second_step_inside3")}
-                      className={`second_step_item second_step_inside3 ${
-                        outsideColor === "second_step_inside3"
-                          ? "second_step_item_active"
-                          : ""
-                      }`}
-                    ></div>
-                    <div
-                      onClick={() => setOutsideColor("second_step_inside4")}
-                      className={`second_step_item second_step_inside4 ${
-                        outsideColor === "second_step_inside4"
-                          ? "second_step_item_active"
-                          : ""
-                      }`}
-                    ></div>
-                    <div
-                      onClick={() => setOutsideColor("second_step_inside5")}
-                      className={`second_step_item second_step_inside5 ${
-                        outsideColor === "second_step_inside5"
-                          ? "second_step_item_active"
-                          : ""
-                      }`}
-                    ></div>
-                    <div
-                      onClick={() => setOutsideColor("second_step_inside6")}
-                      className={`second_step_item second_step_inside6 ${
-                        outsideColor === "second_step_inside6"
-                          ? "second_step_item_active"
-                          : ""
-                      }`}
-                    ></div>
-                    <div
-                      onClick={() => setOutsideColor("second_step_inside7")}
-                      className={`second_step_item second_step_inside7 ${
-                        outsideColor === "second_step_inside7"
-                          ? "second_step_item_active"
-                          : ""
-                      }`}
-                    ></div>
-                    <div
-                      onClick={() => setOutsideColor("second_step_inside8")}
-                      className={`second_step_item second_step_inside8 ${
-                        outsideColor === "second_step_inside8"
-                          ? "second_step_item_active"
-                          : ""
-                      }`}
-                    ></div>
-                    <div
-                      onClick={() => setOutsideColor("second_step_inside9")}
-                      className={`second_step_item second_step_inside9 ${
-                        outsideColor === "second_step_inside9"
-                          ? "second_step_item_active"
-                          : ""
-                      }`}
-                    ></div>
-                  </div>
+              <Steps step={4} title="Опишите необходимые вам аксесуары" />
+              <div className="third_step" id="thirdStep">
+                <div
+                  className="third_step_form"
+                  onDragOver={handleDragOver}
+                  onDragEnter={handleDragEnter}
+                  onDragLeave={handleDragLeave}
+                  onDrop={handleDrop}
+                >
+                  <textarea
+                    id="description"
+                    name="description"
+                    {...register("description")}
+                    placeholder="Стол, кастомный столик, полки, крепления для оборудования и т.д."
+                  ></textarea>
+                  <label htmlFor="third_step_input">
+                    <input
+                      type="file"
+                      id="example"
+                      name="example"
+                      {...register("example")}
+                    />
+                    <div className="preview">
+                      <img src="./export.svg" alt="" />
+                      <h4>Выберите на устройстве</h4>
+                      <h5>или перетащите файлы</h5>
+                    </div>
+                    {errors.example && <span>{errors.example.message}</span>}
+                  </label>
                 </div>
               </div>
-            </div>
-          </div>
-          <Steps step={4} title="Опишите необходимые вам аксесуары" />
-          <ThirdStep />
-        </div>
-      )}
-      <div className="container">
-        {boxType == "Basic" && (
-          <Steps step={2} title="Добавь дополнительные опции" />
-        )}
-        {boxType == "Basic" && (
-          <div className="additional" id="additional">
-            <div className="additional_hero">
-              <AdditionalItem
-                img1="./cabins/leggedTable/4.png"
-                img2="./cabins/leggedTable/2.png"
-                img3="./cabins/leggedTable/3.png"
-                title="Стол на ножке"
-                text="Corem ipsum dolor sit amet, consectetur adipiscing elit. Nunc vulputate libero et velit interdum, ac aliquet odio mattis. Class aptent taciti sociosqu ad litora torquent per conubia nostra, per inceptos himenaeos. Curabitur tempus urna at turpis condimentum lobortis. Curabitur tempus urna at turpis condimentum lobortis."
-                price="18,500"
-                id={1}
-              />
-              <AdditionalItem
-                img1="./cabins/table/1.png"
-                img2="./cabins/table/2.png"
-                img3="./cabins/table/3.png"
-                title="Стол"
-                text="Corem ipsum dolor sit amet, consectetur adipiscing elit. Nunc vulputate libero et velit interdum, ac aliquet odio mattis. Class aptent taciti sociosqu ad litora torquent per conubia nostra, per inceptos himenaeos. Curabitur tempus urna at turpis condimentum lobortis. Curabitur tempus urna at turpis condimentum lobortis."
-                price="18,500"
-                id={2}
-              />
-              <AdditionalItem
-                img1="./cabins/shelves/1.png"
-                img2="./cabins/shelves/2.png"
-                img3="./cabins/shelves/3.png"
-                title="Полки"
-                text="Corem ipsum dolor sit amet, consectetur adipiscing elit. Nunc vulputate libero et velit interdum, ac aliquet odio mattis. Class aptent taciti sociosqu ad litora torquent per conubia nostra, per inceptos himenaeos. Curabitur tempus urna at turpis condimentum lobortis. Curabitur tempus urna at turpis condimentum lobortis."
-                price="18,500"
-                id={3}
-              />
-              <AdditionalItem
-                img1="./cabins/backlight/1.png"
-                img2="./cabins/backlight/2.png"
-                img3="./cabins/backlight/3.png"
-                title="Подвеска"
-                text="Corem ipsum dolor sit amet, consectetur adipiscing elit. Nunc vulputate libero et velit interdum, ac aliquet odio mattis. Class aptent taciti sociosqu ad litora torquent per conubia nostra, per inceptos himenaeos. Curabitur tempus urna at turpis condimentum lobortis. Curabitur tempus urna at turpis condimentum lobortis."
-                price="18,500"
-                id={4}
-              />
+            </>
+          )}
+          {boxType == "Basic" && (
+            <Steps step={2} title="Добавь дополнительные опции" />
+          )}
+          {boxType == "Basic" && (
+            <div className="additional" id="additional">
+              <div className="additional_hero">
+                <AdditionalItem
+                  img1="./cabins/leggedTable/4.png"
+                  img2="./cabins/leggedTable/2.png"
+                  img3="./cabins/leggedTable/3.png"
+                  title="Стол на ножке"
+                  text="Corem ipsum dolor sit amet, consectetur adipiscing elit. Nunc vulputate libero et velit interdum, ac aliquet odio mattis. Class aptent taciti sociosqu ad litora torquent per conubia nostra, per inceptos himenaeos. Curabitur tempus urna at turpis condimentum lobortis. Curabitur tempus urna at turpis condimentum lobortis."
+                  price="18,500"
+                  id={1}
+                />
+                <AdditionalItem
+                  img1="./cabins/table/1.png"
+                  img2="./cabins/table/2.png"
+                  img3="./cabins/table/3.png"
+                  title="Стол"
+                  text="Corem ipsum dolor sit amet, consectetur adipiscing elit. Nunc vulputate libero et velit interdum, ac aliquet odio mattis. Class aptent taciti sociosqu ad litora torquent per conubia nostra, per inceptos himenaeos. Curabitur tempus urna at turpis condimentum lobortis. Curabitur tempus urna at turpis condimentum lobortis."
+                  price="18,500"
+                  id={2}
+                />
+                <AdditionalItem
+                  img1="./cabins/shelves/1.png"
+                  img2="./cabins/shelves/2.png"
+                  img3="./cabins/shelves/3.png"
+                  title="Полки"
+                  text="Corem ipsum dolor sit amet, consectetur adipiscing elit. Nunc vulputate libero et velit interdum, ac aliquet odio mattis. Class aptent taciti sociosqu ad litora torquent per conubia nostra, per inceptos himenaeos. Curabitur tempus urna at turpis condimentum lobortis. Curabitur tempus urna at turpis condimentum lobortis."
+                  price="18,500"
+                  id={3}
+                />
+                <AdditionalItem
+                  img1="./cabins/backlight/1.png"
+                  img2="./cabins/backlight/2.png"
+                  img3="./cabins/backlight/3.png"
+                  title="Подвеска"
+                  text="Corem ipsum dolor sit amet, consectetur adipiscing elit. Nunc vulputate libero et velit interdum, ac aliquet odio mattis. Class aptent taciti sociosqu ad litora torquent per conubia nostra, per inceptos himenaeos. Curabitur tempus urna at turpis condimentum lobortis. Curabitur tempus urna at turpis condimentum lobortis."
+                  price="18,500"
+                  id={4}
+                />
 
-              <AdditionalItem
-                img1="./cabins/tiles/1.png"
-                img2="./cabins/tiles/2.png"
-                img3="./cabins/tiles/3.png"
-                title="Плитки"
-                text="Corem ipsum dolor sit amet, consectetur adipiscing elit. Nunc vulputate libero et velit interdum, ac aliquet odio mattis. Class aptent taciti sociosqu ad litora torquent per conubia nostra, per inceptos himenaeos. Curabitur tempus urna at turpis condimentum lobortis. Curabitur tempus urna at turpis condimentum lobortis."
-                price="18,500"
-                id={5}
-              />
-              <AdditionalItem
-                img1="./cabins/wheels2/1.png"
-                img2="./cabins/wheels2/2.png"
-                img3="./cabins/wheels2/3.png"
-                title="Колёса"
-                text="Corem ipsum dolor sit amet, consectetur adipiscing elit. Nunc vulputate libero et velit interdum, ac aliquet odio mattis. Class aptent taciti sociosqu ad litora torquent per conubia nostra, per inceptos himenaeos. Curabitur tempus urna at turpis condimentum lobortis. Curabitur tempus urna at turpis condimentum lobortis."
-                price="18,500"
-                id={6}
-              />
-              <AdditionalItem
-                img1="./cabins/wheels/1.png"
-                img2="./cabins/wheels/2.png"
-                img3="./cabins/wheels/3.png"
-                title="Колёса опорные"
-                text="Corem ipsum dolor sit amet, consectetur adipiscing elit. Nunc vulputate libero et velit interdum, ac aliquet odio mattis. Class aptent taciti sociosqu ad litora torquent per conubia nostra, per inceptos himenaeos. Curabitur tempus urna at turpis condimentum lobortis. Curabitur tempus urna at turpis condimentum lobortis."
-                price="18,500"
-                id={7}
-              />
-              <AdditionalItem
-                img1="./cabins/backlight/1.png"
-                img2="./cabins/backlight/2.png"
-                img3="./cabins/backlight/3.png"
-                title="Светильник"
-                text="Corem ipsum dolor sit amet, consectetur adipiscing elit. Nunc vulputate libero et velit interdum, ac aliquet odio mattis. Class aptent taciti sociosqu ad litora torquent per conubia nostra, per inceptos himenaeos. Curabitur tempus urna at turpis condimentum lobortis. Curabitur tempus urna at turpis condimentum lobortis."
-                price="18,500"
-                id={8}
-              />
+                <AdditionalItem
+                  img1="./cabins/tiles/1.png"
+                  img2="./cabins/tiles/2.png"
+                  img3="./cabins/tiles/3.png"
+                  title="Плитки"
+                  text="Corem ipsum dolor sit amet, consectetur adipiscing elit. Nunc vulputate libero et velit interdum, ac aliquet odio mattis. Class aptent taciti sociosqu ad litora torquent per conubia nostra, per inceptos himenaeos. Curabitur tempus urna at turpis condimentum lobortis. Curabitur tempus urna at turpis condimentum lobortis."
+                  price="18,500"
+                  id={5}
+                />
+                <AdditionalItem
+                  img1="./cabins/wheels2/1.png"
+                  img2="./cabins/wheels2/2.png"
+                  img3="./cabins/wheels2/3.png"
+                  title="Колёса"
+                  text="Corem ipsum dolor sit amet, consectetur adipiscing elit. Nunc vulputate libero et velit interdum, ac aliquet odio mattis. Class aptent taciti sociosqu ad litora torquent per conubia nostra, per inceptos himenaeos. Curabitur tempus urna at turpis condimentum lobortis. Curabitur tempus urna at turpis condimentum lobortis."
+                  price="18,500"
+                  id={6}
+                />
+                <AdditionalItem
+                  img1="./cabins/wheels/1.png"
+                  img2="./cabins/wheels/2.png"
+                  img3="./cabins/wheels/3.png"
+                  title="Колёса опорные"
+                  text="Corem ipsum dolor sit amet, consectetur adipiscing elit. Nunc vulputate libero et velit interdum, ac aliquet odio mattis. Class aptent taciti sociosqu ad litora torquent per conubia nostra, per inceptos himenaeos. Curabitur tempus urna at turpis condimentum lobortis. Curabitur tempus urna at turpis condimentum lobortis."
+                  price="18,500"
+                  id={7}
+                />
+                <AdditionalItem
+                  img1="./cabins/backlight/1.png"
+                  img2="./cabins/backlight/2.png"
+                  img3="./cabins/backlight/3.png"
+                  title="Светильник"
+                  text="Corem ipsum dolor sit amet, consectetur adipiscing elit. Nunc vulputate libero et velit interdum, ac aliquet odio mattis. Class aptent taciti sociosqu ad litora torquent per conubia nostra, per inceptos himenaeos. Curabitur tempus urna at turpis condimentum lobortis. Curabitur tempus urna at turpis condimentum lobortis."
+                  price="18,500"
+                  id={8}
+                />
+              </div>
+            </div>
+          )}
+          {boxType == "Basic" && (
+            <Steps step={3} title="Заполни информацию для оплаты" />
+          )}
+          {boxType == "Custom" && <Steps step={5} title="Оформи заказ" />}
+          <div className="radio_checks">
+            <h3>Тип плательщика</h3>
+            <div className="radio_checks_hero">
+              <h4
+                className={`radio_checks_item ${
+                  checks.face == 1 ? "radio_checks_item_active" : ""
+                }`}
+                onClick={() => {
+                  setChecks((check) => {
+                    const newObj = { ...check, face: 1 };
+                    return newObj;
+                  });
+                }}
+              >
+                Физическое лицо
+              </h4>
+              <h4
+                className={`radio_checks_item ${
+                  checks.face == 2 ? "radio_checks_item_active" : ""
+                }`}
+                onClick={() => {
+                  setChecks((check) => {
+                    const newObj = { ...check, face: 2 };
+                    return newObj;
+                  });
+                }}
+              >
+                Юридическое лицо
+              </h4>
             </div>
           </div>
-        )}
-        {boxType == "Basic" && (
-          <Steps step={3} title="Заполни информацию для оплаты" />
-        )}
-        {boxType == "Custom" && <Steps step={5} title="Оформи заказ" />}
-        <Order />
-        <FourdStep />
-        <Socials />
-        {boxType == "Basic" && (
-          <Steps step={4} title="Выберите способ оплаты и доставки" />
-        )}
-        {boxType == "Custom" && (
-          <Steps step={6} title="Выберите способ оплаты и доставки" />
-        )}
-        <RadioChecks
-          title="Служба доставки"
-          text1="Доставка транспортной компанией"
-          text2="Самовывоз со склада"
-          name="delivery"
-        />
-        <RadioChecks
-          title="Способ оплаты"
-          text1="Оплата по реквизитам"
-          text2="Банковская карта"
-          name="pay"
-        />
-        {boxType == "Basic" && (
-          <div className="last_total_price" id="price">
-            <h2>Итого:</h2>
-            <h3>
-              {" "}
-              {mainPrice}
-              {mainPrice === "150.000"
-                ? ""
-                : mainPrice !== 150000 && mainPrice % 1 == 0
-                ? "000"
-                : "00"}
-            </h3>
+          {checks.face == 2 && (
+            <form className="company_form">
+              <label htmlFor="">
+                <p>Вставьте реквизиты компании</p>
+                <textarea
+                  id="rekvizit"
+                  name="rekvizit"
+                  {...register("rekvizit")}
+                ></textarea>
+                {errors.rekvizit && <span>{errors.rekvizit.message}</span>}
+              </label>
+              <label htmlFor="">
+                <p>или прикрепите карточку компании</p>
+                <input
+                  type="file"
+                  id="card"
+                  name="card"
+                  {...register("card")}
+                />
+                {errors.card && <span>{errors.card.message}</span>}
+              </label>
+            </form>
+          )}
+          <div className="fourd_step">
+            <div className="fourd_step_hero">
+              <label htmlFor="">
+                <input
+                  type="text"
+                  placeholder="Ф.И.О."
+                  id="name"
+                  name="name"
+                  {...register("name")}
+                />
+                {errors.name && <span>{errors.name.message}</span>}
+              </label>
+              <label htmlFor="">
+                <input
+                  type="email"
+                  placeholder="E-mail"
+                  id="email"
+                  name="email"
+                  {...register("email")}
+                />
+                {errors.email && <span>{errors.email.message}</span>}
+              </label>
+              <label htmlFor="">
+                <input
+                  type="tel"
+                  placeholder="Телефон"
+                  id="tel"
+                  name="tel"
+                  {...register("tel")}
+                />
+                {errors.tel && <span>{errors.tel.message}</span>}
+              </label>
+              <label htmlFor="">
+                <input
+                  type="text"
+                  placeholder="Комментарий"
+                  id="comment"
+                  name="comment"
+                  {...register("comment")}
+                />
+                {errors.comment && <span>{errors.comment.message}</span>}
+              </label>
+              <label htmlFor="">
+                <input
+                  type="text"
+                  placeholder="Город"
+                  id="city"
+                  name="city"
+                  {...register("city")}
+                />
+                {errors.city && <span>{errors.city.message}</span>}
+              </label>
+              <label htmlFor="">
+                <input
+                  type="text"
+                  placeholder="Адрес"
+                  id="address"
+                  name="address"
+                  {...register("address")}
+                />
+                {errors.address && <span>{errors.address.message}</span>}
+              </label>
+            </div>
           </div>
-        )}
-        {boxType == "Basic" && (
-          <div className="submit_btns">
-            <Link to="/" className="order_btn">
-              Оформить заказ
-            </Link>
-            <Link to="/" className="order_btn">
-              Взять в кредит
-            </Link>
+          <div className="socials">
+            <h2>Социальные сети</h2>
+            <div className="socials_hero">
+              <label htmlFor="">
+                <input
+                  type="text"
+                  id="instagram"
+                  name="instagram"
+                  {...register("instagram")}
+                  placeholder="Instagram"
+                />
+                {errors.instagram && <span>{errors.instagram.message}</span>}
+              </label>
+              <label htmlFor="">
+                <input
+                  type="text"
+                  id="vk"
+                  name="vk"
+                  {...register("vk")}
+                  placeholder="VK"
+                />
+                {errors.vk && <span>{errors.vk.message}</span>}
+              </label>
+              <label htmlFor="">
+                <input
+                  type="text"
+                  id="tiktok"
+                  name="tiktok"
+                  {...register("tiktok")}
+                  placeholder="TikTok"
+                />
+                {errors.tiktok && <span>{errors.tiktok.message}</span>}
+              </label>
+              <label htmlFor="">
+                <input
+                  type="text"
+                  id="youtube"
+                  name="youtube"
+                  {...register("youtube")}
+                  placeholder="YouTube канал"
+                />
+                {errors.youtube && <span>{errors.youtube.message}</span>}
+              </label>
+            </div>
           </div>
-        )}
-        {boxType == "Custom" && (
-          <Link to="/" className="order_btn order_btn_custom">
-            Отправить заявку на просчёт
-          </Link>
-        )}
+          {boxType == "Basic" && (
+            <Steps step={4} title="Выберите способ оплаты и доставки" />
+          )}
+          {boxType == "Custom" && (
+            <Steps step={6} title="Выберите способ оплаты и доставки" />
+          )}
+          <div className="radio_checks">
+            <h3>Служба доставки</h3>
+            <div className="radio_checks_hero">
+              <h4
+                className={`radio_checks_item ${
+                  checks.delivery == 1 ? "radio_checks_item_active" : ""
+                }`}
+                onClick={() => {
+                  setChecks((check) => {
+                    const newObj = { ...check, delivery: 1 };
+                    return newObj;
+                  });
+                }}
+              >
+                Доставка транспортной компанией
+              </h4>
+              <h4
+                className={`radio_checks_item ${
+                  checks.delivery == 2 ? "radio_checks_item_active" : ""
+                }`}
+                onClick={() => {
+                  setChecks((check) => {
+                    const newObj = { ...check, delivery: 2 };
+                    return newObj;
+                  });
+                }}
+              >
+                Самовывоз со склада
+              </h4>
+            </div>
+          </div>
+          <div className="radio_checks">
+            <h3>Способ оплаты</h3>
+            <div className="radio_checks_hero">
+              <h4
+                className={`radio_checks_item ${
+                  checks.pay == 1 ? "radio_checks_item_active" : ""
+                }`}
+                onClick={() => {
+                  setChecks((check) => {
+                    const newObj = { ...check, pay: 1 };
+                    return newObj;
+                  });
+                }}
+              >
+                Оплата по реквизитам
+              </h4>
+              <h4
+                className={`radio_checks_item ${
+                  checks.pay == 2 ? "radio_checks_item_active" : ""
+                }`}
+                onClick={() => {
+                  setChecks((check) => {
+                    const newObj = { ...check, pay: 2 };
+                    return newObj;
+                  });
+                }}
+              >
+                Банковская карта
+              </h4>
+            </div>
+          </div>
+          {boxType == "Basic" && (
+            <div className="last_total_price" id="price">
+              <h2>Итого:</h2>
+              <h3>
+                {" "}
+                {mainPrice}
+                {mainPrice === "150.000"
+                  ? ""
+                  : mainPrice !== 150000 && mainPrice % 1 == 0
+                  ? "000"
+                  : "00"}
+              </h3>
+            </div>
+          )}
+          {boxType == "Basic" && (
+            <div className="submit_btns">
+              <Link
+                to="/"
+                className="order_btn"
+                onClick={handleSubmit(submitAllForm)}
+              >
+                Оформить заказ
+              </Link>
+              <Link to="/" className="order_btn">
+                Взять в кредит
+              </Link>
+            </div>
+          )}
+          {boxType == "Custom" && (
+            <Link
+              to="/"
+              className="order_btn order_btn_custom"
+              onClick={handleSubmit(submitAllForm)}
+            >
+              Отправить заявку на просчёт
+            </Link>
+          )}
+        </form>
       </div>
     </>
   );

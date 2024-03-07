@@ -9,7 +9,7 @@ const SwiperImage = ({ front, back, window }) => {
       : front == 3
       ? "steel"
       : "white"
-  }/${!window ? "withoutWindow" : "withWindow"}/${back}.png`;
+  }/${!window ? "withoutWindow" : "withWindow"}/${back}.webp`;
   return <img src={source} />;
 };
 const t = (a) => a;

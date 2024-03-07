@@ -21,6 +21,7 @@
 .additional_item_img > img {
   width: 100%;
   aspect-ratio: 1/1;
+  cursor: pointer;
 }
 .additional_item_images {
   width: 100%;
@@ -33,6 +34,7 @@
   width: 100%;
   aspect-ratio: 1/1;
   object-fit: fill;
+  cursor: pointer;
 }
 .additional_item_text {
   width: calc(60% - 30px);

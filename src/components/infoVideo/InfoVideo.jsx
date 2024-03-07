@@ -35,7 +35,7 @@ const InfoVideo = () => {
             <FaPlay />
           </button>
           <div className="video_overlay"></div>
-          <img src="./infoVideo1.png" loading="lazy" alt="" />
+          <img src="./infoVideo1.webp" loading="lazy" alt="" />
         </div>
         <div
           className={`videos_item ${
@@ -51,11 +51,7 @@ const InfoVideo = () => {
           <button>
             <FaPlay />
           </button>
-          <img
-            src="./infoVideo2.png"
-            loading="lazy"
-            alt=""
-          />
+          <img src="./infoVideo2.webp" loading="lazy" alt="" />
           <div className="video_overlay"></div>
         </div>
         <div
@@ -73,11 +69,7 @@ const InfoVideo = () => {
             <FaPlay />
           </button>
           <div className="video_overlay"></div>
-          <img
-            src="./infoVideo3.png"
-            loading="lazy"
-            alt=""
-          />
+          <img src="./infoVideo3.webp" loading="lazy" alt="" />
         </div>
         <div
           className={`videos_item ${
@@ -94,11 +86,7 @@ const InfoVideo = () => {
             <FaPlay />
           </button>
           <div className="video_overlay"></div>
-          <img
-            src="./infoVideo4.png"
-            loading="lazy"
-            alt=""
-          />
+          <img src="./infoVideo4.webp" loading="lazy" alt="" />
         </div>
       </div>
     </div>

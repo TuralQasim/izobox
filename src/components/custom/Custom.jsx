@@ -34,10 +34,10 @@ const Custom = ({ dispatch }) => {
                 });
                 dispatch({
                   type: "BIGIMGSRC",
-                  payload: "./custom1.png",
+                  payload: "./custom1.webp",
                 });
               }}
-              src="./custom1.png"
+              src="./custom1.webp"
               alt=""
             />
           </SwiperSlide>
@@ -50,10 +50,10 @@ const Custom = ({ dispatch }) => {
                 });
                 dispatch({
                   type: "BIGIMGSRC",
-                  payload: "./custom2.png",
+                  payload: "./custom2.webp",
                 });
               }}
-              src="./custom2.png"
+              src="./custom2.webp"
               alt=""
             />
           </SwiperSlide>
@@ -66,10 +66,10 @@ const Custom = ({ dispatch }) => {
                 });
                 dispatch({
                   type: "BIGIMGSRC",
-                  payload: "./custom3.png",
+                  payload: "./custom3.webp",
                 });
               }}
-              src="./custom3.png"
+              src="./custom3.webp"
               alt=""
             />
           </SwiperSlide>
@@ -82,10 +82,10 @@ const Custom = ({ dispatch }) => {
                 });
                 dispatch({
                   type: "BIGIMGSRC",
-                  payload: "./custom4.png",
+                  payload: "./custom4.webp",
                 });
               }}
-              src="./custom4.png"
+              src="./custom4.webp"
               alt=""
             />
           </SwiperSlide>
@@ -101,16 +101,16 @@ const Custom = ({ dispatch }) => {
           direction="vertical"
         >
           <SwiperSlide>
-            <img src="./custom1.png" alt="" />
+            <img src="./custom1.webp" alt="" />
           </SwiperSlide>
           <SwiperSlide>
-            <img src="./custom2.png" alt="" />
+            <img src="./custom2.webp" alt="" />
           </SwiperSlide>
           <SwiperSlide>
-            <img src="./custom3.png" alt="" />
+            <img src="./custom3.webp" alt="" />
           </SwiperSlide>
           <SwiperSlide>
-            <img src="./custom4.png" alt="" />
+            <img src="./custom4.webp" alt="" />
           </SwiperSlide>
         </Swiper>
       </div>

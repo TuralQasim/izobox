@@ -16,7 +16,7 @@ import { FaDownload } from "react-icons/fa6";
 import * as Yup from "yup";
 import { yupResolver } from "@hookform/resolvers/yup";
 import { useForm } from "react-hook-form";
-import emailjs from "@emailjs/browser";
+import axios from "axios";
 
 let schema = Yup.object().shape({
   name: Yup.string().required(),
@@ -305,19 +305,59 @@ const Home = ({
   } = useForm({
     resolver: yupResolver(schema),
   });
-  const sendEmail = (data) => {
-    emailjs
-      .send("service_up3y6n8", "template_2v6f868", data, {
-        publicKey: "_mVurEmpc7slvvJVD",
-      })
-      .then(
-        () => {
-          console.log("SUCCESS!");
-        },
-        (error) => {
-          console.log("FAILED...", error);
-        }
+  const serviceId = "service_up3y6n8";
+  const templateId = "template_2v6f868";
+  const publikKey = "_mVurEmpc7slvvJVD";
+  const sendEmail = async (data) => {
+    const sendingData = {
+      service_id: serviceId,
+      template_id: templateId,
+      user_id: publikKey,
+      template_params: {
+        from_name: data.name,
+        from_email: data.email,
+        to_name: "ermeni",
+        message: JSON.stringify({
+          username: data.name,
+          userEmail: data.email,
+          userCity: data.city,
+          userAddress: data.address,
+          boxType: data.boxType,
+          userPhone: data.phone,
+          userVkontakte: data.vk ? data.vk : "NETU",
+          userTiktok: data.tiktok ? data.tiktok : "NETU",
+          userYoutube: data.youtube ? data.youtube : "NETU",
+          userInstagram: data.instagram ? data.instagram : "NETU",
+          commentariy: data.comment ? data.comment : "NETU",
+          userCompanyRecvizit: data.rekvizit ? data.rekvizit : "NETU",
+          userMaketLink: data.maket ? data.maket : "NETU",
+          userZvukoizolasiya: data.sound,
+          userCabinRazmeri: data.cabinSize ? data.cabinSize : "NETU",
+          userOpisaniyeAksesuarov: data.description ? data.description : "NETU",
+          userCvetSnaruji: data.color ? data.color : colorsArr[0],
+          userCvetVnutri: data.outsideColor ? data.outsideColor : "NETU",
+          userCena: data.mainPrice,
+          userFotoCabini: data.mainImg,
+          userDopolnitelniyeID: data.additionalArr.length
+            ? data.additionalArr
+            : "NETU",
+          face: data.face == 1 ? "Физическое лицо" : "Юридическое лицо",
+          pay: data.pay == 1 ? "Оплата по реквизитам" : "Банковская карта",
+          delivery:
+            data.delivery == 1
+              ? "Доставка транспортной компанией"
+              : "Самовывоз со склада",
+        }),
+      },
+    };
+    try {
+      const res = await axios.post(
+        "https://api.emailjs.com/api/v1.0/email/send",
+        sendingData
       );
+    } catch (error) {
+      console.log(error);
+    }
   };
   const submitAllForm = (data) => {
     const newData = {
@@ -395,28 +435,28 @@ const Home = ({
             initialSlide={infoImageActive}
           >
             <SwiperSlide>
-              <img src="./infoImage1.png" alt="" />
+              <img src="./infoImage1.webp" alt="" />
             </SwiperSlide>
             <SwiperSlide>
-              <img src="./infoImage2.png" alt="" />
+              <img src="./infoImage2.webp" alt="" />
             </SwiperSlide>
             <SwiperSlide>
-              <img src="./infoImage3.png" alt="" />
+              <img src="./infoImage3.webp" alt="" />
             </SwiperSlide>
             <SwiperSlide>
-              <img src="./infoImage4.png" alt="" />
+              <img src="./infoImage4.webp" alt="" />
             </SwiperSlide>
             <SwiperSlide>
-              <img src="./infoImage5.png" alt="" />
+              <img src="./infoImage5.webp" alt="" />
             </SwiperSlide>
             <SwiperSlide>
-              <img src="./infoImage6.png" alt="" />
+              <img src="./infoImage6.webp" alt="" />
             </SwiperSlide>
             <SwiperSlide>
-              <img src="./infoImage7.png" alt="" />
+              <img src="./infoImage7.webp" alt="" />
             </SwiperSlide>
             <SwiperSlide>
-              <img src="./infoImage8.png" alt="" />
+              <img src="./infoImage8.webp" alt="" />
             </SwiperSlide>
           </Swiper>
           <FaXmark
@@ -494,7 +534,7 @@ const Home = ({
         <div className="hero">
           <div className="hero_img">
             <h2>Акустические кабины IzoBox</h2>
-            <img src="./hero.svg" alt="" />
+            <img src="./hero.webp" alt="" />
           </div>
           <div className="hero_text">
             <h2>Акустические кабины IzoBox</h2>
@@ -521,10 +561,10 @@ const Home = ({
                 });
                 dispatch({
                   type: "BIGIMGSRC",
-                  payload: "./what1.svg",
+                  payload: "./what1.webp",
                 });
               }}
-              src="./what1.svg"
+              src="./what1.webp"
               alt=""
             />
             <img
@@ -535,10 +575,10 @@ const Home = ({
                 });
                 dispatch({
                   type: "BIGIMGSRC",
-                  payload: "./what2.svg",
+                  payload: "./what2.webp",
                 });
               }}
-              src="./what2.svg"
+              src="./what2.webp"
               alt=""
             />
             <img
@@ -549,10 +589,10 @@ const Home = ({
                 });
                 dispatch({
                   type: "BIGIMGSRC",
-                  payload: "./what3.svg",
+                  payload: "./what3.webp",
                 });
               }}
-              src="./what3.svg"
+              src="./what3.webp"
               alt=""
             />
           </div>
@@ -819,36 +859,36 @@ const Home = ({
             <div className="additional" id="additional">
               <div className="additional_hero">
                 <AdditionalItem
-                  img1="./cabins/leggedTable/4.png"
-                  img2="./cabins/leggedTable/2.png"
-                  img3="./cabins/leggedTable/3.png"
+                  img1="./cabins/leggedTable/4.webp"
+                  img2="./cabins/leggedTable/2.webp"
+                  img3="./cabins/leggedTable/3.webp"
                   title="Стол на ножке"
                   text="Corem ipsum dolor sit amet, consectetur adipiscing elit. Nunc vulputate libero et velit interdum, ac aliquet odio mattis. Class aptent taciti sociosqu ad litora torquent per conubia nostra, per inceptos himenaeos. Curabitur tempus urna at turpis condimentum lobortis. Curabitur tempus urna at turpis condimentum lobortis."
                   price="18,500"
                   id={1}
                 />
                 <AdditionalItem
-                  img1="./cabins/table/1.png"
-                  img2="./cabins/table/2.png"
-                  img3="./cabins/table/3.png"
+                  img1="./cabins/table/1.webp"
+                  img2="./cabins/table/2.webp"
+                  img3="./cabins/table/3.webp"
                   title="Стол"
                   text="Corem ipsum dolor sit amet, consectetur adipiscing elit. Nunc vulputate libero et velit interdum, ac aliquet odio mattis. Class aptent taciti sociosqu ad litora torquent per conubia nostra, per inceptos himenaeos. Curabitur tempus urna at turpis condimentum lobortis. Curabitur tempus urna at turpis condimentum lobortis."
                   price="18,500"
                   id={2}
                 />
                 <AdditionalItem
-                  img1="./cabins/shelves/1.png"
-                  img2="./cabins/shelves/2.png"
-                  img3="./cabins/shelves/3.png"
+                  img1="./cabins/shelves/1.webp"
+                  img2="./cabins/shelves/2.webp"
+                  img3="./cabins/shelves/3.webp"
                   title="Полки"
                   text="Corem ipsum dolor sit amet, consectetur adipiscing elit. Nunc vulputate libero et velit interdum, ac aliquet odio mattis. Class aptent taciti sociosqu ad litora torquent per conubia nostra, per inceptos himenaeos. Curabitur tempus urna at turpis condimentum lobortis. Curabitur tempus urna at turpis condimentum lobortis."
                   price="18,500"
                   id={3}
                 />
                 <AdditionalItem
-                  img1="./cabins/backlight/1.png"
-                  img2="./cabins/backlight/2.png"
-                  img3="./cabins/backlight/3.png"
+                  img1="./cabins/backlight/1.webp"
+                  img2="./cabins/backlight/2.webp"
+                  img3="./cabins/backlight/3.webp"
                   title="Подвеска"
                   text="Corem ipsum dolor sit amet, consectetur adipiscing elit. Nunc vulputate libero et velit interdum, ac aliquet odio mattis. Class aptent taciti sociosqu ad litora torquent per conubia nostra, per inceptos himenaeos. Curabitur tempus urna at turpis condimentum lobortis. Curabitur tempus urna at turpis condimentum lobortis."
                   price="18,500"
@@ -856,36 +896,36 @@ const Home = ({
                 />
 
                 <AdditionalItem
-                  img1="./cabins/tiles/1.png"
-                  img2="./cabins/tiles/2.png"
-                  img3="./cabins/tiles/3.png"
+                  img1="./cabins/tiles/1.webp"
+                  img2="./cabins/tiles/2.webp"
+                  img3="./cabins/tiles/3.webp"
                   title="Плитки"
                   text="Corem ipsum dolor sit amet, consectetur adipiscing elit. Nunc vulputate libero et velit interdum, ac aliquet odio mattis. Class aptent taciti sociosqu ad litora torquent per conubia nostra, per inceptos himenaeos. Curabitur tempus urna at turpis condimentum lobortis. Curabitur tempus urna at turpis condimentum lobortis."
                   price="18,500"
                   id={5}
                 />
                 <AdditionalItem
-                  img1="./cabins/wheels2/1.png"
-                  img2="./cabins/wheels2/2.png"
-                  img3="./cabins/wheels2/3.png"
+                  img1="./cabins/wheels2/1.webp"
+                  img2="./cabins/wheels2/2.webp"
+                  img3="./cabins/wheels2/3.webp"
                   title="Колёса"
                   text="Corem ipsum dolor sit amet, consectetur adipiscing elit. Nunc vulputate libero et velit interdum, ac aliquet odio mattis. Class aptent taciti sociosqu ad litora torquent per conubia nostra, per inceptos himenaeos. Curabitur tempus urna at turpis condimentum lobortis. Curabitur tempus urna at turpis condimentum lobortis."
                   price="18,500"
                   id={6}
                 />
                 <AdditionalItem
-                  img1="./cabins/wheels/1.png"
-                  img2="./cabins/wheels/2.png"
-                  img3="./cabins/wheels/3.png"
+                  img1="./cabins/wheels/1.webp"
+                  img2="./cabins/wheels/2.webp"
+                  img3="./cabins/wheels/3.webp"
                   title="Колёса опорные"
                   text="Corem ipsum dolor sit amet, consectetur adipiscing elit. Nunc vulputate libero et velit interdum, ac aliquet odio mattis. Class aptent taciti sociosqu ad litora torquent per conubia nostra, per inceptos himenaeos. Curabitur tempus urna at turpis condimentum lobortis. Curabitur tempus urna at turpis condimentum lobortis."
                   price="18,500"
                   id={7}
                 />
                 <AdditionalItem
-                  img1="./cabins/backlight/1.png"
-                  img2="./cabins/backlight/2.png"
-                  img3="./cabins/backlight/3.png"
+                  img1="./cabins/backlight/1.webp"
+                  img2="./cabins/backlight/2.webp"
+                  img3="./cabins/backlight/3.webp"
                   title="Светильник"
                   text="Corem ipsum dolor sit amet, consectetur adipiscing elit. Nunc vulputate libero et velit interdum, ac aliquet odio mattis. Class aptent taciti sociosqu ad litora torquent per conubia nostra, per inceptos himenaeos. Curabitur tempus urna at turpis condimentum lobortis. Curabitur tempus urna at turpis condimentum lobortis."
                   price="18,500"

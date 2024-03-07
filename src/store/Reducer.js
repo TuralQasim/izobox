@@ -11,7 +11,7 @@ const initalState = {
   front: 4,
   back: 3,
   bigImg: false,
-  bigImgSrc: "./custom1.png",
+  bigImgSrc: "./custom1.webp",
 };
 export default function Reducer(state = initalState, action) {
   switch (action.type) {

@@ -347,14 +347,14 @@
   }
   .basic_left img {
     width: 90%;
-    aspect-ratio: 1/0.8;
+    aspect-ratio: 1/0.9;
     margin-right: auto;
   }
 }
 @media screen and (max-width: 480px) {
   .basic_left img {
     width: 100%;
-    aspect-ratio: 1/0.8;
+    aspect-ratio: 1/1;
     margin-right: auto;
   }
   .prices {

@@ -36,6 +36,90 @@ const Home = ({
   const [colorDrop, setColorDrop] = useState(false);
 
   const colorsArr = [
+    "U350",
+    "U340",
+    "U321",
+    "U323",
+    "U313",
+    "U325",
+    "U328",
+    "U330",
+    "U337",
+    "U363",
+    "U390",
+    "U399",
+    "U400",
+    "U404",
+    "U414",
+    "U420",
+    "U430",
+    "U500",
+    "U332",
+    "U311",
+    "U104",
+    "U107",
+    "U108",
+    "U113",
+    "U114",
+    "U131",
+    "U140",
+    "U146",
+    "U156",
+    "U163",
+    "U200",
+    "U201",
+    "U216",
+    "U222",
+    "U232",
+    "U504",
+    "U507",
+    "U515",
+    "U522",
+    "U525",
+    "U533",
+    "U540",
+    "U560",
+    "U570",
+    "U599",
+    "U600",
+    "U606",
+    "U608",
+    "U617",
+    "U626",
+    "U630",
+    "U633",
+    "U636",
+    "U646",
+    "U650",
+    "U655",
+    "U660",
+    "U702",
+    "U705",
+    "U707",
+    "U708",
+    "U717",
+    "U727",
+    "U732",
+    "U740",
+    "U741",
+    "U748",
+    "U750",
+    "U763",
+    "U767",
+    "U775",
+    "U780",
+    "U788",
+    "U807",
+    "U818",
+    "U830",
+    "U899",
+    "U960",
+    "U961",
+    "U963",
+    "U968",
+    "U989",
+    "U998",
+    "U999",
     "F121",
     "F186",
     "F187",
@@ -162,90 +246,6 @@ const Home = ({
     "H3734",
     "H3840",
     "H3860",
-    "U104",
-    "U107",
-    "U108",
-    "U113",
-    "U114",
-    "U131",
-    "U140",
-    "U146",
-    "U156",
-    "U163",
-    "U200",
-    "U201",
-    "U216",
-    "U222",
-    "U232",
-    "U311",
-    "U313",
-    "U321",
-    "U323",
-    "U325",
-    "U328",
-    "U330",
-    "U332",
-    "U337",
-    "U340",
-    "U350",
-    "U363",
-    "U390",
-    "U399",
-    "U400",
-    "U404",
-    "U414",
-    "U420",
-    "U430",
-    "U500",
-    "U504",
-    "U507",
-    "U515",
-    "U522",
-    "U525",
-    "U533",
-    "U540",
-    "U560",
-    "U570",
-    "U599",
-    "U600",
-    "U606",
-    "U608",
-    "U617",
-    "U626",
-    "U630",
-    "U633",
-    "U636",
-    "U646",
-    "U650",
-    "U655",
-    "U660",
-    "U702",
-    "U705",
-    "U707",
-    "U708",
-    "U717",
-    "U727",
-    "U732",
-    "U740",
-    "U741",
-    "U748",
-    "U750",
-    "U763",
-    "U767",
-    "U775",
-    "U780",
-    "U788",
-    "U807",
-    "U818",
-    "U830",
-    "U899",
-    "U960",
-    "U961",
-    "U963",
-    "U968",
-    "U989",
-    "U998",
-    "U999",
     "W908",
     "W911",
     "W912",
@@ -499,7 +499,7 @@ const Home = ({
         <div className="izobox">
           {boxType == "Basic" && (
             <Steps
-            step={1}
+              step={1}
               title="Выберите размер, цвет, степень звукоизоляции"
             />
           )}
@@ -509,10 +509,9 @@ const Home = ({
       </div>
       {boxType == "Custom" && (
         <div className="container">
-          <Steps step={1} title="Выбери размер кабинки" />
+          <Steps step={1} title="Укажите размер кабинки" />
           <form className="cabin_size" id="cabinSize">
             <label>
-              <p>Укажите размер кабины внутренний или внешний</p>
               <input
                 type="text"
                 placeholder="Пример 2,5м ширина, 2,2м длина, 2,6м высота"
@@ -573,79 +572,86 @@ const Home = ({
               </div>
               <div className="second_step_left ">
                 <h2>Цвет внутри</h2>
-                <div className="second_step_items">
+                <div className="second_step_color_container">
                   <div
-                    onClick={() => setOutsideColor("second_step_inside1")}
-                    className={`second_step_item second_step_inside1 ${
-                      outsideColor === "second_step_inside1"
-                        ? "second_step_item_active"
-                        : ""
+                    className={`second_step_color_active ${
+                      outsideColor ? outsideColor : "second_step_inside1"
                     }`}
                   ></div>
-                  <div
-                    onClick={() => setOutsideColor("second_step_inside2")}
-                    className={`second_step_item second_step_inside2 ${
-                      outsideColor === "second_step_inside2"
-                        ? "second_step_item_active"
-                        : ""
-                    }`}
-                  ></div>
-                  <div
-                    onClick={() => setOutsideColor("second_step_inside3")}
-                    className={`second_step_item second_step_inside3 ${
-                      outsideColor === "second_step_inside3"
-                        ? "second_step_item_active"
-                        : ""
-                    }`}
-                  ></div>
-                  <div
-                    onClick={() => setOutsideColor("second_step_inside4")}
-                    className={`second_step_item second_step_inside4 ${
-                      outsideColor === "second_step_inside4"
-                        ? "second_step_item_active"
-                        : ""
-                    }`}
-                  ></div>
-                  <div
-                    onClick={() => setOutsideColor("second_step_inside5")}
-                    className={`second_step_item second_step_inside5 ${
-                      outsideColor === "second_step_inside5"
-                        ? "second_step_item_active"
-                        : ""
-                    }`}
-                  ></div>
-                  <div
-                    onClick={() => setOutsideColor("second_step_inside6")}
-                    className={`second_step_item second_step_inside6 ${
-                      outsideColor === "second_step_inside6"
-                        ? "second_step_item_active"
-                        : ""
-                    }`}
-                  ></div>
-                  <div
-                    onClick={() => setOutsideColor("second_step_inside7")}
-                    className={`second_step_item second_step_inside7 ${
-                      outsideColor === "second_step_inside7"
-                        ? "second_step_item_active"
-                        : ""
-                    }`}
-                  ></div>
-                  <div
-                    onClick={() => setOutsideColor("second_step_inside8")}
-                    className={`second_step_item second_step_inside8 ${
-                      outsideColor === "second_step_inside8"
-                        ? "second_step_item_active"
-                        : ""
-                    }`}
-                  ></div>
-                  <div
-                    onClick={() => setOutsideColor("second_step_inside9")}
-                    className={`second_step_item second_step_inside9 ${
-                      outsideColor === "second_step_inside9"
-                        ? "second_step_item_active"
-                        : ""
-                    }`}
-                  ></div>
+                  <div className="second_step_items">
+                    <div
+                      onClick={() => setOutsideColor("second_step_inside1")}
+                      className={`second_step_item second_step_inside1 ${
+                        outsideColor === "second_step_inside1"
+                          ? "second_step_item_active"
+                          : ""
+                      }`}
+                    ></div>
+                    <div
+                      onClick={() => setOutsideColor("second_step_inside2")}
+                      className={`second_step_item second_step_inside2 ${
+                        outsideColor === "second_step_inside2"
+                          ? "second_step_item_active"
+                          : ""
+                      }`}
+                    ></div>
+                    <div
+                      onClick={() => setOutsideColor("second_step_inside3")}
+                      className={`second_step_item second_step_inside3 ${
+                        outsideColor === "second_step_inside3"
+                          ? "second_step_item_active"
+                          : ""
+                      }`}
+                    ></div>
+                    <div
+                      onClick={() => setOutsideColor("second_step_inside4")}
+                      className={`second_step_item second_step_inside4 ${
+                        outsideColor === "second_step_inside4"
+                          ? "second_step_item_active"
+                          : ""
+                      }`}
+                    ></div>
+                    <div
+                      onClick={() => setOutsideColor("second_step_inside5")}
+                      className={`second_step_item second_step_inside5 ${
+                        outsideColor === "second_step_inside5"
+                          ? "second_step_item_active"
+                          : ""
+                      }`}
+                    ></div>
+                    <div
+                      onClick={() => setOutsideColor("second_step_inside6")}
+                      className={`second_step_item second_step_inside6 ${
+                        outsideColor === "second_step_inside6"
+                          ? "second_step_item_active"
+                          : ""
+                      }`}
+                    ></div>
+                    <div
+                      onClick={() => setOutsideColor("second_step_inside7")}
+                      className={`second_step_item second_step_inside7 ${
+                        outsideColor === "second_step_inside7"
+                          ? "second_step_item_active"
+                          : ""
+                      }`}
+                    ></div>
+                    <div
+                      onClick={() => setOutsideColor("second_step_inside8")}
+                      className={`second_step_item second_step_inside8 ${
+                        outsideColor === "second_step_inside8"
+                          ? "second_step_item_active"
+                          : ""
+                      }`}
+                    ></div>
+                    <div
+                      onClick={() => setOutsideColor("second_step_inside9")}
+                      className={`second_step_item second_step_inside9 ${
+                        outsideColor === "second_step_inside9"
+                          ? "second_step_item_active"
+                          : ""
+                      }`}
+                    ></div>
+                  </div>
                 </div>
               </div>
             </div>
@@ -723,7 +729,7 @@ const Home = ({
                 title="Колёса опорные"
                 text="Corem ipsum dolor sit amet, consectetur adipiscing elit. Nunc vulputate libero et velit interdum, ac aliquet odio mattis. Class aptent taciti sociosqu ad litora torquent per conubia nostra, per inceptos himenaeos. Curabitur tempus urna at turpis condimentum lobortis. Curabitur tempus urna at turpis condimentum lobortis."
                 price="18,500"
-                id={6}
+                id={7}
               />
               <AdditionalItem
                 img1="./cabins/backlight/1.png"
@@ -732,7 +738,7 @@ const Home = ({
                 title="Светильник"
                 text="Corem ipsum dolor sit amet, consectetur adipiscing elit. Nunc vulputate libero et velit interdum, ac aliquet odio mattis. Class aptent taciti sociosqu ad litora torquent per conubia nostra, per inceptos himenaeos. Curabitur tempus urna at turpis condimentum lobortis. Curabitur tempus urna at turpis condimentum lobortis."
                 price="18,500"
-                id={7}
+                id={8}
               />
             </div>
           </div>
@@ -762,26 +768,35 @@ const Home = ({
           text2="Банковская карта"
           name="pay"
         />
-        <div className="last_total_price" id="price">
-          <h2>Итого:</h2>
-          <h3>
-            {" "}
-            {mainPrice}
-            {mainPrice === "150.000"
-              ? ""
-              : mainPrice !== 150000 && mainPrice % 1 == 0
-              ? "000"
-              : "00"}
-          </h3>
-        </div>
-        <div className="submit_btns">
-          <Link to="/" className="order_btn">
-            Оформить заказ
+        {boxType == "Basic" && (
+          <div className="last_total_price" id="price">
+            <h2>Итого:</h2>
+            <h3>
+              {" "}
+              {mainPrice}
+              {mainPrice === "150.000"
+                ? ""
+                : mainPrice !== 150000 && mainPrice % 1 == 0
+                ? "000"
+                : "00"}
+            </h3>
+          </div>
+        )}
+        {boxType == "Basic" && (
+          <div className="submit_btns">
+            <Link to="/" className="order_btn">
+              Оформить заказ
+            </Link>
+            <Link to="/" className="order_btn">
+              Взять в кредит
+            </Link>
+          </div>
+        )}
+        {boxType == "Custom" && (
+          <Link to="/" className="order_btn order_btn_custom">
+            Отправить заявку на просчёт
           </Link>
-          <Link to="/" className="order_btn">
-            Взять в кредит
-          </Link>
-        </div>
+        )}
       </div>
     </>
   );

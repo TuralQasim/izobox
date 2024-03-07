@@ -491,6 +491,10 @@
   color: #3ca5e9;
   border: 1px solid #3ca5e9;
 }
+.order_btn_custom{
+  display: inline-block;
+  margin-bottom: 50px;
+}
 .cabin_size {
   width: 100%;
   max-width: 50%;

@@ -1,3 +1,7 @@
+.footer_bg {
+  background-color: #ddedf8;
+  width: 100%;
+}
 footer {
   width: 100%;
   display: flex;
@@ -56,8 +60,8 @@ footer {
   gap: 5px;
 }
 .foot_icons a {
-  width: 30px;
-  height: 30px;
+  width: 35px;
+  height: 35px;
 }
 .foot_icons a svg {
   width: 100%;

@@ -58,7 +58,7 @@
   text-align: left;
   color: #252525;
 }
-.hero_text a {
+.hero_text h5 {
   font-family: Montserrat;
   font-size: 16px;
   font-weight: 600;
@@ -72,6 +72,7 @@
   display: flex;
   justify-content: center;
   align-items: center;
+  cursor: pointer;
 }
 
 .what {
@@ -515,7 +516,7 @@
 .cabin_size label p {
   font-family: Poppins;
   font-size: 16px;
-  font-weight: 500;
+  font-weight: 400;
   line-height: 24px;
   letter-spacing: 0em;
   text-align: left;
@@ -532,7 +533,7 @@
 .cabin_size label input::placeholder {
   font-family: Poppins;
   font-size: 16px;
-  font-weight: 400;
+  font-weight: 300;
   line-height: 24px;
   letter-spacing: 0em;
   text-align: left;

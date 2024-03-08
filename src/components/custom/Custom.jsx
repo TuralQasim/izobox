@@ -12,7 +12,7 @@ import "./custom.css";
 const Custom = ({ dispatch }) => {
   const [thumbsSwiper, setThumbsSwiper] = useState(null);
   return (
-    <div className="basic">
+    <div className="basic" id="customBox">
       <div className="basic_left custom_left">
         <Swiper
           style={{
@@ -101,16 +101,68 @@ const Custom = ({ dispatch }) => {
           direction="vertical"
         >
           <SwiperSlide>
-            <img src="./custom1.webp" alt="" />
+            <img
+              onClick={() => {
+                dispatch({
+                  type: "BIGIMG",
+                  payload: true,
+                });
+                dispatch({
+                  type: "BIGIMGSRC",
+                  payload: "./custom1.webp",
+                });
+              }}
+              src="./custom1.webp"
+              alt=""
+            />
           </SwiperSlide>
           <SwiperSlide>
-            <img src="./custom2.webp" alt="" />
+            <img
+              onClick={() => {
+                dispatch({
+                  type: "BIGIMG",
+                  payload: true,
+                });
+                dispatch({
+                  type: "BIGIMGSRC",
+                  payload: "./custom2.webp",
+                });
+              }}
+              src="./custom2.webp"
+              alt=""
+            />
           </SwiperSlide>
           <SwiperSlide>
-            <img src="./custom3.webp" alt="" />
+            <img
+              onClick={() => {
+                dispatch({
+                  type: "BIGIMG",
+                  payload: true,
+                });
+                dispatch({
+                  type: "BIGIMGSRC",
+                  payload: "./custom3.webp",
+                });
+              }}
+              src="./custom3.webp"
+              alt=""
+            />
           </SwiperSlide>
           <SwiperSlide>
-            <img src="./custom4.webp" alt="" />
+            <img
+              onClick={() => {
+                dispatch({
+                  type: "BIGIMG",
+                  payload: true,
+                });
+                dispatch({
+                  type: "BIGIMGSRC",
+                  payload: "./custom4.webp",
+                });
+              }}
+              src="./custom4.webp"
+              alt=""
+            />
           </SwiperSlide>
         </Swiper>
       </div>

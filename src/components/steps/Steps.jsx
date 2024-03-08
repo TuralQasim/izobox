@@ -1,13 +1,8 @@
 import React from "react";
 import "./steps.css";
 import { connect } from "react-redux";
+import { scrollTo } from "../../hooks/scroolTo";
 const Steps = ({ step, title, boxType }) => {
-  const scrollToInfo = (id) => {
-    const infoElement = document.getElementById(id);
-    if (infoElement) {
-      infoElement.scrollIntoView({ behavior: "smooth" });
-    }
-  };
   return (
     <div className="steps">
       <div
@@ -23,9 +18,9 @@ const Steps = ({ step, title, boxType }) => {
             className={`steps_item ${step == 1 ? "active_step" : ""}`}
             onClick={() => {
               if (boxType == "Basic") {
-                scrollToInfo("basicBox");
+                scrollTo("basicBox");
               } else {
-                scrollToInfo("cabinSize");
+                scrollTo("cabinSize");
               }
             }}
           ></div>
@@ -33,9 +28,9 @@ const Steps = ({ step, title, boxType }) => {
             className={`steps_item ${step == 2 ? "active_step" : ""}`}
             onClick={() => {
               if (boxType == "Basic") {
-                scrollToInfo("additional");
+                scrollTo("additional");
               } else {
-                scrollToInfo("sound");
+                scrollTo("sound");
               }
             }}
           ></div>
@@ -43,9 +38,9 @@ const Steps = ({ step, title, boxType }) => {
             className={`steps_item ${step == 3 ? "active_step" : ""}`}
             onClick={() => {
               if (boxType == "Basic") {
-                scrollToInfo("order");
+                scrollTo("order");
               } else {
-                scrollToInfo("colors");
+                scrollTo("colors");
               }
             }}
           ></div>
@@ -53,9 +48,9 @@ const Steps = ({ step, title, boxType }) => {
             className={`steps_item ${step == 4 ? "active_step" : ""}`}
             onClick={() => {
               if (boxType == "Basic") {
-                scrollToInfo("price");
+                scrollTo("price");
               } else {
-                scrollToInfo("thirdStep");
+                scrollTo("thirdStep");
               }
             }}
           ></div>
@@ -63,7 +58,7 @@ const Steps = ({ step, title, boxType }) => {
             <div
               className={`steps_item ${step == 5 ? "active_step" : ""}`}
               onClick={() => {
-                scrollToInfo("order");
+                scrollTo("order");
               }}
             ></div>
           )}
@@ -71,7 +66,7 @@ const Steps = ({ step, title, boxType }) => {
             <div
               className={`steps_item ${step == 6 ? "active_step" : ""}`}
               onClick={() => {
-                scrollToInfo("price");
+                scrollTo("price");
               }}
             ></div>
           )}

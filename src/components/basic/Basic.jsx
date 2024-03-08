@@ -2,6 +2,7 @@ import React, { useState } from "react";
 import { connect } from "react-redux";
 import "./basic.css";
 import SwiperImage from "../swiperImage/SwiperImage";
+import { scrollTo } from "../../hooks/scroolTo";
 const Basic = ({ dispatch, front, back, window, mainPrice }) => {
   return (
     <div className="basic" id="basicBox">
@@ -284,7 +285,7 @@ const Basic = ({ dispatch, front, back, window, mainPrice }) => {
           <h5>200.000р</h5>
         </div>
         <div className="izobox_actions">
-          <button>Купить</button>
+          <h5 onClick={() => scrollTo("radioChecks")}>Купить</h5>
           <button>В кредит</button>
         </div>
       </div>

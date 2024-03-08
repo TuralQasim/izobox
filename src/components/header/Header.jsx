@@ -3,7 +3,6 @@ import "./header.css";
 import { Link, NavLink } from "react-router-dom";
 import { IoLocationOutline } from "react-icons/io5";
 import { IoIosArrowDown } from "react-icons/io";
-import { FaPhoneAlt } from "react-icons/fa";
 import { IoMdMail } from "react-icons/io";
 import { FaInstagram } from "react-icons/fa6";
 import { AiOutlineYoutube } from "react-icons/ai";
@@ -13,10 +12,13 @@ import { AnimatePresence, motion } from "framer-motion";
 import { IoMenu } from "react-icons/io5";
 import { FaXmark } from "react-icons/fa6";
 import { enableScroll, disableScroll } from "../../hooks/scrool";
-const Header = ({ countries }) => {
+import { scrollTo } from "../../hooks/scroolTo";
+import { connect } from "react-redux";
+const Header = ({ countries, dispatch }) => {
   const [city, setCity] = useState(false);
   const [burger, setBurger] = useState(false);
   const [activeCountry, setActiveCountry] = useState("");
+
   return (
     <>
       <div className="container">
@@ -60,9 +62,28 @@ const Header = ({ countries }) => {
             </div>
           </div>
           <nav>
-            <NavLink to="">IzoBox Basic</NavLink>
-            <NavLink to="">IzoBox Custom</NavLink>
-            <NavLink to="">Конструктор кабин</NavLink>
+            <p
+              onClick={() => {
+                dispatch({
+                  type: "BOXTYPE",
+                  payload: "Basic",
+                });
+                scrollTo("basicBox");
+              }}
+            >
+              IzoBox Basic
+            </p>
+            <p
+              onClick={() => {
+                scrollTo("customBox");
+                dispatch({
+                  type: "BOXTYPE",
+                  payload: "Custom",
+                });
+              }}
+            >
+              IzoBox Custom
+            </p>
           </nav>
           <div className="contacts">
             <div className="contacts_tel">
@@ -113,9 +134,32 @@ const Header = ({ countries }) => {
           >
             <div className="burger_drop_hero">
               <nav>
-                <NavLink to="">IzoBox Basic</NavLink>
-                <NavLink to="">IzoBox Custom</NavLink>
-                <NavLink to="">Конструктор кабин</NavLink>
+                <p
+                  onClick={() => {
+                    setBurger(false);
+                    enableScroll();
+                    scrollTo("basicBox");
+                    dispatch({
+                      type: "BOXTYPE",
+                      payload: "Basic",
+                    });
+                  }}
+                >
+                  IzoBox Basic
+                </p>
+                <p
+                  onClick={() => {
+                    setBurger(false);
+                    enableScroll();
+                    scrollTo("customBox");
+                    dispatch({
+                      type: "BOXTYPE",
+                      payload: "Custom",
+                    });
+                  }}
+                >
+                  IzoBox Custom
+                </p>
               </nav>
               <div className="contacts">
                 <div className="contacts_tel">
@@ -191,5 +235,5 @@ const Header = ({ countries }) => {
     </>
   );
 };
-
-export default Header;
+const t = (a) => a;
+export default connect(t)(Header);

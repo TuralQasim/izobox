@@ -19,6 +19,7 @@ import { useForm } from "react-hook-form";
 import axios from "axios";
 import { toast } from "react-toastify";
 import { render } from "react-dom";
+import { scrollTo } from "../../hooks/scroolTo";
 
 let schema = Yup.object().shape({
   name: Yup.string().required(),
@@ -32,10 +33,7 @@ let schema = Yup.object().shape({
   youtube: Yup.string(),
   tiktok: Yup.string(),
   rekvizit: Yup.string(),
-  card: Yup.mixed().test("fileFormat", "Должны быть изображения", (value) => {
-    if (!value) return true;
-    return value && ["image/jpeg", "image/png"].includes(value[0].type);
-  }),
+  card: Yup.mixed(),
   maket: Yup.string(),
   example: Yup.mixed(),
   sound: Yup.string(),
@@ -577,7 +575,7 @@ const Home = ({
           <div className="hero_text">
             <h2>Акустические кабины IzoBox</h2>
             <p>Пой, репетируй, делай продакшн, никому не мешая!</p>
-            <Link to="">Выбрать модель</Link>
+            <h5 onClick={() => scrollTo("basicBox")}>Выбрать модель</h5>
           </div>
         </div>
         <div className="what">
@@ -962,15 +960,6 @@ const Home = ({
                   price="18,500"
                   id={7}
                 />
-                <AdditionalItem
-                  img1="./cabins/backlight/1.webp"
-                  img2="./cabins/backlight/2.webp"
-                  img3="./cabins/backlight/3.webp"
-                  title="Светильник"
-                  text="Corem ipsum dolor sit amet, consectetur adipiscing elit. Nunc vulputate libero et velit interdum, ac aliquet odio mattis. Class aptent taciti sociosqu ad litora torquent per conubia nostra, per inceptos himenaeos. Curabitur tempus urna at turpis condimentum lobortis. Curabitur tempus urna at turpis condimentum lobortis."
-                  price="18,500"
-                  id={8}
-                />
               </div>
             </div>
           )}
@@ -978,7 +967,7 @@ const Home = ({
             <Steps step={3} title="Заполни информацию для оплаты" />
           )}
           {boxType == "Custom" && <Steps step={5} title="Оформи заказ" />}
-          <div className="radio_checks">
+          <div className="radio_checks" id="radioChecks">
             <h3>Тип плательщика</h3>
             <div className="radio_checks_hero">
               <h4
@@ -1010,7 +999,7 @@ const Home = ({
             </div>
           </div>
           {checks.face == 2 && (
-            <form className="company_form">
+            <form className="company_form" id="companyForm">
               <label htmlFor="">
                 <p>Вставьте реквизиты компании</p>
                 <textarea

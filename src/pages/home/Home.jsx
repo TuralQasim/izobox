@@ -17,6 +17,8 @@ import * as Yup from "yup";
 import { yupResolver } from "@hookform/resolvers/yup";
 import { useForm } from "react-hook-form";
 import axios from "axios";
+import { toast } from "react-toastify";
+import { render } from "react-dom";
 
 let schema = Yup.object().shape({
   name: Yup.string().required(),
@@ -30,7 +32,10 @@ let schema = Yup.object().shape({
   youtube: Yup.string(),
   tiktok: Yup.string(),
   rekvizit: Yup.string(),
-  card: Yup.mixed(),
+  card: Yup.mixed().test("fileFormat", "Должны быть изображения", (value) => {
+    if (!value) return true;
+    return value && ["image/jpeg", "image/png"].includes(value[0].type);
+  }),
   maket: Yup.string(),
   example: Yup.mixed(),
   sound: Yup.string(),
@@ -59,11 +64,37 @@ const Home = ({
   const [outsideColor, setOutsideColor] = useState("");
   const [color, setColor] = useState(null);
   const [colorDrop, setColorDrop] = useState(false);
+  const [files, setFiles] = useState({
+    card: null,
+    example: null,
+  });
   const [checks, setChecks] = useState({
     face: 1,
     delivery: 1,
     pay: 1,
   });
+  const handleCardChange = (e, number) => {
+    const file = e.target.files[0];
+    if (!file) return;
+    const reader = new FileReader();
+    reader.readAsDataURL(file);
+    reader.onload = () => {
+      if (number == 1) {
+        setFiles((values) => {
+          const newObj = { ...values, card: reader.result };
+          return newObj;
+        });
+        toast.success("Файл загружен!");
+      }
+      if (number == 2) {
+        setFiles((values) => {
+          const newObj = { ...values, example: reader.result };
+          return newObj;
+        });
+        toast.success("Файл загружен!");
+      }
+    };
+  };
   const colorsArr = [
     "U350",
     "U340",
@@ -305,9 +336,9 @@ const Home = ({
   } = useForm({
     resolver: yupResolver(schema),
   });
-  const serviceId = "service_up3y6n8";
-  const templateId = "template_2v6f868";
-  const publikKey = "_mVurEmpc7slvvJVD";
+  const serviceId = "service_7ldrc81";
+  const templateId = "template_j1b7dxk";
+  const publikKey = "caAAuKVezIXiSw2Fp";
   const sendEmail = async (data) => {
     const sendingData = {
       service_id: serviceId,
@@ -347,6 +378,8 @@ const Home = ({
             data.delivery == 1
               ? "Доставка транспортной компанией"
               : "Самовывоз со склада",
+          card: data.card ? data.card : "NETU",
+          example: data.example ? data.example : "NETU",
         }),
       },
     };
@@ -355,8 +388,11 @@ const Home = ({
         "https://api.emailjs.com/api/v1.0/email/send",
         sendingData
       );
+      if (res.data) {
+        toast.success("Данные успешно отравлены!");
+      }
     } catch (error) {
-      console.log(error);
+      toast.error(error.message);
     }
   };
   const submitAllForm = (data) => {
@@ -395,7 +431,9 @@ const Home = ({
           : "white"
       }/${!window ? "withoutWindow" : "withWindow"}/${back}.png`,
       additionalArr: additionalArr,
+      card: data.card,
     };
+
     console.log(newData);
     sendEmail(newData);
   };
@@ -840,6 +878,8 @@ const Home = ({
                       id="example"
                       name="example"
                       {...register("example")}
+                      onChange={(e) => handleCardChange(e, 2)}
+                      accept=".jpg,.jpeg,.png"
                     />
                     <div className="preview">
                       <img src="./export.svg" alt="" />
@@ -987,6 +1027,8 @@ const Home = ({
                   id="card"
                   name="card"
                   {...register("card")}
+                  onChange={(e) => handleCardChange(e, 1)}
+                  accept=".jpg,.jpeg,.png"
                 />
                 {errors.card && <span>{errors.card.message}</span>}
               </label>
@@ -1107,68 +1149,71 @@ const Home = ({
           {boxType == "Custom" && (
             <Steps step={6} title="Выберите способ оплаты и доставки" />
           )}
-          <div className="radio_checks">
-            <h3>Служба доставки</h3>
-            <div className="radio_checks_hero">
-              <h4
-                className={`radio_checks_item ${
-                  checks.delivery == 1 ? "radio_checks_item_active" : ""
-                }`}
-                onClick={() => {
-                  setChecks((check) => {
-                    const newObj = { ...check, delivery: 1 };
-                    return newObj;
-                  });
-                }}
-              >
-                Доставка транспортной компанией
-              </h4>
-              <h4
-                className={`radio_checks_item ${
-                  checks.delivery == 2 ? "radio_checks_item_active" : ""
-                }`}
-                onClick={() => {
-                  setChecks((check) => {
-                    const newObj = { ...check, delivery: 2 };
-                    return newObj;
-                  });
-                }}
-              >
-                Самовывоз со склада
-              </h4>
+          <div className="two_radio_checks">
+            <div className="radio_checks">
+              <h3>Служба доставки</h3>
+              <div className="radio_checks_hero">
+                <h4
+                  className={`radio_checks_item ${
+                    checks.delivery == 1 ? "radio_checks_item_active" : ""
+                  }`}
+                  onClick={() => {
+                    setChecks((check) => {
+                      const newObj = { ...check, delivery: 1 };
+                      return newObj;
+                    });
+                  }}
+                >
+                  Доставка транспортной компанией
+                </h4>
+                <h4
+                  className={`radio_checks_item ${
+                    checks.delivery == 2 ? "radio_checks_item_active" : ""
+                  }`}
+                  onClick={() => {
+                    setChecks((check) => {
+                      const newObj = { ...check, delivery: 2 };
+                      return newObj;
+                    });
+                  }}
+                >
+                  Самовывоз со склада
+                </h4>
+              </div>
+            </div>
+            <div className="radio_checks">
+              <h3>Способ оплаты</h3>
+              <div className="radio_checks_hero">
+                <h4
+                  className={`radio_checks_item ${
+                    checks.pay == 1 ? "radio_checks_item_active" : ""
+                  }`}
+                  onClick={() => {
+                    setChecks((check) => {
+                      const newObj = { ...check, pay: 1 };
+                      return newObj;
+                    });
+                  }}
+                >
+                  Оплата по реквизитам
+                </h4>
+                <h4
+                  className={`radio_checks_item ${
+                    checks.pay == 2 ? "radio_checks_item_active" : ""
+                  }`}
+                  onClick={() => {
+                    setChecks((check) => {
+                      const newObj = { ...check, pay: 2 };
+                      return newObj;
+                    });
+                  }}
+                >
+                  Банковская карта
+                </h4>
+              </div>
             </div>
           </div>
-          <div className="radio_checks">
-            <h3>Способ оплаты</h3>
-            <div className="radio_checks_hero">
-              <h4
-                className={`radio_checks_item ${
-                  checks.pay == 1 ? "radio_checks_item_active" : ""
-                }`}
-                onClick={() => {
-                  setChecks((check) => {
-                    const newObj = { ...check, pay: 1 };
-                    return newObj;
-                  });
-                }}
-              >
-                Оплата по реквизитам
-              </h4>
-              <h4
-                className={`radio_checks_item ${
-                  checks.pay == 2 ? "radio_checks_item_active" : ""
-                }`}
-                onClick={() => {
-                  setChecks((check) => {
-                    const newObj = { ...check, pay: 2 };
-                    return newObj;
-                  });
-                }}
-              >
-                Банковская карта
-              </h4>
-            </div>
-          </div>
+
           {boxType == "Basic" && (
             <div className="last_total_price" id="price">
               <h2>Итого:</h2>

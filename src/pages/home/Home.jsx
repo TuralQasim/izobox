@@ -22,12 +22,14 @@ import { render } from "react-dom";
 import { scrollTo } from "../../hooks/scroolTo";
 
 let schema = Yup.object().shape({
-  name: Yup.string().required(),
-  email: Yup.string().email().required(),
-  tel: Yup.number().required(),
+  name: Yup.string().required("Пожалуйста, введите ваше имя"),
+  email: Yup.string().email().required("Пожалуйста, введите Email"),
+  tel: Yup.string()
+    .required("Пожалуйста, введите номер телефона")
+    .matches(/^[\d+*-]+$/, "Номер телефона должен содержать только цифры"),
   comment: Yup.string(),
-  city: Yup.string().required(),
-  address: Yup.string().required(),
+  city: Yup.string().required("Пожалуйста, введите город"),
+  address: Yup.string().required("Пожалуйста, введите адресс"),
   instagram: Yup.string(),
   vk: Yup.string(),
   youtube: Yup.string(),
@@ -56,7 +58,7 @@ const Home = ({
   if (boxType === "Custom") {
     schema = schema.shape({
       cabinSize: Yup.string().required("Укажите размер кабинки"),
-      description: Yup.string().required(),
+      description: Yup.string().required("Опишите необходимые вам аксесуары"),
     });
   }
   const [outsideColor, setOutsideColor] = useState("");
@@ -867,9 +869,15 @@ const Home = ({
                   <textarea
                     id="description"
                     name="description"
+                    className={errors.description ? "descriptionError" : ""}
                     {...register("description")}
-                    placeholder="Стол, кастомный столик, полки, крепления для оборудования и т.д."
+                    placeholder={
+                      errors.description
+                        ? errors.description.message
+                        : "Стол, кастомный столик, полки, крепления для оборудования и т.д."
+                    }
                   ></textarea>
+
                   <label htmlFor="third_step_input">
                     <input
                       type="file"

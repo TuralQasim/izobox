@@ -522,6 +522,12 @@
   text-align: left;
   color: #252525;
 }
+.cabin_size span {
+  color: red;
+}
+.descriptionError::placeholder {
+  color: red !important;
+}
 .cabin_size label input {
   width: 100%;
   border: 1px solid #bfc3cf;

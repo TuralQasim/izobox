@@ -275,7 +275,7 @@ const Basic = ({ dispatch, front, back, window, mainPrice }) => {
           <h5>200.000р</h5>
         </div>
         <div className="izobox_actions">
-          <h5 onClick={() => scrollTo("radioChecks")}>Купить</h5>
+          <h5 onClick={() => scrollTo("radioChecks", 110)}>Купить</h5>
           <button className="gocredit bk_buy_button">В кредит</button>
         </div>
       </div>

@@ -2,6 +2,7 @@ import React from "react";
 import "./steps.css";
 import { connect } from "react-redux";
 import { scrollTo } from "../../hooks/scroolTo";
+
 const Steps = ({ step, title, boxType }) => {
   return (
     <div className="steps">
@@ -18,9 +19,9 @@ const Steps = ({ step, title, boxType }) => {
             className={`steps_item ${step == 1 ? "active_step" : ""}`}
             onClick={() => {
               if (boxType == "Basic") {
-                scrollTo("basicBox");
+                scrollTo("basicBox", 135);
               } else {
-                scrollTo("cabinSize");
+                scrollTo("cabinSize", 90);
               }
             }}
           ></div>
@@ -28,9 +29,9 @@ const Steps = ({ step, title, boxType }) => {
             className={`steps_item ${step == 2 ? "active_step" : ""}`}
             onClick={() => {
               if (boxType == "Basic") {
-                scrollTo("additional");
+                scrollTo("additional", 120);
               } else {
-                scrollTo("sound");
+                scrollTo("sound", 110);
               }
             }}
           ></div>
@@ -38,9 +39,9 @@ const Steps = ({ step, title, boxType }) => {
             className={`steps_item ${step == 3 ? "active_step" : ""}`}
             onClick={() => {
               if (boxType == "Basic") {
-                scrollTo("order");
+                scrollTo("radioChecks", 110);
               } else {
-                scrollTo("colors");
+                scrollTo("colors", 80);
               }
             }}
           ></div>
@@ -48,9 +49,9 @@ const Steps = ({ step, title, boxType }) => {
             className={`steps_item ${step == 4 ? "active_step" : ""}`}
             onClick={() => {
               if (boxType == "Basic") {
-                scrollTo("price");
+                scrollTo("twoChecks", 80);
               } else {
-                scrollTo("thirdStep");
+                scrollTo("thirdStep", 130);
               }
             }}
           ></div>
@@ -58,7 +59,7 @@ const Steps = ({ step, title, boxType }) => {
             <div
               className={`steps_item ${step == 5 ? "active_step" : ""}`}
               onClick={() => {
-                scrollTo("order");
+                scrollTo("radioChecks", 110);
               }}
             ></div>
           )}

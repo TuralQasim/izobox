@@ -1027,6 +1027,7 @@
   letter-spacing: 0em;
   text-align: center;
 }
+
 @media screen and (max-width: 1024px) {
   .fourd_step_actions button {
     width: 40%;
@@ -1156,6 +1157,9 @@
     justify-content: flex-start;
     align-items: flex-start;
     gap: 20px;
+  }
+  .fourd_step_hero label {
+    width: 100%;
   }
   .fourd_step_hero input {
     width: 100%;

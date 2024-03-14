@@ -662,7 +662,7 @@ const Home = ({
           <div className="hero_text">
             <h2>Акустические кабины IzoBox</h2>
             <p>Пой, репетируй, делай продакшн, никому не мешая!</p>
-            <h5 onClick={() => scrollTo("basicBox")}>Выбрать модель</h5>
+            <h5 onClick={() => scrollTo("basicBox", 150)}>Выбрать модель</h5>
           </div>
         </div>
         <div className="what">
@@ -764,6 +764,9 @@ const Home = ({
       </div>
       <div className="container">
         <div className="izobox">
+          <h2 className="izobox_name" id="izoboxName">
+            Izobox {boxType}
+          </h2>
           {boxType == "Basic" && (
             <Steps
               step={1}
@@ -1231,7 +1234,7 @@ const Home = ({
           {boxType == "Custom" && (
             <Steps step={6} title="Выберите способ оплаты и доставки" />
           )}
-          <div className="two_radio_checks">
+          <div className="two_radio_checks" id="twoChecks">
             <div className="radio_checks">
               <h3>Служба доставки</h3>
               <div className="radio_checks_hero">

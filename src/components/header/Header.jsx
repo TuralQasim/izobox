@@ -68,14 +68,14 @@ const Header = ({ countries, dispatch }) => {
                   type: "BOXTYPE",
                   payload: "Basic",
                 });
-                scrollTo("basicBox");
+                scrollTo("izoboxName");
               }}
             >
               IzoBox Basic
             </p>
             <p
               onClick={() => {
-                scrollTo("customBox");
+                scrollTo("izoboxName");
                 dispatch({
                   type: "BOXTYPE",
                   payload: "Custom",
@@ -138,7 +138,7 @@ const Header = ({ countries, dispatch }) => {
                   onClick={() => {
                     setBurger(false);
                     enableScroll();
-                    scrollTo("basicBox");
+                    scrollTo("izoboxName");
                     dispatch({
                       type: "BOXTYPE",
                       payload: "Basic",
@@ -151,7 +151,7 @@ const Header = ({ countries, dispatch }) => {
                   onClick={() => {
                     setBurger(false);
                     enableScroll();
-                    scrollTo("customBox");
+                    scrollTo("izoboxName");
                     dispatch({
                       type: "BOXTYPE",
                       payload: "Custom",

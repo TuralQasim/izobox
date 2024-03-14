@@ -366,7 +366,7 @@
 }
 @media screen and (max-width: 480px) {
   .basic_left img {
-    width: 100%;
+    width: 85%;
     aspect-ratio: 1/1;
     margin-right: auto;
   }

@@ -11,7 +11,7 @@ const store = legacy_createStore(Reducer);
 ReactDOM.createRoot(document.getElementById("root")).render(
   <>
     <Provider store={store}>
-      <Router basename="/izobox">
+      <Router basename="/">
         <App />
       </Router>
     </Provider>

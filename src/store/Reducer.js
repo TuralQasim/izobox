@@ -12,7 +12,11 @@ const initalState = {
   back: 3,
   bigImg: false,
   bigImgSrc: "./custom1.webp",
+  success: false,
+  time: "",
+  orderNumber: "",
 };
+
 export default function Reducer(state = initalState, action) {
   switch (action.type) {
     case "INCPRICE":
@@ -22,8 +26,16 @@ export default function Reducer(state = initalState, action) {
       };
     case "DECPRICE":
       return { ...state, mainPrice: +state.mainPrice - +action.payload };
+    case "PRICE":
+      return { ...state, mainPrice: action.payload };
     case "WINDOW":
       return { ...state, window: action.payload };
+    case "TIME":
+      return { ...state, time: action.payload };
+    case "SUCCESS":
+      return { ...state, success: action.payload };
+    case "ORDERNUMBER":
+      return { ...state, orderNumber: action.payload };
     case "BIGIMGSRC":
       return { ...state, bigImgSrc: action.payload };
     case "BIGIMG":
@@ -53,6 +65,11 @@ export default function Reducer(state = initalState, action) {
       return {
         ...state,
         additionalArr: state.additionalArr.filter((a) => a != action.payload),
+      };
+    case "RESETADDITIONAL":
+      return {
+        ...state,
+        additionalArr: action.payload,
       };
     default:
       return state;

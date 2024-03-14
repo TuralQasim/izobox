@@ -18,12 +18,14 @@ import { yupResolver } from "@hookform/resolvers/yup";
 import { useForm } from "react-hook-form";
 import axios from "axios";
 import { toast } from "react-toastify";
-import { render } from "react-dom";
 import { scrollTo } from "../../hooks/scroolTo";
+import moment from "moment";
 
 let schema = Yup.object().shape({
   name: Yup.string().required("Пожалуйста, введите ваше имя"),
-  email: Yup.string().email().required("Пожалуйста, введите Email"),
+  email: Yup.string()
+    .email("Пожалуйста, введите Email")
+    .required("Пожалуйста, введите Email"),
   tel: Yup.string()
     .required("Пожалуйста, введите номер телефона")
     .matches(/^[\d+*-]+$/, "Номер телефона должен содержать только цифры"),
@@ -39,6 +41,7 @@ let schema = Yup.object().shape({
   maket: Yup.string(),
   example: Yup.mixed(),
   sound: Yup.string(),
+  description: Yup.string(),
 });
 
 const Home = ({
@@ -53,12 +56,18 @@ const Home = ({
   front,
   back,
   window,
+  success,
   additionalArr,
+  time,
+  orderNumber,
 }) => {
+  const generateRandomOrderNumber = () => {
+    const randomNumber = Math.floor(100000 + Math.random() * 900000);
+    return randomNumber.toString();
+  };
   if (boxType === "Custom") {
     schema = schema.shape({
       cabinSize: Yup.string().required("Укажите размер кабинки"),
-      description: Yup.string().required("Опишите необходимые вам аксесуары"),
     });
   }
   const [outsideColor, setOutsideColor] = useState("");
@@ -333,6 +342,7 @@ const Home = ({
     handleSubmit,
     register,
     formState: { errors },
+    reset,
   } = useForm({
     resolver: yupResolver(schema),
   });
@@ -349,6 +359,8 @@ const Home = ({
         from_email: data.email,
         to_name: "ermeni",
         message: JSON.stringify({
+          orderNumber: data.orderNumber,
+          time: data.time,
           username: data.name,
           userEmail: data.email,
           userCity: data.city,
@@ -389,14 +401,30 @@ const Home = ({
         sendingData
       );
       if (res.data) {
-        toast.success("Данные успешно отравлены!");
+        dispatch({
+          type: "SUCCESS",
+          payload: true,
+        });
+        reset();
       }
     } catch (error) {
       toast.error(error.message);
     }
   };
   const submitAllForm = (data) => {
+    const time = moment().format("DD.MM.YYYY HH:mm");
+    const orderNumber = generateRandomOrderNumber();
+    dispatch({
+      type: "TIME",
+      payload: time,
+    });
+    dispatch({
+      type: "ORDERNUMBER",
+      payload: orderNumber,
+    });
     const newData = {
+      orderNumber: `№${orderNumber}`,
+      time: time,
       boxType: boxType,
       face: checks.face,
       delivery: checks.delivery,
@@ -433,8 +461,6 @@ const Home = ({
       additionalArr: additionalArr,
       card: data.card,
     };
-
-    console.log(newData);
     sendEmail(newData);
   };
   const handleDragOver = (e) => {
@@ -565,6 +591,65 @@ const Home = ({
                 });
               }}
             />
+          </div>
+        </div>
+      )}
+      {success && (
+        <div className="success_modal_bg">
+          <div
+            className="success_modal_overlay"
+            onClick={() => {
+              dispatch({
+                type: "SUCCESS",
+                payload: false,
+              });
+              dispatch({
+                type: "TIME",
+                payload: "",
+              });
+              dispatch({
+                type: "ORDERNUMBER",
+                payload: "",
+              });
+              setOutsideColor("");
+              setColor(null);
+              dispatch({
+                type: "WINDOW",
+                payload: true,
+              });
+              dispatch({
+                type: "FRONT",
+                payload: 4,
+              });
+              dispatch({
+                type: "BACK",
+                payload: 3,
+              });
+              dispatch({
+                type: "PRICE",
+                payload: "150.000",
+              });
+              dispatch({
+                type: "RESETADDITIONAL",
+                payload: [],
+              });
+              setChecks({ face: 1, delivery: 1, pay: 1 });
+            }}
+          ></div>
+          <div
+            className="success_modal"
+            onClick={(e) => {
+              e.preventDefault();
+              e.stopPropagation();
+            }}
+          >
+            <img src="./success.svg" alt="" />
+            <p>
+              Ваш заказ <span> {orderNumber}</span>от
+              <span> {time}</span>
+              успешно оформлен.
+            </p>
+            <p>Для подтверждения заказа с Вами свяжется менеджер.</p>
           </div>
         </div>
       )}

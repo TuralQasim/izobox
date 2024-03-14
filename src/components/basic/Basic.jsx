@@ -4,6 +4,7 @@ import "./basic.css";
 import SwiperImage from "../swiperImage/SwiperImage";
 import { scrollTo } from "../../hooks/scroolTo";
 const Basic = ({ dispatch, front, back, window, mainPrice }) => {
+
   return (
     <div className="basic" id="basicBox">
       <div className="basic_left">
@@ -261,19 +262,8 @@ const Basic = ({ dispatch, front, back, window, mainPrice }) => {
             ></div>
           </div>
         </div>
-        {/* <button
-          className="all_colors"
-          onClick={() => {
-            dispatch({
-              type: "COLORMODAL",
-              payload: true,
-            });
-          }}
-        >
-          Все цвета
-        </button> */}
         <div className="prices">
-          <h2>
+          <h2 className="creditprice">
             {mainPrice}
             {mainPrice === "150.000"
               ? ""
@@ -286,7 +276,7 @@ const Basic = ({ dispatch, front, back, window, mainPrice }) => {
         </div>
         <div className="izobox_actions">
           <h5 onClick={() => scrollTo("radioChecks")}>Купить</h5>
-          <button>В кредит</button>
+          <button className="gocredit bk_buy_button">В кредит</button>
         </div>
       </div>
     </div>
